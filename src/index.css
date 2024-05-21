@@ -1,13 +1,145 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+section{
+  @apply mb-24
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.nav-link{
+  @apply text-neutral-500 text-base
+}
+/* .nav-link.active{
+  @apply text-gray-800
+}
+.nav-link:hover{
+  @apply text-gray-800
+} */
+
+
+.text-danger{
+  @apply text-red-500 mx-5 my-1
+}
+
+
+.btn{
+  @apply  py-3 px-9 rounded-[30px] my-1 capitalize font-semibold
+}
+
+.btn-primary{
+  @apply bg-accent hover:bg-accent-hover text-white
+}
+
+
+.input {
+  @apply py-3 rounded-[30px] w-full outline-none px-6 text-primary border border-gray-300 focus:border-primary;
+}
+
+
+a.active , .nav-link:hover{
+  @apply text-accent  !important;
+}
+
+
+.sec-title{
+  @apply text-center md:text-left
+}
+
+main{
+  @apply text-neutral-500 leading-relaxed
+}
+
+h1,h2,h3,h4,h5,h6{
+  @apply text-black
+}
+
+/* html[dir='ltr']{
+  h1{
+    @apply bg-red-400
+  }
+} */
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.ant-select{
+  @apply bg-transparent border-0 outline-0 shadow-none  !important
+}
+
+.ant-picker-dropdown{
+  @apply overflow-x-auto
+}
+
+.header-bg{
+    background-color: hsla(0, 0%, 100%, .7);
+    --tw-backdrop-blur: blur(40px);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
+.custom-range-picker  {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 1.2rem;
+}
+.custom-range-picker input::-webkit-input-placeholder{
+  font-size: 1.2rem;
+}
+.custom-range-picker input::-moz-placeholder{
+  font-size: 1.2rem;
+}
+.custom-range-picker input:-ms-input-placeholder{
+  font-size: 1.2rem;
+}
+.custom-range-picker input::-ms-input-placeholder{
+  font-size: 1.2rem;
+}
+.custom-range-picker input ,.custom-range-picker input::placeholder{
+  font-size: 1.2rem;
+}
+:where(.css-dev-only-do-not-override-17seli4).ant-picker-outlined:focus, :where(.css-dev-only-do-not-override-17seli4).ant-picker-outlined:focus-within {
+  border-color: #1677ff;
+  box-shadow: 0 0 0 0px transparent;
+  outline: 0;
+  background-color: #ffffff;
+}
+
+
+
+.custom-range-picker .ant-picker-input:hover ,
+.custom-range-picker .ant-picker-input:focus {
+  border-color: unset;
+  box-shadow: unset;
+}
+
+.ant-picker-active-bar{
+  display: none;
+}
+
+
+.ant-picker-dropdown{
+  
+}
+
+.ant-picker-dropdown .ant-picker-range-wrapper .ant-picker-panels ,
+.ant-picker-panels{
+  background-color: white;
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media(max-width:625px){
+  .ant-picker-dropdown .ant-picker-range-wrapper .ant-picker-panels ,
+.ant-picker-panels{
+  background-color: white;
+  width: 300px;
+  overflow-x: auto;
+}
 }

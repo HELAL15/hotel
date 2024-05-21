@@ -1,0 +1,37 @@
+ .swiper-pagination-bullets {
+  bottom: 1.5rem;
+}
+ .swiper-pagination-bullet,
+ .swiper-pagination-bullet {
+  @apply bg-white font-semibold;
+}
+
+ .swiper-button-prev::after {
+  font-size: 2rem;
+}
+.swiper-button-disabled{
+  display: none;
+}
+ .swiper-button-prev::after,
+ .swiper-button-next::after {
+  font-size: .7rem;
+  @apply text-primary font-semibold;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  background-color: white;
+}
+
+.card .swiper-button-prev,
+.card .swiper-button-next{
+  opacity: 0;
+  transition: .3s;
+}
+
+.card:hover .swiper-button-prev,
+.card:hover .swiper-button-next{
+  opacity: 1;
+}
