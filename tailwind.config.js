@@ -32,7 +32,7 @@ module.exports = {
         },
       },
       backgroundImage: {
-        mainSlider: "url('img/mainSlider_bg.png')",
+        mainSlider: "urt('img/mainSlider_bg.png')",
       },
       keyframes: {
         shake: {

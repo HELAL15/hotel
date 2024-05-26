@@ -20,7 +20,7 @@ const Footer = () => {
     <>
       <footer className='border-t border-t-slate-100 py-10 capitalize mt-6'>
         <Container>
-          <Sorting sx={twMerge('grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4')}>
+          <Sorting sx={twMerge('grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4')}>
             <div className='flex flex-row md:flex-col justify-between md:justify-start gap-4'>
               {/* <h3 className='text-black text-xl font-semibold mb-5'>logo</h3> */}
               <Link to='/' className='text-2xl font-bold text-gray-800  w-fit'>
@@ -64,7 +64,7 @@ const Footer = () => {
                 <NavLink to="/places" className='nav-link'>places</NavLink>
               </div>
             </div>
-            <div>
+            <div className='md:col-span-3 lg:col-span-1'>
               <h3 className='text-black text-xl font-semibold mb-5'>contact</h3>
               <div className='flex flex-col gap-3'>
                 <NavLink to="tel:+201222810589" className='nav-link flex items-center gap-2'><i><FaPhoneAlt/></i><span>+201222810589</span></NavLink>

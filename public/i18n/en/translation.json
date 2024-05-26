@@ -1,0 +1,59 @@
+{
+  "lng" : "ar",
+  "hero" : {
+    "head":"Book Your Hotel & Enjoy With Experience",
+    "subhead":"Accompanying us, you have a trip full of experiences. With Chisfis, booking accommodation, resort villas, hotels"
+    },
+    "nav" : {
+      "home" : "home",
+      "about" : "about us",
+      "services" : "services",
+      "contact" : "contact us",
+      "places" : "places"
+    },
+  "sedra" : "SEDRA",
+  "back" : "back",
+  "notfound" : "notfound",
+  "homeLink" : "home",
+  "aboutLink" : "about us",
+  "contactLink" : "contact us",
+  "booksLink" : "books",
+  "publishingLink" : "publish houses",
+  "offersLink": "Offers",
+  "helpLink": "Help",
+  "faqLink": "FAQ",
+  "termsLink": "Terms and Conditions",
+  "privacyLink": "Privacy Policy",
+  "blacklistLink": "Reasons for Blacklisting",
+  "websiteMap" : "websiteMap",
+  "contact info" : "contact info",
+  "blog" : "blog",
+  "phone no" : "mobile number",
+  "email" : "email",
+  "more" : "more",
+  "booker" : "Booker Prize winning books",
+  "bestSeller" : "Best selling books",
+  "bookShop" :"book shop",
+  "desc" : "Welcome to Sidra Books! Explore an extensive collection of captivating reads for every book lover. At Sidra Books, we're dedicated to providing book enthusiasts with a wide range of compelling titles across various genres. From bestselling novels to insightful non-fiction, delightful children's books, and more, there's something for everyone in our curated selection.",
+  "books" : {
+    "title" : "Books",
+    "content" : "This is the books page content"
+  },
+  "home" : {
+    "title" : "Welcome to the home page",
+    "content" : "This is the home page content"
+  },
+  "about" : {
+    "title" : "About us",
+    "content" : "This is the about page content"
+  },
+  "contact" : {
+    "title" : "Contact us",
+    "content" : "This is the contact page content"
+  },
+  "subscribe" : {
+    "content" : "You can subscribe to our newsletter to learn new things",
+    "placeholder" : "email"
+  }
+
+}

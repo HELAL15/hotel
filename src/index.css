@@ -1,7 +1,26 @@
 
+
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import urt('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+
+*{
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-family: 'Tajawal', sans-serif;
+
+}
+
 
 
 section{
@@ -10,7 +29,7 @@ section{
 
 
 .nav-link{
-  @apply text-neutral-500 text-base
+  @apply text-neutral-500  font-medium text-lg
 }
 /* .nav-link.active{
   @apply text-gray-800
@@ -35,7 +54,7 @@ section{
 
 
 .input {
-  @apply py-3 rounded-[30px] w-full outline-none px-6 text-primary border border-gray-300 focus:border-primary;
+  @apply py-3 rounded-[30px] w-full outline-none px-6 text-primary border border-gray-300 focus:border-primary rtl:text-right ltr:text-left  ;
 }
 
 
@@ -68,6 +87,7 @@ img, video {
 }
 
 
+
 .ant-select{
   @apply bg-transparent border-0 outline-0 shadow-none  !important
 }
@@ -82,7 +102,9 @@ img, video {
     -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
     backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
-
+.nav-link.mobile.active{
+  @apply bg-primary/20 rounded-lg
+}
 .custom-range-picker  {
   border: none;
   outline: none;

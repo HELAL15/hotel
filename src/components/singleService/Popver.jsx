@@ -1,38 +1,59 @@
-import React, { memo } from 'react'
 
+import React, { useState, useCallback , memo } from 'react';
 
 import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react'
 import Counter from './Counter'
 
 export default function Example() {
+    // Initialize state for counters with an array of objects
+    const [counters, setCounters] = useState([
+      { label: 'Adults', count: 0 },
+      { label: 'Children', count: 0 },
+      { label: 'Infants', count: 0 },
+    ]);
+  
+    // Function to handle count change
+    const handleCount = useCallback((index, type) => {
+      setCounters(prevCounters =>
+        prevCounters.map((counter, i) => 
+          i === index 
+            ? { ...counter, count: type === 'add' ? counter.count + 1 : Math.max(counter.count - 1, 0) }
+            : counter
+        )
+      );
+    }, []);
+  
+    // Function to collect counts and send to backend
+    const collectCounts = useCallback(() => {
+      const counts = counters.map(counter => counter.count);
+      console.log('Collected counts:', counts);
+    }, [counters]);
   return (
-    <div className="flex  w-full ">
-        <Popover __demoMode>
-          <PopoverButton className="text-sm/6 font-semibold  focus:outline-none flex items-center gap-8 px-8 py-3 ">
-            <i></i>
-            <span>guests</span>
-          </PopoverButton>
-          <Transition
-            enter="transition ease-out duration-200"
-            enterFrom="opacity-0 translate-y-1"
-            enterTo="opacity-100 translate-y-0"
-            leave="transition ease-in duration-150"
-            leaveFrom="opacity-100 translate-y-0"
-            leaveTo="opacity-0 translate-y-1"
+    <div className="flex flex-col gap-4">
+      {counters.map((counter, index) => (
+        <div key={index} className="flex items-center gap-4">
+          <button
+            className="bg-primary rounded-full w-[30px] h-[30px] text-white overflow-hidden grid place-items-center text-xl font-semibold"
+            onClick={() => handleCount(index, 'subtract')}
           >
-            <PopoverPanel
-              anchor="bottom"
-              className="divide-y divide-white/5 w-[300px] rounded-xl bg-white/5 text-sm/6 [--anchor-gap:var(--spacing-5)] bg-slate-50 shadow z-30"
-            >
-              <div className="p-3">
-                <Counter type='adult' age='13 or above' />
-                <Counter type='adult' age='13 or above'/>
-                <Counter type='adult' age='13 or above'/>
-              </div>
-            </PopoverPanel>
-          </Transition>
-        </Popover>
-
+            -
+          </button>
+          <span className="text-xl font-semibold w-[30px]">{counter.count}</span>
+          <button
+            className="bg-primary rounded-full w-[30px] h-[30px] text-white overflow-hidden grid place-items-center text-xl font-semibold"
+            onClick={() => handleCount(index, 'add')}
+          >
+            +
+          </button>
+          <span className="ml-2">{counter.label}</span>
+        </div>
+      ))}
+      <button
+        className="mt-4 bg-primary rounded-full py-2 px-4 text-white"
+        onClick={collectCounts}
+      >
+        Submit Counts
+      </button>
     </div>
   )
 }

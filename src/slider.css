@@ -29,6 +29,7 @@
 .card .swiper-button-next{
   opacity: 0;
   transition: .3s;
+  @apply w-[45px] h-[45px]
 }
 
 .card:hover .swiper-button-prev,
