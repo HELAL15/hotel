@@ -16,7 +16,7 @@ export const request = axios.create({
     'Content-Type': 'application/json',
     'accept': 'application/json',
     'accept-language': 'en_US',
-    'lang': `${lang ? "ar" : "en"}`,
+    'lang': `${lang}`,
     'content-type': 'application/x-www-form-urlencoded',
     Authorization: `bearer ${token}`,
   },
