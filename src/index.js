@@ -10,39 +10,18 @@ import 'swiper/css/navigation';
 import './slider.css';
 import OpenProvider from './context/OpenContext'
 import { ChangeLng } from './context/ChangeLng';
-
-// import { I18nextProvider } from "react-i18next";
-// import en from './i18n/en.json';
-// import ar from './i18n/ar.json';
-
-// import i18next from 'i18next';
-// import ChangeLng from './context/ChangeLng';
-
-
-// i18next.init({
-//   interpolation: { escapeValue: false },
-//   lng: 'ar',
-//   resources: {
-//     en: {
-//       translation: en
-//     },
-//     ar: {
-//       translation: ar
-//     }
-//   }
-// });
-
-
+import BookingProvider from './context/BookServiceContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-    {/* <I18nextProvider i18n={i18next}>
-    </I18nextProvider> */}
+
       <ChangeLng>
         <OpenProvider>
-          <App />
+          <BookingProvider>
+            <App />
+          </BookingProvider>
         </OpenProvider>
       </ChangeLng>
   </Router>

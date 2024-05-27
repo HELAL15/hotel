@@ -46,7 +46,7 @@ const MainCard = ({sale}) => {
               <Swiper
                 className='h-full w-full'
                 modules={[Navigation, Pagination, Scrollbar]}
-                spaceBetween={10}
+                spaceBetween={0}
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}

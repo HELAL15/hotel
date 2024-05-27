@@ -1,10 +1,16 @@
-import React, { memo } from 'react'
+import React, { memo, useContext, useEffect } from 'react'
+import Seo from '../helpers/Seo'
+import {BookServiceContext} from '../context/BookServiceContext'
 
 const Contact = () => {
+  const {test , a} = useContext(BookServiceContext)
+
   return (
-    <div>
-      
-    </div>
+    <>
+      <Seo title="contact"  />
+      <button onClick={test}>test</button>
+      <span>{a}</span>
+    </>
   )
 }
 

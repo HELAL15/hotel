@@ -30,7 +30,7 @@ const CartProvider = ({children}) => {
 
     const total = cart.reduce((acc , item)=>acc + (item.attributes.price * item.amount) , 0)
 
-    setTotat(total)
+    setTotal(total)
 
 
 

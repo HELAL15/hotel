@@ -1,9 +1,14 @@
-import React, { memo } from 'react'
+import React, { memo , useContext } from 'react'
 import {FaStar } from 'react-icons/fa6'
 import Datec from './Datec'
 import Example from './Popver'
+import { BookServiceContext } from '../../context/BookServiceContext';
+
+
+
 
 const ServiceCard = () => {
+  const {collectCounts} = useContext(BookServiceContext)
   return (
     <>
       <div className='sticky top-28 rounded-[30px] overflow-hidden border border-neutral-200 p-4 mb-8 w-full'>
@@ -43,7 +48,7 @@ const ServiceCard = () => {
                   <p>$199</p>
                 </div>
                 <div className='flex justify-center'>
-                  <button className='btn btn-primary w-full'>Book now</button>
+                  <button className='btn btn-primary w-full' onClick={collectCounts}>Book now</button>
                 </div>
               </div>
     </>

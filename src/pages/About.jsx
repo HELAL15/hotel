@@ -13,6 +13,7 @@
 
 import React, { useState, useCallback } from 'react';
 import useFetch from '../hooks/useFetch';
+import Seo from '../helpers/Seo';
 
 const About = () => {
 
@@ -29,10 +30,9 @@ console.log(data);
 
   // Initialize state for counters with an array of objects
   const [counters, setCounters] = useState([
-    { label: 'Adults', count: 0 },
-    { label: 'Children', count: 0 },
-    { label: 'Infants', count: 0 },
-    { label: 'Others', count: 0 },
+    { type: 'Adults', count: 0 },
+    { type: 'Children', count: 0 },
+    { type: 'Infants', count: 0 },
   ]);
 
   // Function to handle count change
@@ -48,11 +48,13 @@ console.log(data);
 
   // Function to collect counts and send to backend
   const collectCounts = useCallback(() => {
-    const counts = counters.map(counter => counter.count);
+    const counts = counters.map(counter => counter);
     console.log('Collected counts:', counts);
   }, [counters]);
 
   return (
+    <>
+      <Seo title="about"  />
     <div className="flex flex-col gap-4">
       {counters.map((counter, index) => (
         <div key={index} className="flex items-center gap-4">
@@ -79,6 +81,7 @@ console.log(data);
         Submit Counts
       </button>
     </div>
+    </>
   );
 };
 

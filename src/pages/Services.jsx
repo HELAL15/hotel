@@ -4,10 +4,12 @@ import SecTitle from '../components/SecTitle'
 import Sorting from '../helpers/Sorting'
 import MainCard from '../components/MainCard'
 import { Link } from 'react-router-dom'
+import Seo from '../helpers/Seo'
 
 const Services = () => {
   return (
     <>
+          <Seo title="services"  />
           <section className=''>
       <Container>
       <SecTitle 

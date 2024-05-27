@@ -17,13 +17,14 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import OurFeatures from '../components/OurFeatures'
 import HowItWork from '../components/HowItWork'
 import ExplorePlace from '../components/ExplorePlace'
-
+import Seo from '../helpers/Seo'
 
 
 const Home = () => {
   return (
     <>
 
+    <Seo title="home"  />
 <Hero/>
 
     <section className=''>
