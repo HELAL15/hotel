@@ -1,6 +1,7 @@
 import React, { memo, useContext, useEffect } from 'react'
 import Seo from '../helpers/Seo'
 import {BookServiceContext} from '../context/BookServiceContext'
+import Newsletter from '../components/Newsletter'
 
 const Contact = () => {
   const {test , a} = useContext(BookServiceContext)
@@ -8,8 +9,7 @@ const Contact = () => {
   return (
     <>
       <Seo title="contact"  />
-      <button onClick={test}>test</button>
-      <span>{a}</span>
+      <Newsletter/>
     </>
   )
 }

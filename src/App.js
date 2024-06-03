@@ -16,6 +16,7 @@ import Account from './pages/Profile/Account';
 import AccountPassword from './pages/Profile/AccountPassword';
 import Wishlist from './pages/Profile/Wishlist';
 import BookList from './pages/Profile/BookList';
+import ProfileOutlet from './pages/Profile/ProfileOutlet';
 
 const App = () => {
 
@@ -51,10 +52,12 @@ const Layout =()=>{
       <Route path="/places/:id" element={<SinglePlace/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<SignUp/>}/>
-      <Route path='/profile' element={<Account/>} />
-      <Route path='/account-password' element={<AccountPassword/>} />
-      <Route path='/Wishlist' element={<Wishlist/>} />
-      <Route path='/booking-list' element={<BookList/>} />
+      <Route path='/' element={<ProfileOutlet/>} >
+        <Route path='/profile' element={<Account/>} />
+        <Route path='/account-password' element={<AccountPassword/>} />
+        <Route path='/Wishlist' element={<Wishlist/>} />
+        <Route path='/booking-list' element={<BookList/>} />
+      </Route>
       <Route path='*' element={<NotFound/>}/>
     </Route>
     </Routes>

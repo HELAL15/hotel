@@ -16,7 +16,7 @@
  .swiper-button-next::after {
   font-size: .7rem;
   @apply text-primary font-semibold;
-  width: 35px;
+  /* width: 35px; */
   height: 35px;
   border-radius: 50%;
   aspect-ratio: 1;
@@ -24,6 +24,8 @@
   place-items: center;
   background-color: white;
 }
+
+
 
 .card .swiper-button-prev,
 .card .swiper-button-next{

@@ -1,4 +1,4 @@
-import React, { Suspense, memo, useState } from 'react';
+import React, { Suspense, memo, useContext, useState } from 'react';
 import { FaStar, FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { IoLocationOutline } from "react-icons/io5";
@@ -15,6 +15,7 @@ import 'swiper/css/navigation';
 import '../slider.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SwiperDirContext } from '../context/SwiperDir';
 
 const MainCard = ({sale}) => {
   const [fav, setFav] = useState(false);
@@ -29,6 +30,8 @@ const MainCard = ({sale}) => {
       // toast('Removed from favorites');
     }
   };
+
+  const {dir} = useContext(SwiperDirContext)
 
   return (
     <>
@@ -46,7 +49,8 @@ const MainCard = ({sale}) => {
               <Swiper
                 className='h-full w-full'
                 modules={[Navigation, Pagination, Scrollbar]}
-                spaceBetween={0}
+                dir={dir}
+                spaceBetween={20}
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}

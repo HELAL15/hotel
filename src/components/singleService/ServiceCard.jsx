@@ -1,8 +1,8 @@
 import React, { memo , useContext } from 'react'
 import {FaStar } from 'react-icons/fa6'
 import Datec from './Datec'
-import Example from './Popver'
 import { BookServiceContext } from '../../context/BookServiceContext';
+import GuestsCounter from './Popver';
 
 
 
@@ -29,7 +29,7 @@ const ServiceCard = () => {
                     ddd
                     </button> */}
                   </div>
-                    <Example/>
+                    <GuestsCounter/>
                   {/* <button className=''>
                   </button> */}
                 </div>

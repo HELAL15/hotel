@@ -1,14 +1,14 @@
 import React from 'react'
-import Container from '../helpers/Container'
-import Sorting from '../helpers/Sorting'
+import Container from '../../helpers/Container'
+// import Sorting from '../../helpers/Sorting'
 import { twMerge } from 'tailwind-merge'
 import { Link } from 'react-router-dom'
-import img from "../img/profile-img.jpg"
-import StyledAnim from './StyledAnim'
-import img1 from '../img/p1.webp';
-import img2 from '../img/p2.webp';
-import img3 from '../img/p3.webp';
-import { useLngContext } from '../context/ChangeLng'
+// import img from "../../img/profile-img.jpg"
+import StyledAnim from '../StyledAnim'
+import img1 from '../../img/p1.webp';
+import img2 from '../../img/p2.webp';
+import img3 from '../../img/p3.webp';
+import { useLngContext } from '../../context/ChangeLng'
 import { useTranslation } from 'react-i18next'
 
 const Hero = () => {

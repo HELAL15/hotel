@@ -5,7 +5,7 @@ import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/re
 import Counter from './Counter'
 import { BookServiceContext } from '../../context/BookServiceContext';
 
-export default function Example() {
+export default function GuestsCounter() {
 
   const {counters , handleCount , collectCounts , guestsCount} = useContext(BookServiceContext)
 

@@ -11,6 +11,7 @@ import './slider.css';
 import OpenProvider from './context/OpenContext'
 import { ChangeLng } from './context/ChangeLng';
 import BookingProvider from './context/BookServiceContext';
+import SwiperDirProvider from './context/SwiperDir';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,7 +21,9 @@ root.render(
       <ChangeLng>
         <OpenProvider>
           <BookingProvider>
+          <SwiperDirProvider>
             <App />
+          </SwiperDirProvider>
           </BookingProvider>
         </OpenProvider>
       </ChangeLng>
