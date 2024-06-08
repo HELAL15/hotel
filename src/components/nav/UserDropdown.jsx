@@ -23,7 +23,6 @@ const {userDetails} = useContext(UserContext)
   const cookie = Cookie()
   const user = sessionStorage.getItem("user-info")
   const token = sessionStorage.getItem("hotel")
-  console.log(token);
 
   return (
     <Menu as="div" className="relative inline-block text-left">
