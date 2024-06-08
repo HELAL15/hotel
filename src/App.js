@@ -17,6 +17,8 @@ import AccountPassword from './pages/Profile/AccountPassword';
 import Wishlist from './pages/Profile/Wishlist';
 import BookList from './pages/Profile/BookList';
 import ProfileOutlet from './pages/Profile/ProfileOutlet';
+import AuthGuard from './Authed/AuthGuard';
+import RequireBack from './Authed/RequireBack';
 
 const App = () => {
 
@@ -50,13 +52,17 @@ const Layout =()=>{
       <Route path="/services/:id" element={<SingleService/>}/>
       <Route path="/places" element={<Places/>}/>
       <Route path="/places/:id" element={<SinglePlace/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/register" element={<SignUp/>}/>
-      <Route path='/' element={<ProfileOutlet/>} >
+      <Route element={<RequireBack/>}>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<SignUp/>}/>
+      </Route>
+      <Route  element={<AuthGuard/>}>
+        <Route  element={<ProfileOutlet/>} >
         <Route path='/profile' element={<Account/>} />
         <Route path='/account-password' element={<AccountPassword/>} />
         <Route path='/Wishlist' element={<Wishlist/>} />
         <Route path='/booking-list' element={<BookList/>} />
+      </Route>
       </Route>
       <Route path='*' element={<NotFound/>}/>
     </Route>

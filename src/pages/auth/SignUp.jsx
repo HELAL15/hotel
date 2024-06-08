@@ -1,16 +1,50 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import StyledAnim from '../../components/StyledAnim';
+import { request } from '../../api/request';
+import { UserContext } from '../../context/UserContext';
+import { ToastContainer, toast } from 'react-toastify';
+import Cookie from 'cookie-universal';
 
 const SignUp = () => {
   const [type, setType] = useState(false);
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
   const password = watch('password');
 
-  const onSubmit = (data) => {
-    console.log(data); // Replace with your SignUp logic
-  };
+
+  const navigate = useNavigate()
+
+  const {setUser , user} = useContext(UserContext)
+
+  // cookies
+const cookie = Cookie();
+
+const [loading , setLoading] = useState(false)
+
+const onSubmit = (data) => {
+  setLoading(true)
+  request.post("user/register" , data)
+  .then((res)=>{
+
+    setLoading(false)
+    const userData = res.data.data
+    setUser(userData)
+    console.log(user);
+    const token = res.data.data.token
+    // set token in cookies
+    sessionStorage.set('Itemhotel' , token);
+      sessionStorage.set('Itemuser-info' , userData)
+    navigate('/')
+    toast.success(res.data.message);
+    
+  })
+  .catch((err)=>{
+    toast(err.response.data.message);
+    console.log(err)
+    setLoading(false)
+  })
+}
   
   const changeType = () => {
     setType(!type);
@@ -18,6 +52,7 @@ const SignUp = () => {
 
   return (
     <>
+    <ToastContainer/>
       <section className='relative'>
         <StyledAnim />
         <div className='container mx-auto'>
@@ -27,14 +62,14 @@ const SignUp = () => {
               <div className="my-4">
                 <div className='package-input' >
                   <span><i className="fas fa-envelope"></i></span>
-                  <input className='input' {...register('firstName', { required: true })} placeholder="الاسم الاول" />
+                  <input className='input' {...register('first_name', { required: true })} placeholder="الاسم الاول" />
                 </div>
                 {errors.firstName && <p className='text-danger'>First Name is required</p>}
               </div>
               <div className="my-4">
                 <div className='package-input' >
                   <span><i className="fas fa-envelope"></i></span>
-                  <input className='input' {...register('lastName', { required: true })} placeholder="الاسم الاخير" />
+                  <input className='input' {...register('last_name', { required: true })} placeholder="الاسم الاخير" />
                 </div>
                 {errors.lastName && <p className='text-danger'>Last Name is required</p>}
               </div>
@@ -60,7 +95,7 @@ const SignUp = () => {
               <div className="my-4">
                 <div className='package-input' >
                   <span><i className="fas fa-lock"></i></span>
-                  <input className='input' type={type ? "text" : "password"} {...register('confirmPassword', { required: true, validate: value => value === password })} placeholder="تأكيد كلمة المرور" />
+                  <input className='input' type={type ? "text" : "password"} {...register('password_confirmation', { required: true, validate: value => value === password })} placeholder="تأكيد كلمة المرور" />
                   <button type="button" className="show-pass" onClick={changeType}>
                     <i className={`fas fa-eye${type ? "" : "-slash"}`}></i>
                   </button>
@@ -72,7 +107,7 @@ const SignUp = () => {
                 <span className='mx-2'> لديك حساب؟</span>
                 <Link to="/login" className="forget mb-4 underline">تسجيل الدخول</Link>
               </div>
-              <button type="submit" className="btn btn-primary w-full mt-4">إنشاء حساب</button>
+              <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? "loading..." : "انشاء حساب"}</button>
             </form>
           </div>
         </div>

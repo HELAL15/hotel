@@ -1,23 +1,29 @@
 import axios from 'axios';
 import Cookie from 'cookie-universal';
-import { useLngContext } from '../context/ChangeLng';
+import { baseUrl } from './api';
 
 // cookies
 const cookie = Cookie();
-// get token from cookies
-const token = cookie.get('e-commerce');
+
 // get lang from local storage
-const lang = localStorage.getItem("lang")
+const lang = localStorage.getItem("lang") || 'en_US';
 
 
 export const request = axios.create({
-  baseURL: 'http://localhost:1337/api',
+  baseURL: baseUrl,
   headers: {
     'Content-Type': 'application/json',
     'accept': 'application/json',
-    'accept-language': 'en_US',
-    'lang': `${lang}`,
-    'content-type': 'application/x-www-form-urlencoded',
-    Authorization: `bearer ${token}`,
+    'accept-language': lang,
   },
+});
+
+request.interceptors.request.use((config) => {
+  const token = sessionStorage.getItem('hotel');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
 });

@@ -1,15 +1,48 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import StyledAnim from '../../components/StyledAnim';
+import { request } from '../../api/request';
+import Cookie from 'cookie-universal';
+import { ToastContainer, toast } from 'react-toastify';
+import { UserContext } from '../../context/UserContext';
 
 const Login = () => {
+
+  const navigate = useNavigate()
+
+  // const {setUser , user} = useContext(UserContext)
+
+// cookies
+const cookie = Cookie();
+
+  const [loading , setLoading] = useState(false)
+
 
   const [type , setType] = useState(false)
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
-    console.log(data); // Replace with your login logic
+    setLoading(true)
+    request.post("user/login" , data)
+    .then((res)=>{
+      setLoading(false)
+      const userData = res.data.data
+      // setUser(userData)
+      // console.log(user);
+      const token = res.data.data.token
+      // set token in cookies
+      sessionStorage.setItem('hotel' , token);
+      sessionStorage.setItem('user-info' , userData)
+      navigate('/')
+      toast.success(res.data.message);
+      
+    })
+    .catch((err)=>{
+      toast(err.response.data.message);
+      console.log(err)
+      setLoading(false)
+    })
   }
   
   const changeType = () =>{
@@ -21,6 +54,7 @@ const Login = () => {
 
   return (
     <>
+    <ToastContainer/>
       <section className='relative'>
         <StyledAnim/>
         <div className='container mx-auto'>
@@ -50,7 +84,7 @@ const Login = () => {
             <div className='my-5 text-gray-500 text-right'>
               <Link to="/forgetpassword" className="forget mb-4 ">هل نسيت كلمة المرور؟</Link>
             </div>
-            <button type="submit" className="btn btn-primary w-full mt-4">دخول</button>
+            <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? "loading..." : "دخول"}</button>
             <div className='my-4 text-gray-500 text-center'>
             <span className='mx-2'>مستخدم جديد؟</span>
               <Link to="/register" className="forget mb-4 underline">إنشاء حساب جديد</Link>

@@ -12,12 +12,14 @@ import OpenProvider from './context/OpenContext'
 import { ChangeLng } from './context/ChangeLng';
 import BookingProvider from './context/BookServiceContext';
 import SwiperDirProvider from './context/SwiperDir';
+import UserProvider from './context/UserContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
 
+          <UserProvider>
       <ChangeLng>
         <OpenProvider>
           <BookingProvider>
@@ -27,6 +29,7 @@ root.render(
           </BookingProvider>
         </OpenProvider>
       </ChangeLng>
+          </UserProvider>
   </Router>
 );
 

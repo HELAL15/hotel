@@ -30,6 +30,8 @@
 
 import axios, { isCancel } from "axios";
 import { useEffect, useState } from "react";
+import { baseUrl } from '../api/api';
+import { request } from "../api/request";
 
 function useFetch(url, deps = [], params = {}) {
     const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +39,7 @@ function useFetch(url, deps = [], params = {}) {
     const [error, setError] = useState('');
     const [response, setResponse] = useState(null);
     const [retries, setRetries] = useState(0);
+
 
     useEffect(() => {
       // abort controller to cancel the request if another request is in progress
@@ -46,7 +49,7 @@ function useFetch(url, deps = [], params = {}) {
         setIsLoading(true);
         setError("");
 
-        await axios
+        await request
           .get(url, {
             params,
             signal: controller.signal,

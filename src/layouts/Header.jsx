@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react'
+import React, { memo, useContext, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import UserDropdown from '../components/nav/UserDropdown'
 import Example from '../components/nav/UserDropdown'
@@ -10,10 +10,13 @@ import MenuMobile from '../components/nav/MenuMobile'
 import { useLngContext } from '../context/ChangeLng'
 import { AiOutlineGlobal } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next'
-
+import Cookie from 'cookie-universal';
 
 
 const Header = () => {
+  const cookie = Cookie()
+  const user = sessionStorage.getItem("user-info")
+  const token = sessionStorage.getItem("hotel")
   const {isOpen , setIsOpen} = useContext(OpeningContext)
   const { lang , changeLanguage } = useLngContext()
   const {t}= useTranslation()
@@ -36,10 +39,8 @@ const Header = () => {
                 <li><NavLink to='/contact' className='nav-link'>{t("nav.contact")}</NavLink></li>
               </ul>
             </nav>
-            <ul className='hidden items-center space-x-2 gap-3 lg:flex'>
-                {/* <li><LangCurrency/></li> */}
-                {/* <li><NotifyDropdown/></li> */}
-                <li>
+            <div className='flex items-center gap-4'>
+              <div>
                 {
                   lang === 'en' ? <button className="flex items-center gap-1 text-gray-500 text-lg" onClick={()=>{ changeLanguage("ar") }}>
                   <span>{t("lng")}</span>
@@ -50,12 +51,18 @@ const Header = () => {
                   <AiOutlineGlobal/>
                 </button>
                 }
-                </li>
-                <li className='relative'><UserDropdown/></li>
-                <li>
-                  <Link to='/login' className='btn btn-primary'>login</Link>
-                </li>
-            </ul>
+              </div>
+              <ul className='hidden items-center space-x-2 gap-3 lg:flex'>
+                {
+                  user && token ? <li className='relative'><UserDropdown/></li> :
+
+                  <li>
+                    <Link to='/login' className='btn btn-primary'>login</Link>
+                  </li>
+                }
+                  
+              </ul>
+            </div>
             <button className={`text-2xl block lg:hidden text-primary`} onClick={()=> setIsOpen(!isOpen)}><FaBars/></button>
             <div className={`${isOpen ? 'ltr:left-0 rtl:right-0 rtl:left-[unset]' : 'ltr:-left-full rtl:-right-full rtl:-left-[unset]'} lg:hidden fixed top-0 bottom-0 z-30 w-full h-screen transition-all duration-300`}>
             <MenuMobile />

@@ -16,6 +16,8 @@ import { IoLocationSharp } from "react-icons/io5";
 
 
 const Footer = () => {
+  const user = sessionStorage.getItem("user-info")
+  const token = sessionStorage.getItem("hotel")
   return (
     <>
       <footer className='border-t border-t-slate-100 py-10 capitalize mt-6'>
@@ -51,8 +53,8 @@ const Footer = () => {
                 <NavLink to="/contact" className='nav-link'>contact us</NavLink>
                 <NavLink to="/terms" className='nav-link'>terms & conditions</NavLink>
                 <NavLink to="/policy" className='nav-link'>privacy policy</NavLink>
-                <NavLink to="/profile" className='nav-link'>profile</NavLink>
-                <NavLink to="/login" className='nav-link'>login</NavLink>
+                {token && user && <NavLink to="/profile" className='nav-link'>profile</NavLink>}
+                {!token && !user && <NavLink to="/login" className='nav-link'>login</NavLink>}
               </div>
             </div>
             <div>
