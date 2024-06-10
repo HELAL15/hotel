@@ -10,7 +10,7 @@ import Cookie from 'cookie-universal';
 const SignUp = () => {
   const [type, setType] = useState(false);
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
-  const password = watch('password');
+  const password = watch('password_confirmation');
 
 
   const navigate = useNavigate()
@@ -29,14 +29,12 @@ const onSubmit = (data) => {
 
     setLoading(false)
     const userData = res.data.data
-    setUser(userData)
-    console.log(user);
     const token = res.data.data.token
     // set token in cookies
-    sessionStorage.set('Itemhotel' , token);
-      sessionStorage.set('Itemuser-info' , userData)
+    sessionStorage.setItem('hotel' , token);
+      sessionStorage.setItem('user-info' , userData)
+      toast.success(res.data.message);
     navigate('/')
-    toast.success(res.data.message);
     
   })
   .catch((err)=>{
@@ -64,14 +62,14 @@ const onSubmit = (data) => {
                   <span><i className="fas fa-envelope"></i></span>
                   <input className='input' {...register('first_name', { required: true })} placeholder="الاسم الاول" />
                 </div>
-                {errors.firstName && <p className='text-danger'>First Name is required</p>}
+                {errors.first_name && <p className='text-danger'>First Name is required</p>}
               </div>
               <div className="my-4">
                 <div className='package-input' >
                   <span><i className="fas fa-envelope"></i></span>
                   <input className='input' {...register('last_name', { required: true })} placeholder="الاسم الاخير" />
                 </div>
-                {errors.lastName && <p className='text-danger'>Last Name is required</p>}
+                {errors.last_name && <p className='text-danger'>Last Name is required</p>}
               </div>
               <div className="my-4">
                 <div className='package-input' >
@@ -100,8 +98,8 @@ const onSubmit = (data) => {
                     <i className={`fas fa-eye${type ? "" : "-slash"}`}></i>
                   </button>
                 </div>
-                {errors.confirmPassword && errors.confirmPassword.type === 'required' && <p className='text-danger'>Confirm Password is required</p>}
-                {errors.confirmPassword && errors.confirmPassword.type === 'validate' && <p className='text-danger'>Passwords do not match</p>}
+                {errors.password_confirmation && errors.password_confirmation.type === 'required' && <p className='text-danger'>Confirm Password is required</p>}
+                {errors.password_confirmation && errors.password_confirmation.type === 'validate' && <p className='text-danger'>Passwords do not match</p>}
               </div>
               <div className='my-4 text-gray-500 text-center'>
                 <span className='mx-2'> لديك حساب؟</span>

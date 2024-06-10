@@ -3,12 +3,14 @@ import Container from '../../helpers/Container'
 import ProfileNav from '../../components/profile/ProfileNav'
 import { Outlet } from 'react-router'
 import StyledAnim from '../../components/StyledAnim'
+import { ToastContainer } from 'react-toastify'
 // flex flex-wrap md:flex-row md:flex-nowrap gap-6 lg:gap-8
 // w-full md:w-1/4
 // w-full md:w-3/4
 const ProfileOutlet = () => {
   return (
     <>
+          <ToastContainer/>
       <section className='mt-8 relative'>
 
             <Container>
@@ -17,7 +19,7 @@ const ProfileOutlet = () => {
                   <ProfileNav/>
                 </div>
                 <div className='col-span-3 md:col-span-4 relative z-10'>
-                <StyledAnim />
+                {/* <StyledAnim /> */}
                   <Outlet/>
                 </div>
               </div>

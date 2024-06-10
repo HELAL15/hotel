@@ -30,7 +30,7 @@ const handleSubmit = (e)=>{
     <ToastContainer />
       <section className=''>
           <Container sx="relative overflow-hidden">
-            <StyledAnim/>
+            {/* <StyledAnim/> */}
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center bg-primary/10 py-7 px-4 md:px-20 rounded-[30px]'>
                 <div className='flex flex-col gap-3'>
                   <h3 className='text-4xl font-semibold'>Join our newsletter 🎉</h3>
