@@ -34,10 +34,8 @@ const AccountPassword = () => {
 
   return (
     <>
-
       <Seo title="account-password" />
       <section className='relative'>
-
         <Container>
           <SecTitle head="update your password" />
           <form className='relative z-20' onSubmit={handleSubmit(onSubmit)}>

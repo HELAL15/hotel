@@ -5,16 +5,31 @@ import { twMerge } from 'tailwind-merge'
 import { ToastContainer, toast } from 'react-toastify';
 import { Flex , Rate } from "antd";
 import Review from './Review';
+import { request } from '../../api/request';
+import { useParams } from 'react-router';
 
-const Reviews = () => {
+const Reviews = ({reviews ,refetch}) => {
   const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
   const [value, setValue] = useState(3);
+
+  const {id} = useParams()
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data); // Replace with your SignUp logic
-    toast(data.review)
+    const formData = new FormData()
+    formData.append('rate', value)
+    formData.append('review', data.review)
+    request.post(`user/rooms/${id}/review`, formData)
+    .then((res)=>{
+      console.log(res)
+      toast.success(res.data.message)
+      refetch()
+    })
+    .catch((error)=>{
+      console.log(error)
+      toast.error(error.response.data.message)
+    })
   };
   return (
     <>
@@ -36,8 +51,11 @@ const Reviews = () => {
               <button type="submit" className="btn btn-primary w-full mt-2">add review</button>
             </form>
               <div className='reviews mt-8 '>
-                
-                <Review/>
+              {
+                reviews?.map((review)=>{
+                  return <Review key={review.id} reviews={review}/>
+                })
+              }
 
               </div>
               </div>

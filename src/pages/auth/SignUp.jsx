@@ -38,8 +38,7 @@ const onSubmit = (data) => {
     
   })
   .catch((err)=>{
-    toast(err.response.data.message);
-    console.log(err)
+    toast.error(err.response.data.message);
     setLoading(false)
   })
 }
@@ -50,7 +49,6 @@ const onSubmit = (data) => {
 
   return (
     <>
-    <ToastContainer/>
       <section className='relative'>
         <StyledAnim />
         <div className='container mx-auto'>

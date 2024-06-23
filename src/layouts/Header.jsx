@@ -40,6 +40,7 @@ const Header = () => {
               </ul>
             </nav>
             <div className='flex items-center gap-4'>
+            <div className='flex items-center gap-4'>
               <div>
                 {
                   lang === 'en' ? <button className="flex items-center gap-1 text-gray-500 text-lg" onClick={()=>{ changeLanguage("ar") }}>
@@ -64,6 +65,8 @@ const Header = () => {
               </ul>
             </div>
             <button className={`text-2xl block lg:hidden text-primary`} onClick={()=> setIsOpen(!isOpen)}><FaBars/></button>
+
+            </div>
             <div className={`${isOpen ? 'ltr:left-0 rtl:right-0 rtl:left-[unset]' : 'ltr:-left-full rtl:-right-full rtl:-left-[unset]'} lg:hidden fixed top-0 bottom-0 z-30 w-full h-screen transition-all duration-300`}>
             <MenuMobile />
           </div>

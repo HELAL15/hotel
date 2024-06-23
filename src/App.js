@@ -19,6 +19,8 @@ import BookList from './pages/Profile/BookList';
 import ProfileOutlet from './pages/Profile/ProfileOutlet';
 import AuthGuard from './Authed/AuthGuard';
 import RequireBack from './Authed/RequireBack';
+import { ToastContainer } from 'react-toastify';
+import ForgetPassword from './pages/auth/ForgetPassword';
 
 const App = () => {
 
@@ -35,6 +37,7 @@ const Layout =()=>{
   return(
     <>
     <Header/>
+    <ToastContainer/>
       <Outlet/>
     <Footer/>
     </>
@@ -54,6 +57,8 @@ const Layout =()=>{
       <Route path="/places/:id" element={<SinglePlace/>}/>
       <Route element={<RequireBack/>}>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<SignUp/>}/>
+        <Route path="/forgetpassword" element={<ForgetPassword/>}/>
         <Route path="/register" element={<SignUp/>}/>
       </Route>
       <Route  element={<AuthGuard/>}>

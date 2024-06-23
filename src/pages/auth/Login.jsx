@@ -39,8 +39,7 @@ const cookie = Cookie();
       
     })
     .catch((err)=>{
-      toast(err.response.data.message);
-      console.log(err)
+      toast.error(err.response.data.message);
       setLoading(false)
     })
   }
@@ -54,7 +53,6 @@ const cookie = Cookie();
 
   return (
     <>
-    <ToastContainer/>
       <section className='relative'>
         <StyledAnim/>
         <div className='container mx-auto'>

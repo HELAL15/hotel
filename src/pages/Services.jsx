@@ -7,14 +7,19 @@ import { Link } from 'react-router-dom'
 import Seo from '../helpers/Seo'
 import { UserContext } from '../context/UserContext'
 import Cookie from 'cookie-universal';
+import useFetch from '../hooks/useFetch'
 
 const Services = () => {
   // const {setUser , user} = useContext(UserContext)
 
   const cookie = Cookie();
 
-  const user = cookie.get("user-info")
-  console.log(user);
+  // const user = cookie.get("user-info")
+  // console.log(user);
+
+  const {data} = useFetch('/rooms')
+console.log(data);
+const rooms = data?.data || []
   return (
     <>
           <Seo title="services"  />
@@ -25,22 +30,11 @@ const Services = () => {
           body="Popular places to stay that Chisfis recommends for you"
           />
         <Sorting sx=''>
-          <MainCard/>
-          <MainCard sale/>
-          <MainCard/>
-          <MainCard/>
-          <MainCard/>
-          <MainCard sale/>
-          <MainCard/>
-          <MainCard/>
-          <MainCard/>
-          <MainCard sale/>
-          <MainCard/>
-          <MainCard/>
-          <MainCard/>
-          <MainCard sale/>
-          <MainCard/>
-          <MainCard/>
+        {
+              rooms.map((room) => (
+                <MainCard key={room.id} room={room} />
+              ))
+            }
         </Sorting>
       </Container>
     </section>

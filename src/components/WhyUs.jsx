@@ -27,5 +27,5 @@ const WhyUs = () => {
     </>
   )
 }
-
+// https://api.whatsapp.com/send/?phone=9660567556111&text&type=phone_number&app_absent=0
 export default memo(WhyUs)

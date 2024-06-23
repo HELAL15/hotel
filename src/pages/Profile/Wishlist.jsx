@@ -4,8 +4,11 @@ import Container from '../../helpers/Container'
 import SecTitle from '../../components/SecTitle'
 import Sorting from '../../helpers/Sorting'
 import MainCard from '../../components/MainCard'
+import useFetch from '../../hooks/useFetch'
 
 const Wishlist = () => {
+  const {data} = useFetch('/user/rooms/wishlist')
+const rooms = data?.data || []
   return (
     <>
       <Seo title="wishlist"  />
@@ -15,9 +18,11 @@ const Wishlist = () => {
           head="wishlist"
           />
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[30px]'>
-          <MainCard/>
-          <MainCard sale/>
-          <MainCard/>
+          {
+              rooms.map((room) => (
+                <MainCard key={room.id} room={room} />
+              ))
+            }
         </div>
       </Container>
     </section>
