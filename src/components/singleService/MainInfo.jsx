@@ -8,6 +8,7 @@ import { LiaDoorOpenSolid } from "react-icons/lia";
 import { request } from '../../api/request';
 import { toast } from 'react-toastify';
 import { ConvertDecimel } from '../../helpers/ConvertDecimel';
+import { useNavigate } from 'react-router';
 
 const MainInfo = ({
   title,
@@ -18,10 +19,12 @@ const MainInfo = ({
   guests,
   type,
   id,
-  isFav,
+  setFav,
+  fav,
   refetch
 }) => {
-  const [fav, setFav] = useState(isFav === 1);
+
+  const navigate = useNavigate()
 
   const handleFav = () => {
     request.post(`/user/rooms/${id}/wishlist`)
@@ -31,8 +34,9 @@ const MainInfo = ({
         toast.success(res.data.message);
       })
       .catch(error => {
-        // setFav(!fav);
+        setFav(!fav);
         toast.error(error.response.data.message);
+        navigate("/login")
       });
   };
 
@@ -45,7 +49,7 @@ const MainInfo = ({
                   <span className='bg-primary/20 text-primary font-semibold capitalize px-3 rounded-[30px] text-sm'>{type}</span>
                   <button className='flex items-center gap-2 px-3 rounded-md duration-300 hover:bg-slate-200' onClick={handleFav}>
                   {/* <i> <FaHeart className= {fav? 'text-primary' : ''}  /></i> */}
-                  <i className='text-primary'>{fav ? <FaHeart /> : <FaRegHeart />}</i>
+                  <i className=''>{fav ? <FaHeart className='text-primary' /> : <FaRegHeart />}</i>
                     <span>wishlist</span>
                   </button>
                 </div>

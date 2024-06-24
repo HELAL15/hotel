@@ -1,6 +1,6 @@
 import React, { memo, useContext, useState } from 'react';
 import { FaStar, FaRegHeart, FaHeart } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { IoLocationOutline } from "react-icons/io5";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
@@ -13,15 +13,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import { SwiperDirContext } from '../context/SwiperDir';
 import { request } from '../api/request';
 import { ConvertDecimel } from '../helpers/ConvertDecimel';
+import empty from '../img/emptyImg.PNG'
 
-const MainCard = ({ sale, room }) => {
+const MainCard = ({ sale, room , setRemoved }) => {
   const [fav, setFav] = useState(room?.is_fav === 1);
   const { dir } = useContext(SwiperDirContext);
   const navigate = useNavigate()
+  const { pathname } = useLocation();
   const handleFav = () => {
     request.post(`/user/rooms/${room.id}/wishlist`)
       .then(res => {
         setFav(!fav);
+        if(pathname === "/wishlist"){
+          setRemoved((prev)=>!prev)
+        }
         toast.success(res.data.message);
       })
       .catch(error => {
@@ -50,11 +55,14 @@ const MainCard = ({ sale, room }) => {
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}
             >
-              {room?.images.map((img, i) => (
+              {room?.images.length > 0 ?
+                room?.images.map((img, i) => (
                 <SwiperSlide key={i}>
                   <img className='h-full w-full object-cover' src={img.url} alt={`img-${i}`} />
                 </SwiperSlide>
-              ))}
+              )):<SwiperSlide>
+              <img className='h-full w-full object-cover' src={empty} alt={`empty`} />
+              </SwiperSlide>}
             </Swiper>
           </div>
           <div className='card-body flex flex-col gap-1'>
@@ -63,10 +71,10 @@ const MainCard = ({ sale, room }) => {
               <span className='pl-2'>{room?.no_beds} beds</span>
             </p>
             <p className='font-semibold text-black'>{room?.title.slice(0, 35)}...</p>
-            <p className='flex items-center gap-1 text-neutral-500 font-semibold'>
+            {/* <p className='flex items-center gap-1 text-neutral-500 font-semibold'>
               <i className=''><IoLocationOutline /></i>
               <span>Egypt</span>
-            </p>
+            </p> */}
             <div className='flex items-center justify-between details mt-4 '>
               <p className='flex items-center gap-1 font-semibold'>
                 <span className='text-black'>${room?.price_per_day}</span>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../helpers/Container'
 
 import MainInfo from '../components/singleService/MainInfo'
@@ -10,15 +10,21 @@ import ServiceCard from '../components/singleService/ServiceCard'
 import ServiceLocation from '../components/singleService/ServiceLocation'
 import { useParams } from 'react-router'
 import useFetch from '../hooks/useFetch'
+import { ToastContainer } from 'react-toastify'
 
 
 const SingleService = () => {
   const {id} = useParams()
-
+  
   const {data , refetch} = useFetch(`/rooms/${id}`)
-  console.log(data?.data);
   const room = data?.data || {}
-
+  
+  const [fav, setFav] = useState(room?.is_fav === 1);
+  useEffect(() => {
+    if (room?.is_fav !== undefined) {
+      setFav(room.is_fav === 1);
+    }
+  }, [room]);
 
   return (
     <>
@@ -26,6 +32,7 @@ const SingleService = () => {
     <ServiceImgs imgs={room?.images} />
 
       <section className='mt-5'>
+      <ToastContainer/>
         <Container>
           <div className='relative z-10 mt-11 flex flex-col lg:flex-row flex-wrap-reverse'>
             <div className='w-full lg:w-3/5 xl:w-2/3 space-y-8 lg:space-y-10 ltr:lg:pr-10 rtl:lg:pl-10 order-2 lg:order-1'>
@@ -40,7 +47,8 @@ const SingleService = () => {
                 guests = {room?.no_guests}
                 type= {room?.type}
                 id={room?.id}
-                isFav={room?.is_fav}
+                setFav={setFav}
+                fav={fav}
                 refetch={refetch}
               />
               <StayInfo description={room?.description}/>

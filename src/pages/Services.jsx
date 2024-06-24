@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react'
+import React, { memo, useContext, useEffect, useState } from 'react'
 import Container from '../helpers/Container'
 import SecTitle from '../components/SecTitle'
 import Sorting from '../helpers/Sorting'
@@ -8,32 +8,57 @@ import Seo from '../helpers/Seo'
 import { UserContext } from '../context/UserContext'
 import Cookie from 'cookie-universal';
 import useFetch from '../hooks/useFetch'
+import { Empty, Select, Skeleton } from 'antd'
 
 const Services = () => {
-  // const {setUser , user} = useContext(UserContext)
+  
+  const [noGuests , setNoGuests] = useState("")
 
-  const cookie = Cookie();
+  const {data , isLoading , refetch} = useFetch(`/rooms?no_guests=${noGuests}`)
+  const rooms = data?.data || []
 
-  // const user = cookie.get("user-info")
-  // console.log(user);
+  const handleChange = (e)=>{
+    const value = e;
+    setNoGuests(value ? value : "");
+  }
 
-  const {data} = useFetch('/rooms')
-console.log(data);
-const rooms = data?.data || []
+  useEffect(()=>{
+    refetch()
+  },[noGuests])
+
   return (
     <>
           <Seo title="services"  />
-          <section className=''>
+          <section className='mt-8'>
       <Container>
-      <SecTitle 
-          head="Featured places to stay"
-          body="Popular places to stay that Chisfis recommends for you"
-          />
+      <div className='flex items-center justify-between gap-4 flex-wrap mb-6'>
+        <h3 className='text-xl md:text-3xl capitalize font-semibold'>rooms (<span className='text-primary'>{rooms?.length}</span>)</h3>
+          <div className='flex items-center gap-4 '>
+            <p className='text-lg md:text-xl'>filter by guests</p>
+            <Select
+              defaultValue=""
+              style={{ width: 90 }}
+              onChange={handleChange}
+              options={[
+                { value: '', label: 'all' },
+                { value: '1', label: '1' },
+                { value: '2', label: '2' },
+                { value: '3', label: '3' },
+                { value: '4', label: '4' },
+              ]}
+            />
+          </div>
+      </div>
         <Sorting sx=''>
-        {
-              rooms.map((room) => (
+        {   isLoading ? <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full col-span-4 my-8 '>
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </div> :
+              rooms?.length > 0 ? rooms.map((room) => (
                 <MainCard key={room.id} room={room} />
-              ))
+              )) : <Empty className='col-span-4 my-8'/>
             }
         </Sorting>
       </Container>
