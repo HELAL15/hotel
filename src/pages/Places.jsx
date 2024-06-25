@@ -1,9 +1,6 @@
 
 import React, { memo, useState } from 'react'
 import Container from '../helpers/Container'
-import Sorting from '../helpers/Sorting'
-import PlaceCard from '../components/PlaceCard'
-import { twMerge } from 'tailwind-merge'
 import Seo from '../helpers/Seo'
 import { Image, Tabs } from 'antd'
 import useFetch from '../hooks/useFetch'

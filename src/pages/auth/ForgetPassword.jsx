@@ -1,22 +1,14 @@
-import React, { memo, useContext, useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import StyledAnim from '../../components/StyledAnim';
 import { request } from '../../api/request';
-import Cookie from 'cookie-universal';
-import { ToastContainer, toast } from 'react-toastify';
-import { UserContext } from '../../context/UserContext';
+import { toast } from 'react-toastify';
 
 const ForgetPassword = () => {
   const navigate = useNavigate()
 
-  // const {setUser , user} = useContext(UserContext)
-
-// cookies
-const cookie = Cookie();
-
   const [loading , setLoading] = useState(false)
-
 
   const [type , setType] = useState(false)
 
@@ -68,4 +60,4 @@ const cookie = Cookie();
   )
 }
 
-export default ForgetPassword
+export default memo(ForgetPassword)

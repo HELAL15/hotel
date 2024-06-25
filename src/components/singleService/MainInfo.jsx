@@ -1,6 +1,5 @@
-import React, { memo, useState } from 'react'
+import React, { memo } from 'react'
 import { FaHeart, FaRegHeart, FaStar } from 'react-icons/fa6'
-import { IoLocationOutline } from 'react-icons/io5'
 import { CiUser } from "react-icons/ci";
 import { IoBedOutline } from "react-icons/io5";
 import { PiBathtubLight } from "react-icons/pi";
@@ -48,7 +47,6 @@ const MainInfo = ({
                 <div className='flex items-center justify-between gap-4'>
                   <span className='bg-primary/20 text-primary font-semibold capitalize px-3 rounded-[30px] text-sm'>{type}</span>
                   <button className='flex items-center gap-2 px-3 rounded-md duration-300 hover:bg-slate-200' onClick={handleFav}>
-                  {/* <i> <FaHeart className= {fav? 'text-primary' : ''}  /></i> */}
                   <i className=''>{fav ? <FaHeart className='text-primary' /> : <FaRegHeart />}</i>
                     <span>wishlist</span>
                   </button>

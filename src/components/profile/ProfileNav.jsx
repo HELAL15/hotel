@@ -15,11 +15,11 @@ const handleLogOut = ()=>{
   setLoading(true)
   request.post('/user/user-logout')
   .then(res=>{
-    toast.success(res.message)
     setLoading(false)
     sessionStorage.removeItem("hotel")
     setUserDetails([])
     navigate('/')
+    toast.success(res.data.message)
   })
   .catch((error)=>{
     setLoading(false)

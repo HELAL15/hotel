@@ -1,8 +1,7 @@
 import React, { memo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
-
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Flex , Rate, Spin } from "antd";
 import Review from './Review';
 import { request } from '../../api/request';
@@ -38,12 +37,10 @@ const Reviews = ({reviews ,refetch}) => {
   };
   return (
     <>
-      <Spin/>
       <div className='my-4 rounded-[30px] border border-neutral-200 overflow-hidden p-4'>
               <h2 className='text-2xl font-semibold pb-4 relative border-b border-b-neutral-200 w-fit '>Reviews {`(${reviews?.length} reviews)`}</h2>
               <Flex gap="middle" vertical className='mt-5'>
                 <Rate tooltips={desc} onChange={setValue} value={value} />
-                {/* {value ? <span>{desc[value - 1]}</span> : null} */}
               </Flex>
               <form onSubmit={handleSubmit(onSubmit)} className='w-full relative z-10'>
               <div className="my-4">

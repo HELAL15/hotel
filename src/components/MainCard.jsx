@@ -1,14 +1,13 @@
 import React, { memo, useContext, useState } from 'react';
 import { FaStar, FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { IoLocationOutline } from "react-icons/io5";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import '../slider.css';
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SwiperDirContext } from '../context/SwiperDir';
 import { request } from '../api/request';
@@ -30,14 +29,14 @@ const MainCard = ({ sale, room , setRemoved }) => {
         toast.success(res.data.message);
       })
       .catch(error => {
-        toast.error(error.response.data.message);
         navigate("/login")
+        toast.error(error.response.data.message);
       });
   };
 
   return (
     <>
-        {/* <ToastContainer /> */}
+
       <div className='card relative z-10'>
         <button onClick={handleFav} className='absolute top-2 right-2 z-50 h-[35px] w-[35px] rounded-full overflow-hidden text-white bg-black/30 hover:bg-black/40 duration-300 grid place-items-center text-lg'>
           <i className='text-white'>{fav ? <FaHeart /> : <FaRegHeart />}</i>
@@ -71,10 +70,6 @@ const MainCard = ({ sale, room , setRemoved }) => {
               <span className='pl-2'>{room?.no_beds} beds</span>
             </p>
             <p className='font-semibold text-black'>{room?.title.slice(0, 35)}...</p>
-            {/* <p className='flex items-center gap-1 text-neutral-500 font-semibold'>
-              <i className=''><IoLocationOutline /></i>
-              <span>Egypt</span>
-            </p> */}
             <div className='flex items-center justify-between details mt-4 '>
               <p className='flex items-center gap-1 font-semibold'>
                 <span className='text-black'>${room?.price_per_day}</span>

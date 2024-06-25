@@ -4,7 +4,6 @@ import img from '../img/HIW1.webp'
 import img2 from '../img/HIW2.webp'
 import img3 from '../img/HIW3.webp'
 import dashed from '../img/dashed.svg'
-import SecTitle from './SecTitle'
 import { twMerge } from 'tailwind-merge'
 
 const HowItWork = () => {

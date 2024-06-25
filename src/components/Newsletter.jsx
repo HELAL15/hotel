@@ -1,10 +1,8 @@
 import React, { memo, useState } from 'react'
-import { Link } from 'react-router-dom'
 import subscribe from '../img/SVG-subcribe2.webp'
 import { FaArrowRightLong } from "react-icons/fa6";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Container from '../helpers/Container';
-import StyledAnim from './StyledAnim';
 
 
 const Newsletter = () => {
@@ -27,10 +25,8 @@ const handleSubmit = (e)=>{
 
   return (
     <>
-    <ToastContainer />
       <section className=''>
           <Container sx="relative overflow-hidden">
-            {/* <StyledAnim/> */}
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center bg-primary/10 py-7 px-4 md:px-20 rounded-[30px]'>
                 <div className='flex flex-col gap-3'>
                   <h3 className='text-4xl font-semibold'>Join our newsletter 🎉</h3>

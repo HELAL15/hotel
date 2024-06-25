@@ -10,7 +10,6 @@ import useFetch from '../../hooks/useFetch'
 const FeaturedPlaces = () => {
 
 const {data} = useFetch('/rooms')
-console.log(data);
 const rooms = data?.data || []
 
 

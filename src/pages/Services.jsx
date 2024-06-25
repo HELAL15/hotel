@@ -1,12 +1,8 @@
-import React, { memo, useContext, useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import Container from '../helpers/Container'
-import SecTitle from '../components/SecTitle'
 import Sorting from '../helpers/Sorting'
 import MainCard from '../components/MainCard'
-import { Link } from 'react-router-dom'
 import Seo from '../helpers/Seo'
-import { UserContext } from '../context/UserContext'
-import Cookie from 'cookie-universal';
 import useFetch from '../hooks/useFetch'
 import { Empty, Select, Skeleton } from 'antd'
 

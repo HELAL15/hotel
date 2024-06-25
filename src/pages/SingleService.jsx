@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Container from '../helpers/Container'
 
 import MainInfo from '../components/singleService/MainInfo'
 import StayInfo from '../components/singleService/StayInfo'
-import ThingsToKnow from '../components/singleService/ThingsToKnow'
 import Reviews from '../components/singleService/Reviews'
 import ServiceImgs from '../components/singleService/ServiceImgs'
 import ServiceCard from '../components/singleService/ServiceCard'
-import ServiceLocation from '../components/singleService/ServiceLocation'
 import { useParams } from 'react-router'
 import useFetch from '../hooks/useFetch'
-import { ToastContainer } from 'react-toastify'
 
 
 const SingleService = () => {
   const {id} = useParams()
   
   const {data , refetch} = useFetch(`/rooms/${id}`)
-  const room = data?.data || {}
+  const room = useMemo(() => data?.data || {}, [data])
   
   const [fav, setFav] = useState(room?.is_fav === 1);
   useEffect(() => {
@@ -32,7 +29,7 @@ const SingleService = () => {
     <ServiceImgs imgs={room?.images} />
 
       <section className='mt-5'>
-      <ToastContainer/>
+      {/*<ToastContainer/>*/}
         <Container>
           <div className='relative z-10 mt-11 flex flex-col lg:flex-row flex-wrap-reverse'>
             <div className='w-full lg:w-3/5 xl:w-2/3 space-y-8 lg:space-y-10 ltr:lg:pr-10 rtl:lg:pl-10 order-2 lg:order-1'>
