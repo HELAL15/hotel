@@ -186,7 +186,7 @@ html[dir=rtl] .ant-tabs-tab {
     margin: 0 0 0 32px !important;
 }
 .ant-tabs-tabpane-active{
-  @apply grid grid-cols-3 gap-[1rem] !important;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 !important;
 }
 
 .ant-spin-dot-item{
