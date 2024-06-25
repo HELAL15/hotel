@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from 'react'
 import Container from '../helpers/Container'
 import Seo from '../helpers/Seo'
-import { Image, Tabs, Skeleton } from 'antd'
+import { Image, Tabs, Skeleton, Empty } from 'antd'
 import useFetch from '../hooks/useFetch'
 
 const Places = () => {
@@ -24,10 +24,10 @@ const Places = () => {
       <section className='mt-8'>
         <Container>
           <Tabs onChange={handleChange} activeKey={keys}>
-            <Tabs.TabPane tab="الكل" key="">
+            <Tabs.TabPane tab="All" key="">
               {galleryLoad ? (
                 <Skeleton active />
-              ) : (
+              ) : gallery?.data?.length ? (
                 <Image.PreviewGroup>
                   {gallery?.data?.map((img) => (
                     img.images.map((url, idx) => (
@@ -35,13 +35,15 @@ const Places = () => {
                     ))
                   ))}
                 </Image.PreviewGroup>
+              ) : (
+                <Empty />
               )}
             </Tabs.TabPane>
             {cats?.data?.map((cat) => (
               <Tabs.TabPane tab={cat.title} key={cat.id}>
                 {galleryLoad ? (
                   <Skeleton active />
-                ) : (
+                ) : gallery?.data?.length ? (
                   <Image.PreviewGroup>
                     {gallery?.data?.map((img) => (
                       img.images.map((url, idx) => (
@@ -49,6 +51,8 @@ const Places = () => {
                       ))
                     ))}
                   </Image.PreviewGroup>
+                ) : (
+                  <Empty />
                 )}
               </Tabs.TabPane>
             ))}
