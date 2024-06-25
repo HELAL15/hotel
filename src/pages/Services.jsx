@@ -1,66 +1,66 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useState, useEffect } from 'react'
 import Container from '../helpers/Container'
-import Sorting from '../helpers/Sorting'
-import MainCard from '../components/MainCard'
 import Seo from '../helpers/Seo'
+import { Image, Tabs, Skeleton, Empty } from 'antd'
 import useFetch from '../hooks/useFetch'
-import { Empty, Select, Skeleton } from 'antd'
 
-const Services = () => {
-  
-  const [noGuests , setNoGuests] = useState("")
+const Places = () => {
+  const [keys, setKeys] = useState("")
 
-  const {data , isLoading , refetch} = useFetch(`/rooms?no_guests=${noGuests}`)
-  const rooms = data?.data || []
-
-  const handleChange = (e)=>{
-    const value = e;
-    setNoGuests(value ? value : "");
+  const handleChange = (key) => {
+    setKeys(key)
   }
+  
+  const { data: gallery, refetch: refetchGallery, isLoading: galleryLoad } = useFetch(`/gallerys?category_id=${keys}`, [keys])
+  const { data: cats, isLoading: catLoad } = useFetch('/categorys')
 
-  useEffect(()=>{
-    refetch()
-  },[noGuests])
+  useEffect(() => {
+    refetchGallery()
+  }, [keys])
 
   return (
     <>
-          <Seo title="services"  />
-          <section className='mt-8'>
-      <Container>
-      <div className='flex items-center justify-between gap-4 flex-wrap mb-6'>
-        <h3 className='text-xl md:text-3xl capitalize font-semibold'>rooms (<span className='text-primary'>{rooms?.length}</span>)</h3>
-          <div className='flex items-center gap-4 '>
-            <p className='text-lg md:text-xl'>filter by guests</p>
-            <Select
-              defaultValue=""
-              style={{ width: 90 }}
-              onChange={handleChange}
-              options={[
-                { value: '', label: 'all' },
-                { value: '1', label: '1' },
-                { value: '2', label: '2' },
-                { value: '3', label: '3' },
-                { value: '4', label: '4' },
-              ]}
-            />
-          </div>
-      </div>
-        <Sorting sx=''>
-        {   isLoading ? <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full col-span-4 my-8 '>
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-        </div> :
-              rooms?.length > 0 ? rooms.map((room) => (
-                <MainCard key={room.id} room={room} />
-              )) : <Empty className='col-span-4 my-8'/>
-            }
-        </Sorting>
-      </Container>
-    </section>
+      <Seo title="places" />
+      <section className='mt-8'>
+        <Container>
+          <Tabs onChange={handleChange} activeKey={keys}>
+            <Tabs.TabPane tab="All" key="">
+              {galleryLoad ? (
+                <Skeleton active />
+              ) : gallery?.data?.length ? (
+                <Image.PreviewGroup>
+                  {gallery?.data?.map((img) => (
+                    img.images.map((url, idx) => (
+                      <Image key={idx} src={url.url} alt={img.category_title} />
+                    ))
+                  ))}
+                </Image.PreviewGroup>
+              ) : (
+                <Empty />
+              )}
+            </Tabs.TabPane>
+            {cats?.data?.map((cat) => (
+              <Tabs.TabPane tab={cat.title} key={cat.id}>
+                {galleryLoad ? (
+                  <Skeleton active />
+                ) : gallery?.data?.length ? (
+                  <Image.PreviewGroup>
+                    {gallery?.data?.map((img) => (
+                      img.images.map((url, idx) => (
+                        <Image key={idx} src={url.url} alt={img.category_title} />
+                      ))
+                    ))}
+                  </Image.PreviewGroup>
+                ) : (
+                  <Empty />
+                )}
+              </Tabs.TabPane>
+            ))}
+          </Tabs>
+        </Container>
+      </section>
     </>
   )
 }
 
-export default memo(Services)
+export default memo(Places)
