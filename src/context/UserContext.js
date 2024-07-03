@@ -8,7 +8,7 @@ const UserProvider = ({ children }) => {
   const [userDetails, setUserDetails] = useState([]);
   const token = sessionStorage.getItem("hotel");
 const location = useLocation()
-const { data } = useFetch(token ? "user/profile" : null , [token , location ]);
+const { data } = useFetch(token ? "user/profile" : null , [token]);
   useEffect(() => {
     const fetchUserData = async () => {
       if (token) {

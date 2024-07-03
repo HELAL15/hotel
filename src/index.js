@@ -14,19 +14,21 @@ import BookingProvider from './context/BookServiceContext';
 import SwiperDirProvider from './context/SwiperDir';
 import UserProvider from './context/UserContext';
 import { ToastContainer } from 'react-toastify';
+import { SettingProvider } from './context/SettingContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-
           <UserProvider>
       <ChangeLng>
         <OpenProvider>
           <BookingProvider>
           <SwiperDirProvider>
+       <SettingProvider>
           <ToastContainer/>
             <App />
+       </SettingProvider>
           </SwiperDirProvider>
           </BookingProvider>
         </OpenProvider>

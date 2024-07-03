@@ -15,6 +15,7 @@ export const request = axios.create({
     'Content-Type': 'application/json',
     'accept': 'application/json',
     'accept-language': lang,
+    "Lang":lang,
   },
 });
 

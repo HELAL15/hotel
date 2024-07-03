@@ -4,6 +4,7 @@ import { useTranslation, initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
 import Cookies from 'js-cookie';
+import useFetch from '../hooks/useFetch';
 
 i18n
   .use(initReactI18next)
@@ -28,8 +29,6 @@ const LngContext = createContext();
 export const ChangeLng = ({ children }) => {
   const [lang, setLang] = useState(Cookies.get('i18next') || 'ar');
 
-
-
   useEffect(() => {
     i18n.changeLanguage(lang);
     window.document.dir = i18n.dir(lang);
@@ -40,6 +39,7 @@ export const ChangeLng = ({ children }) => {
 
   const changeLanguage = (newLang) => {
     setLang(newLang);
+    window.location.reload()
   };
 
   return (

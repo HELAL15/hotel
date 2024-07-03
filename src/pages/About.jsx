@@ -20,10 +20,10 @@ const About = () => {
 
 
 
-const {data} = useFetch('https://jsonplaceholder.typicode.com/posts')
+const {data} = useFetch('https://api.slingacademy.com/v1/sample-data/photos')
 
 
-console.log(data);
+console.log(data?.photos);
 
 
 
@@ -52,10 +52,12 @@ console.log(data);
     console.log('Collected counts:', counts);
   }, [counters]);
 
+  const filtered = data?.photos?.slice(0 , 9)
+
   return (
     <>
       <Seo title="about"  />
-    <div className="flex flex-col gap-4">
+    {/* <div className="flex flex-col gap-4">
       {counters.map((counter, index) => (
         <div key={index} className="flex items-center gap-4">
           <button
@@ -80,7 +82,24 @@ console.log(data);
       >
         Submit Counts
       </button>
-    </div>
+    </div> */}
+
+
+  <div className='gallery mt-10 grid grid-cols-4 gap-6 container'>
+    {
+      filtered?.map((photo, index) => (
+        <div key={index} className={`${photo.id === 2 ? "row-span-2 " : ""}
+        ${photo.id === 5 ? "col-span-1 row-span-2 " : ""}
+        ${photo.id === 6 ? "col-span-2 row-span-1 max-h-[300px]" : "max-h-[800px]"}
+        gallery-item rounded-3xl overflow-hidden `}>
+          <img src={photo.url} alt={photo.alt_description} className='h-full w-full object-cover' />
+        </div>
+      ))
+    }
+  </div>
+
+
+
     </>
   );
 };
