@@ -38,7 +38,7 @@ const MainCard = ({ sale, room , setRemoved }) => {
     <>
 
       <div className='card relative z-10'>
-        <button onClick={handleFav} className='absolute top-2 right-2 z-50 h-[35px] w-[35px] rounded-full overflow-hidden text-white bg-black/30 hover:bg-black/40 duration-300 grid place-items-center text-lg'>
+        <button aria-label='fav-button' onClick={handleFav} className='absolute top-2 right-2 z-50 h-[35px] w-[35px] rounded-full overflow-hidden text-white bg-black/30 hover:bg-black/40 duration-300 grid place-items-center text-lg'>
           <i className='text-white'>{fav ? <FaHeart /> : <FaRegHeart />}</i>
         </button>
         {sale && <span className='bg-red-700 text-white text-sm font-semibold px-4 rounded-2xl absolute top-3 left-2 z-40'>-10% today</span>}

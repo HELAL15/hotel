@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import Container from '../../helpers/Container'
 import SecTitle from '../SecTitle'
 import Sorting from '../../helpers/Sorting'
@@ -46,4 +46,4 @@ const rooms = data?.data || []
   )
 }
 
-export default FeaturedPlaces
+export default memo(FeaturedPlaces)

@@ -14,7 +14,7 @@ const Seo = ({title , description , fav}) => {
       <meta name="description" content={description || "hilton hotel is placed to host you" } />
 
       <title>{t(`seo.${title}`)}</title>
-      </Helmet>g
+      </Helmet>
     </>
   )
 }

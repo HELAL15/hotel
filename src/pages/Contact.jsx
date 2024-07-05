@@ -72,16 +72,16 @@ const Contact = () => {
                   <span>socials</span>
                 </div>
                 <div className='text-xl flex items-center gap-3 mr-2 ltr:mr-0 ltr:ml-2 mt-4'>
-                  <Link to={facebook} target="_blank" className='hover:text-primary duration-300'>
+                  <Link to={facebook} aria-label='facebook' target="_blank" className='hover:text-primary duration-300'>
                   <RiFacebookBoxLine className='text-3xl'/>
                   </Link>
-                  <Link to={twitter} target="_blank" className='hover:text-primary duration-300'>
+                  <Link to={twitter} aria-label='twitter' target="_blank" className='hover:text-primary duration-300'>
                   <FaXTwitter className='text-3xl'/>
                   </Link>
-                  <Link to={youtube} target="_blank" className='hover:text-primary duration-300'>
+                  <Link to={youtube} aria-label='youtube' target="_blank" className='hover:text-primary duration-300'>
                   <FiYoutube className='text-3xl'/>
                   </Link>
-                  <Link to={instagram} target="_blank" className='hover:text-primary duration-300'>
+                  <Link to={instagram} aria-label='instagram' target="_blank" className='hover:text-primary duration-300'>
                   <FaInstagram className='text-3xl'/>
                   </Link>
                 </div>

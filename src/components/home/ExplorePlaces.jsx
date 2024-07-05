@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Container from '../../helpers/Container'
 import ExplorePlace from '../ExplorePlace'
 
@@ -23,4 +23,4 @@ const ExplorePlaces = () => {
   )
 }
 
-export default ExplorePlaces
+export default memo(ExplorePlaces)

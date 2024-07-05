@@ -43,7 +43,7 @@ const handleSubmit = (e)=>{
                   </div>
                   <form className='relative ' onSubmit={handleSubmit}>
                     <input type="email" name='email' value={email} onChange={handleChange} placeholder='Enter your email address' className='input input-primary pe-[400px]'/>
-                    <button className=' btn-primary p-0 w-[40px] h-[40px] bg-transparent grid place-items-center rounded-full absolute rtl:left-2 rtl:right-[unset] ltr:right-2 top-[50%] translate-y-[-50%]'>
+                    <button aria-label='subscribe-newsletter' className=' btn-primary p-0 w-[40px] h-[40px] bg-transparent grid place-items-center rounded-full absolute rtl:left-2 rtl:right-[unset] ltr:right-2 top-[50%] translate-y-[-50%]'>
                       <FaArrowRightLong/>
                     </button>
                   </form>

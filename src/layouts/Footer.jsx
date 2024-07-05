@@ -56,19 +56,19 @@ const Footer = () => {
                 }
               </Link>
               <div className='flex flex-row md:flex-col gap-3'>
-                <Link to={facebook} target='_blank' className='flex items-center gap-1 nav-link'>
+                <Link to={facebook} aria-label='facebook' target='_blank' className='flex items-center gap-1 nav-link'>
                   <i className='text-xl'><RiFacebookBoxLine/></i>
                   <span className='hidden md:block'>facebook</span>
                 </Link>
-                <Link to={twitter} target='_blank' className='flex items-center gap-1 nav-link'>
+                <Link to={twitter} aria-label='twitter' target='_blank' className='flex items-center gap-1 nav-link'>
                   <i className='text-xl'><FaXTwitter/></i>
                   <span className='hidden md:block'>twitter</span>
                 </Link>
-                <Link to={youtube} target='_blank' className='flex items-center gap-1 nav-link'>
+                <Link to={youtube} aria-label='youtube' target='_blank' className='flex items-center gap-1 nav-link'>
                   <i className='text-xl'><FiYoutube/></i>
                   <span className='hidden md:block'>youtube</span>
                 </Link>
-                <Link to={instagram} target='_blank' className='flex items-center gap-1 nav-link'>
+                <Link to={instagram} aria-label='instagram' target='_blank' className='flex items-center gap-1 nav-link'>
                   <i className='text-xl'><FaInstagram/></i>
                   <span className='hidden md:block'>instagram</span>
                 </Link>

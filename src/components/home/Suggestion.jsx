@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { memo, useContext, useEffect, useState } from 'react'
 import Container from '../../helpers/Container'
 import SecTitle from '../SecTitle'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -82,4 +82,4 @@ const Suggestion = () => {
   )
 }
 
-export default Suggestion
+export default memo(Suggestion)
