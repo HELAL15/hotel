@@ -3,4 +3,3 @@ Disallow: /private/
 Allow: /
 
 Sitemap: https://www.example.com/sitemap.xml
-f
