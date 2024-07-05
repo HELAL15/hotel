@@ -12,7 +12,7 @@ import { Spin } from 'antd';
 
 const Account = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { userDetails, setUserDetails } = useContext(UserContext);
+  const { userDetails, setUserDetails , refetch } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const [photo, setPhoto] = useState(userDetails?.photo_profile);
 
@@ -43,12 +43,13 @@ const Account = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-
+      refetch()
       setLoading(false);
       const userData = res.data.data;
       const token = res.data.data.token;
+      sessionStorage.setItem("hotel" , token)
 
-      setUserDetails(userData);
+      // setUserDetails(userData);
 
       toast.success(res.data.message);
     } catch (err) {
@@ -65,7 +66,7 @@ const Account = () => {
           <SecTitle head="Your Main Information" />
           <form onSubmit={handleSubmit(onSubmit)} className='w-full relative z-10'>
             <div className="my-4">
-              <div className='package-input relative group w-[200px] h-[200px] border border-gray-300 overflow-hidden rounded-full'>
+              <div className='package-input cursor-pointer relative group w-[200px] h-[200px] border border-gray-300 overflow-hidden rounded-full'>
                 <span className='absolute group-hover:opacity-100 opacity-0 top-0 left-0 bg-zinc-800/40 w-full h-full z-10 duration-300 grid place-items-center'>
                 <IoCamera className='text-white text-3xl' />
                 </span>

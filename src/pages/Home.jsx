@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo , Suspense, lazy  } from 'react'
 import WhyUs from '../components/WhyUs'
 import Newsletter from '../components/Newsletter'
 import Container from '../helpers/Container'
@@ -18,13 +18,20 @@ import FeaturedPlaces from '../components/home/FeaturedPlaces'
 import ExplorePlaces from '../components/home/ExplorePlaces'
 import { Link } from 'react-router-dom'
 
+const SomeComponent = lazy(() => import('../components/home/Hero'));
+
 
 const Home = () => {
   return (
     <>
 
     <Seo title="home" description="hilton hotel is placed to host you at your seconde home"  />
-<Hero/>
+
+    <Suspense fallback={<div>Loading...</div>}>
+      <SomeComponent />
+    </Suspense>
+
+{/* <Hero/> */}
 
 <Suggestion/>
 
