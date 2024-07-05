@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <>
 
-    <Seo title="home"  />
+    <Seo title="home" description="hilton hotel is placed to host you at your seconde home"  />
 <Hero/>
 
 <Suggestion/>

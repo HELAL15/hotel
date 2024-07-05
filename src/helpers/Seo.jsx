@@ -11,9 +11,10 @@ const Seo = ({title , description , fav}) => {
       <meta charset="utf-8" />
       <link rel="icon" type="image/x-icon" href={img}/>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content={description} />
+      <meta name="description" content={description || "hilton hotel is placed to host you" } />
+
       <title>{t(`seo.${title}`)}</title>
-      </Helmet>
+      </Helmet>g
     </>
   )
 }
