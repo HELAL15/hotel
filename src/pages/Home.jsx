@@ -16,6 +16,7 @@ import Seo from '../helpers/Seo'
 import Suggestion from '../components/home/Suggestion'
 import FeaturedPlaces from '../components/home/FeaturedPlaces'
 import ExplorePlaces from '../components/home/ExplorePlaces'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -108,6 +109,16 @@ const Home = () => {
 
 
     <ExplorePlaces/>
+
+{/* 
+    <div className='fixed z-50 bottom-0 bg-white border-t border-gray-300 py-4 px-4 w-full'>
+      <div className='flex items-center justify-evenly w-full'>
+        <Link to={1}>test</Link>
+        <Link to={1}>test</Link>
+        <Link to={1}>test</Link>
+        <Link to={1}>test</Link>
+      </div>
+    </div> */}
 
 
         <Newsletter/>

@@ -1,16 +1,12 @@
-import React, { memo, useContext, useEffect } from 'react'
+import React, { memo, useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import UserDropdown from '../components/nav/UserDropdown'
-import Example from '../components/nav/UserDropdown'
-import NotifyDropdown from '../components/nav/NotifyDropdown'
-import LangCurrency from '../components/nav/Lang&Currency'
 import { FaBars } from "react-icons/fa6";
 import { OpeningContext } from '../context/OpenContext'
 import MenuMobile from '../components/nav/MenuMobile'
 import { useLngContext } from '../context/ChangeLng'
 import { AiOutlineGlobal } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next'
-import Cookie from 'cookie-universal';
 import { SettingContext } from '../context/SettingContext'
 
 

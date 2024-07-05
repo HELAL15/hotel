@@ -28,7 +28,7 @@ const {userDetails} = useContext(UserContext)
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute px-3 py-4 right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute px-3 py-4 ltr:right-0 rtl:left-0 menu-user z-10 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
               <div className='flex items-center pb-3 border-b border-b-slate-200 mb-3'>
                 <img src={userDetails?.photo_profile || userImg} alt={userDetails?.name} className='w-12 h-12 object-cover rounded-full overflow-hidden'/>

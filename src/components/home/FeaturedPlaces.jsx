@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Container from '../../helpers/Container'
 import SecTitle from '../SecTitle'
 import Sorting from '../../helpers/Sorting'
@@ -9,8 +9,17 @@ import useFetch from '../../hooks/useFetch'
 
 const FeaturedPlaces = () => {
 
-const {data} = useFetch('/rooms')
+  const lang = localStorage.getItem("lang")
+
+
+const {data , refetch} = useFetch('/rooms' , [lang])
+
 const rooms = data?.data || []
+
+// useEffect(()=>{
+//   console.log("done lang");
+//   refetch()
+// },[lang])
 
 
   return (

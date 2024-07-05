@@ -3,27 +3,29 @@ import {FaStar } from 'react-icons/fa6'
 import Datec from './Datec'
 import { BookServiceContext } from '../../context/BookServiceContext';
 import GuestsCounter from './Popver';
+import { ConvertDecimel } from '../../helpers/ConvertDecimel';
 
 
 
 
-const ServiceCard = () => {
+const ServiceCard = ({room}) => {
+  console.log(room);
   const {collectCounts} = useContext(BookServiceContext)
   return (
     <>
       <div className='sticky top-28 rounded-[30px] overflow-hidden border border-neutral-200 p-4 mb-8 w-full'>
                 <div className='flex items-center justify-between gap-4 '>
                   <p className='flex items-center gap-1 text-xl'>
-                    <span className='text-black text-2xl'>${15}</span>
+                    <span className='text-black text-2xl'>${room?.price_per_day}</span>
                     <span>/ night</span>
                   </p>
                   <p className='flex items-center gap-2 rate text-neutral-500'>
                   <i className='text-yellow-400'><FaStar /></i>
-                  <span className='text-black'>4.5</span>
+                  <span className='text-black'>{ConvertDecimel(room?.avg_review)}</span>
                 </p>
                 </div>
                 <div className='actions rounded-[30px] overflow-hidden flex flex-col border border-neutral-200 my-4 divide-y-2 divide-neutral-100'>
-                  <div className='flex w-[330px] overflow-x-auto px-2 py-4'>
+                  <div className='flex w-full overflow-x-auto px-2 py-4'>
                     <Datec/>
                     {/* <button className='px-8 py-3'>
                     ddd

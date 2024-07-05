@@ -42,6 +42,7 @@ const Contact = () => {
       <section className='mt-6 mb-20 relative'>
       <StyledAnim/>
         <Container>
+          <h2 className='text-4xl font-bold text-center mt-10 mb-8'>contact us</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px] items-center relative z-20">
             <div className='flex flex-col gap-6'>
               <div className='item'>

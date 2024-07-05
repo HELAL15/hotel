@@ -6,7 +6,7 @@ import { baseUrl } from './api';
 const cookie = Cookie();
 
 // get lang from local storage
-const lang = localStorage.getItem("lang") || 'en_US';
+const lang = localStorage.getItem("lang") || 'ar_EG';
 
 
 export const request = axios.create({

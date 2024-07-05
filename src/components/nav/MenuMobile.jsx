@@ -6,8 +6,14 @@ import { Link, NavLink } from 'react-router-dom'
 import { CiBookmarkCheck, CiUser } from 'react-icons/ci'
 import { Menu } from 'antd'
 import { FaRegHeart } from 'react-icons/fa'
+import { UserContext } from '../../context/UserContext'
 
 const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
+
+  const token = sessionStorage.getItem("hotel")
+  const {userDetails} = useContext(UserContext)
+
+
   const {isOpen , setIsOpen} = useContext(OpeningContext)
   const location = useLocation()
   useEffect(()=>{
@@ -36,9 +42,10 @@ const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
         </nav>
         <div className='flex flex-col gap-3'>
           <div className='flex justify-center items-center flex-wrap gap-5'>
-          {/* <Link to='/login' className='btn btn-primary'>login</Link>
-          <Link to='/register' className='btn btn-primary'>register</Link> */}
 
+          {
+            token && userDetails ?
+            <>
                 <NavLink to='/profile'
                   className={`flex items-center gap-2 ${
                      'bg-gray-100 text-gray-900 '
@@ -65,6 +72,17 @@ const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
                   <i><FaRegHeart/></i>
                   <span>wishlist</span>
                 </NavLink>
+            </>
+            
+            : <>
+              <Link to='/login' className='btn btn-primary'>login</Link>
+              <Link to='/register' className='btn btn-primary'>register</Link>
+            </>
+          }
+
+
+
+
           </div>
           <Link to='tel:+201222810589' className='text-center text-neutral-500 mt-5'>need help? +201222810589</Link>
         </div>

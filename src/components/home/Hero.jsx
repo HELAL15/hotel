@@ -30,10 +30,10 @@ const Hero = () => {
             </div>
             <div className='grid grid-cols-2 gap-6'>
               <div className='grid grid-cols-1 gap-6 pt-8'>
-                <img src={img3} alt='hero' className='h-full w-full object-cover' />
-                <img src={img2} alt='hero' className='h-full w-full object-cover' />
+                <img src={img3} alt='hero' className='h-full w-full object-cover' loading='lazy' />
+                <img src={img2} alt='hero' className='h-full w-full object-cover' loading='lazy' />
               </div>
-              <div className='row-span-2 pt-20'><img src={img1} alt='hero' className='h-full w-full object-cover' /></div>
+              <div className='row-span-2 pt-20'><img src={img1} alt='hero' className='h-full w-full object-cover' loading='lazy' /></div>
             </div>
           </div>
         </Container>

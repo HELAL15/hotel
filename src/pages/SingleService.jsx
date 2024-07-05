@@ -54,7 +54,7 @@ const SingleService = () => {
               <Reviews reviews={room?.reviews} refetch={refetch}/>
             </div>
             <div className=' lg:block flex-grow mt-14 lg:mt-0 order-1'>
-              <ServiceCard/>
+              <ServiceCard room={room}/>
             </div>
           </div>
         </Container>
