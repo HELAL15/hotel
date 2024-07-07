@@ -29,11 +29,12 @@ useEffect(()=>{showLoader()},[location])
 
   return (
     <>
-    {
-      isLoading && <div className='fixed z-50 top-0 left-0 bg-white w-screen h-screen grid place-items-center'>
+    
+      {/* isLoading && */}
+       {/* <div className='fixed z-50 top-0 left-0 bg-white w-screen h-screen grid place-items-center'>
         <img src={logo} alt={site_name} className='object-contain w-[200px] h-[200px]' />
-      </div>
-    }
+      </div> */}
+    
     </>
   )
 }
