@@ -20,6 +20,7 @@ import ProfileOutlet from './pages/Profile/ProfileOutlet';
 import AuthGuard from './Authed/AuthGuard';
 import RequireBack from './Authed/RequireBack';
 import ForgetPassword from './pages/auth/ForgetPassword';
+import Loader from './layouts/Loader';
 
 const App = () => {
 

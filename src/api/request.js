@@ -1,13 +1,9 @@
+
 import axios from 'axios';
-import Cookie from 'cookie-universal';
 import { baseUrl } from './api';
 
-// cookies
-const cookie = Cookie();
-
-// get lang from local storage
-const lang = localStorage.getItem("lang") || 'ar_EG';
-
+// Initial language from localStorage or default to 'ar'
+const lang = localStorage.getItem("lang") || 'ar';
 
 export const request = axios.create({
   baseURL: baseUrl,
@@ -15,7 +11,7 @@ export const request = axios.create({
     'Content-Type': 'application/json',
     'accept': 'application/json',
     'accept-language': lang,
-    "Lang":lang,
+    'Lang': lang,
   },
 });
 

@@ -13,8 +13,18 @@ import { SwiperDirContext } from '../context/SwiperDir';
 import { request } from '../api/request';
 import { ConvertDecimel } from '../helpers/ConvertDecimel';
 import empty from '../img/emptyImg.PNG'
+import { SettingContext } from '../context/SettingContext';
 
 const MainCard = ({ sale, room , setRemoved }) => {
+  const {memoizedSetting:setting} = useContext(SettingContext)
+ 
+  let data = setting?.data || null
+  const {
+    logo ,
+    site_name,
+  } = data || {} ;
+
+
   const [fav, setFav] = useState(room?.is_fav === 1);
   const { dir } = useContext(SwiperDirContext);
   const navigate = useNavigate()
@@ -59,15 +69,15 @@ const MainCard = ({ sale, room , setRemoved }) => {
                 <SwiperSlide key={i}>
                   <img className='h-full w-full object-cover' loading='lazy' src={img.url} alt={`img-${i}`} />
                 </SwiperSlide>
-              )):<SwiperSlide>
-              <img className='h-full w-full object-cover' loading='lazy' src={empty} alt={`empty`} />
+              )):<SwiperSlide className='bg-primary/10'>
+              <img className='h-full w-full object-contain mx-auto' loading='lazy' src={logo} alt={site_name} />
               </SwiperSlide>}
             </Swiper>
           </div>
           <div className='card-body flex flex-col gap-1'>
-            <p className='text-neutral-500 flex items-center gap-2 divide-x-2 divide-double divide-gray-200'>
-              <span>{room?.type}</span>
-              <span className='pl-2'>{room?.no_beds} beds</span>
+            <p className='text-neutral-500 flex items-center gap-2 divide-x divide-double divide-gray-200'>
+              <span className='rtl:pl-2 order-1 rtl:order-2'>{room?.type}</span>
+              <span className='pl-2 order-2 rtl:order-1'>{room?.no_beds} beds</span>
             </p>
             <p className='font-semibold text-black'>{room?.title.slice(0, 35)}...</p>
             <div className='flex items-center justify-between details mt-4 '>
