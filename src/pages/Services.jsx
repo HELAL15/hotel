@@ -5,6 +5,7 @@ import MainCard from '../components/MainCard'
 import Seo from '../helpers/Seo'
 import useFetch from '../hooks/useFetch'
 import { Empty, Select, Skeleton } from 'antd'
+import Loader from '../layouts/Loader'
 
 const Services = () => {
   
@@ -25,6 +26,9 @@ const Services = () => {
   return (
     <>
           <Seo title="services"  />
+          {
+            isLoading && <Loader/>
+          }
           <section className='mt-8'>
       <Container>
       <div className='flex items-center justify-between gap-4 flex-wrap mb-6'>

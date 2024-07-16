@@ -27,7 +27,7 @@ const Home = () => {
 
     <Seo title="home" description="hilton hotel is placed to host you at your seconde home"  />
 
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>helal</div>}>
       <SomeComponent />
     </Suspense>
 

@@ -9,7 +9,22 @@
       "about" : "about us",
       "services" : "services",
       "contact" : "contact us",
-      "places" : "places"
+      "places" : "places",
+      "profile" : "profile",
+      "privacy" : "privacy policy",
+      "terms" : "terms & condition",
+      "login" : "login"
+    },
+    "social" : {
+      "facebook" : "facebook",
+      "twitter" : "twitter",
+      "instagram" : "instagram",
+      "youtube" : "youtube"
+    },
+    "footer" : {
+      "pages" : "pages",
+      "helps" : "helps",
+      "contact" : "contact"
     },
     "seo" : {
       "home" : "chisfis | home",

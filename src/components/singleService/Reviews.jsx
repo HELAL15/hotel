@@ -7,10 +7,11 @@ import Review from './Review';
 import { request } from '../../api/request';
 import { useNavigate, useParams } from 'react-router';
 
-const Reviews = ({reviews ,refetch}) => {
+const Reviews = ({reviews ,refetch , load}) => {
   const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
   const [value, setValue] = useState(3);
   const [loading , setLoading] = useState(false)
+  
 
   const {id} = useParams()
 
@@ -27,7 +28,7 @@ const Reviews = ({reviews ,refetch}) => {
       setLoading(false)
       toast.success(res.data.message)
       reset()
-      refetch()
+      // refetch()
     })
     .catch((error)=>{
       toast.error(error.response.data.message)
@@ -55,7 +56,7 @@ const Reviews = ({reviews ,refetch}) => {
               <div className='reviews mt-8 '>
               {
                 reviews?.map((review)=>{
-                  return <Review key={review.id} reviews={review}/>
+                  return <Review key={review.id} reviews={review} loading={load}/>
                 })
               }
 

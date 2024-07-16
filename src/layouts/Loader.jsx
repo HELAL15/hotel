@@ -13,27 +13,27 @@ const Loader = () => {
   } = data || {} ;
 
 
-  const location = useLocation()
+  // const location = useLocation()
 
 
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  const showLoader = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2200);
-  };
+  // const showLoader = () => {
+  //   setIsLoading(true);
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2200);
+  // };
 
-useEffect(()=>{showLoader()},[location])
+// useEffect(()=>{showLoader()},[location])
 
   return (
     <>
     
       {/* isLoading && */}
-       {/* <div className='fixed z-50 top-0 left-0 bg-white w-screen h-screen grid place-items-center'>
+       <div className='fixed z-50 top-0 left-0 bg-white w-screen h-screen grid place-items-center'>
         <img src={logo} alt={site_name} className='object-contain w-[200px] h-[200px]' />
-      </div> */}
+      </div>
     
     </>
   )

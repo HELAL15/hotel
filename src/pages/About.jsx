@@ -14,45 +14,49 @@
 import React, { useState, useCallback } from 'react';
 import useFetch from '../hooks/useFetch';
 import Seo from '../helpers/Seo';
+import ServiceCard from '../components/singleService/ServiceCard';
+import Datec from '../components/singleService/Datec';
+import Counterrr from '../components/singleService/Counterrr';
 
 const About = () => {
 
+  const handleCountChange = (label, type, count) => {
+    console.log(`Count changed for ${type} (${label}): ${count}`);
+    // يمكنك هنا إضافة المنطق لمعالجة تغيير العدادات
+  };
 
 
+// const {data} = useFetch('https://api.slingacademy.com/v1/sample-data/photos')
 
-const {data} = useFetch('https://api.slingacademy.com/v1/sample-data/photos')
-
-
-console.log(data?.photos);
 
 
 
 
   // Initialize state for counters with an array of objects
-  const [counters, setCounters] = useState([
-    { type: 'Adults', count: 0 },
-    { type: 'Children', count: 0 },
-    { type: 'Infants', count: 0 },
-  ]);
+  // const [counters, setCounters] = useState([
+  //   { type: 'Adults', count: 0 },
+  //   { type: 'Children', count: 0 },
+  //   { type: 'Infants', count: 0 },
+  // ]);
 
   // Function to handle count change
-  const handleCount = useCallback((index, type) => {
-    setCounters(prevCounters =>
-      prevCounters.map((counter, i) => 
-        i === index 
-          ? { ...counter, count: type === 'add' ? counter.count + 1 : Math.max(counter.count - 1, 0) }
-          : counter
-      )
-    );
-  }, []);
+  // const handleCount = useCallback((index, type) => {
+  //   setCounters(prevCounters =>
+  //     prevCounters.map((counter, i) => 
+  //       i === index 
+  //         ? { ...counter, count: type === 'add' ? counter.count + 1 : Math.max(counter.count - 1, 0) }
+  //         : counter
+  //     )
+  //   );
+  // }, []);
 
   // Function to collect counts and send to backend
-  const collectCounts = useCallback(() => {
-    const counts = counters.map(counter => counter);
-    console.log('Collected counts:', counts);
-  }, [counters]);
+  // const collectCounts = useCallback(() => {
+  //   const counts = counters.map(counter => counter);
+  //   console.log('Collected counts:', counts);
+  // }, [counters]);
 
-  const filtered = data?.photos?.slice(0 , 9)
+  // const filtered = data?.photos?.slice(0 , 9)
 
   return (
     <>
@@ -85,7 +89,7 @@ console.log(data?.photos);
     </div> */}
 
 
-  <div className='gallery mt-10 grid grid-cols-4 gap-6 container'>
+  {/* <div className='gallery mt-10 grid grid-cols-4 gap-6 container'>
     {
       filtered?.map((photo, index) => (
         <div key={index} className={`${photo.id === 2 ? "row-span-2 " : ""}
@@ -96,7 +100,13 @@ console.log(data?.photos);
         </div>
       ))
     }
-  </div>
+  </div> */}
+
+  <Datec />
+
+
+  <Counterrr label="Guests" onCountChange={handleCountChange} />
+
 
 
 

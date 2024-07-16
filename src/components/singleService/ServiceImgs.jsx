@@ -1,13 +1,36 @@
 import React, { memo } from 'react';
 import Container from '../../helpers/Container';
+import SkeletonImage from 'antd/es/skeleton/Image';
+import Skeleton from 'react-loading-skeleton';
 
-const ServiceImgs = ({ imgs = [] }) => {
+const ServiceImgs = ({ imgs = [] , loading }) => {
   return (
     <>
       <section className='images pt-5'>
         <Container>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+           {
+            loading ? <>
             <div className='relative rounded-md overflow-hidden'>
+                <Skeleton className='w-full h-48 md:h-80 lg:h-[25rem]' />
+              </div>
+              <div className='relative grid grid-cols-2 gap-2'>
+                <div className='rounded-md overflow-hidden'>
+                  <Skeleton className='w-full h-20 md:h-40 lg:h-48' />
+                </div>
+                <div className='rounded-md overflow-hidden'>
+                  <Skeleton className='w-full h-20 md:h-40 lg:h-48' />
+                </div>
+                <div className='rounded-md overflow-hidden'>
+                  <Skeleton className='w-full h-20 md:h-40 lg:h-48' />
+                </div>
+                <div className='rounded-md overflow-hidden'>
+                  <Skeleton className='w-full h-20 md:h-40 lg:h-48' />
+                </div>
+              </div>
+            </> :
+              <>
+              <div className='relative rounded-md overflow-hidden'>
               {imgs[0] && (
                 <img
                   loading='lazy'
@@ -57,7 +80,11 @@ const ServiceImgs = ({ imgs = [] }) => {
                 </div>
               
             </div>
+              </>
+
+           }
           </div>
+            
         </Container>
       </section>
     </>

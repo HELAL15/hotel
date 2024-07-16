@@ -2,8 +2,9 @@ import React, { memo } from 'react'
 import img from '../../img/profile-img.jpg'
 import { Flex , Rate } from "antd";
 import { convertISOToDate } from '../../helpers/ConverIsoToDate';
+import Skeleton from 'react-loading-skeleton';
 
-const Review = ({reviews}) => {
+const Review = ({reviews , loading}) => {
 
   return (
     <>
@@ -19,7 +20,10 @@ const Review = ({reviews}) => {
                       </p>
                       <p className=''><Rate className='md:text-xl text-sm' disabled defaultValue={reviews?.rate} /></p>
                     </div>
+                    {
+                    loading ? <Skeleton className=' px-6 py-8 rounded-[30px]' /> :
                     <p className='review-body font-semibold mt-4'>{reviews?.review}</p>
+                    }
                   </div>
                 </div>
     </>

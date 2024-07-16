@@ -12,6 +12,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { UserContext } from '../context/UserContext';
 import { SettingContext } from '../context/SettingContext';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -22,6 +23,8 @@ const Footer = () => {
   const {userDetails} = useContext(UserContext)
 
   const {memoizedSetting:setting} = useContext(SettingContext)
+
+  const {t} = useTranslation()
 
   let data = setting?.data || null
 
@@ -58,43 +61,43 @@ const Footer = () => {
               <div className='flex flex-row md:flex-col gap-3'>
                 <Link to={facebook} aria-label='facebook' target='_blank' className='flex items-center gap-1 nav-link'>
                   <i className='text-xl'><RiFacebookBoxLine/></i>
-                  <span className='hidden md:block'>facebook</span>
+                  <span className='hidden md:block'>{t("social.facebook")}</span>
                 </Link>
                 <Link to={twitter} aria-label='twitter' target='_blank' className='flex items-center gap-1 nav-link'>
                   <i className='text-xl'><FaXTwitter/></i>
-                  <span className='hidden md:block'>twitter</span>
+                  <span className='hidden md:block'>{t("social.twitter")}</span>
                 </Link>
                 <Link to={youtube} aria-label='youtube' target='_blank' className='flex items-center gap-1 nav-link'>
                   <i className='text-xl'><FiYoutube/></i>
-                  <span className='hidden md:block'>youtube</span>
+                  <span className='hidden md:block'>{t("social.youtube")}</span>
                 </Link>
                 <Link to={instagram} aria-label='instagram' target='_blank' className='flex items-center gap-1 nav-link'>
                   <i className='text-xl'><FaInstagram/></i>
-                  <span className='hidden md:block'>instagram</span>
+                  <span className='hidden md:block'>{t("social.instagram")}</span>
                 </Link>
               </div>
             </div>
             <div>
-              <h3 className='text-black text-xl font-semibold mb-5'>helps</h3>
+              <h3 className='text-black text-xl font-semibold mb-5'>{t("footer.helps")}</h3>
               <div className='flex flex-col gap-3'>
-                <NavLink to="/contact" className='nav-link'>contact us</NavLink>
-                <NavLink to="/terms" className='nav-link'>terms & conditions</NavLink>
-                <NavLink to="/policy" className='nav-link'>privacy policy</NavLink>
-                {token && userDetails && <NavLink to="/profile" className='nav-link'>profile</NavLink>}
-                {!token && !userDetails && <NavLink to="/login" className='nav-link'>login</NavLink>}
+                <NavLink to="/contact" className='nav-link'>{t("nav.contact")}</NavLink>
+                <NavLink to="/terms" className='nav-link'>{t("nav.terms")}</NavLink>
+                <NavLink to="/policy" className='nav-link'>{t("nav.privacy")}</NavLink>
+                {token && userDetails && <NavLink to="/profile" className='nav-link'>{t("nav.profile")}</NavLink>}
+                {!token && !userDetails && <NavLink to="/login" className='nav-link'>{t("nav.login")}</NavLink>}
               </div>
             </div>
             <div>
-              <h3 className='text-black text-xl font-semibold mb-5'>pages</h3>
+              <h3 className='text-black text-xl font-semibold mb-5'>{t("footer.pages")}</h3>
               <div className='flex flex-col gap-3'>
-                <NavLink to="/" className='nav-link'>home</NavLink>
-                <NavLink to="/about" className='nav-link'>about us</NavLink>
-                <NavLink to="/services" className='nav-link'>services</NavLink>
-                <NavLink to="/places" className='nav-link'>places</NavLink>
+                <NavLink to="/" className='nav-link'>{t("nav.home")}</NavLink>
+                <NavLink to="/about" className='nav-link'>{t("nav.about")}</NavLink>
+                <NavLink to="/services" className='nav-link'>{t("nav.services")}</NavLink>
+                <NavLink to="/places" className='nav-link'>{t("nav.places")}</NavLink>
               </div>
             </div>
             <div className='md:col-span-3 lg:col-span-1'>
-              <h3 className='text-black text-xl font-semibold mb-5'>contact</h3>
+              <h3 className='text-black text-xl font-semibold mb-5'>{t("footer.contact")}</h3>
               <div className='flex flex-col gap-3'>
                 <NavLink to={`tel:+${mobile}`} className='nav-link flex items-center gap-2'><i><FaPhoneAlt/></i><span>+{mobile}</span></NavLink>
                 <NavLink to={`mailto:${email}`} className='nav-link flex items-center gap-2'><i><MdEmail/></i><span>{email}</span></NavLink>
