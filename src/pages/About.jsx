@@ -1,118 +1,45 @@
-// import React, { memo } from 'react'
-
-// const About = () => {
-//   return (
-//     <div>
-      
-//     </div>
-//   )
-// }
-
-// export default memo(About)
-
-
-import React, { useState, useCallback } from 'react';
-import useFetch from '../hooks/useFetch';
-import Seo from '../helpers/Seo';
-import ServiceCard from '../components/singleService/ServiceCard';
-import Datec from '../components/singleService/Datec';
-import Counterrr from '../components/singleService/Counterrr';
-
+import React, { useState } from 'react';
+import axios from 'axios';
 const About = () => {
-
-  const handleCountChange = (label, type, count) => {
-    console.log(`Count changed for ${type} (${label}): ${count}`);
-    // يمكنك هنا إضافة المنطق لمعالجة تغيير العدادات
-  };
-
-
-// const {data} = useFetch('https://api.slingacademy.com/v1/sample-data/photos')
-
-
-
-
-
-  // Initialize state for counters with an array of objects
-  // const [counters, setCounters] = useState([
-  //   { type: 'Adults', count: 0 },
-  //   { type: 'Children', count: 0 },
-  //   { type: 'Infants', count: 0 },
-  // ]);
-
-  // Function to handle count change
-  // const handleCount = useCallback((index, type) => {
-  //   setCounters(prevCounters =>
-  //     prevCounters.map((counter, i) => 
-  //       i === index 
-  //         ? { ...counter, count: type === 'add' ? counter.count + 1 : Math.max(counter.count - 1, 0) }
-  //         : counter
-  //     )
-  //   );
-  // }, []);
-
-  // Function to collect counts and send to backend
-  // const collectCounts = useCallback(() => {
-  //   const counts = counters.map(counter => counter);
-  //   console.log('Collected counts:', counts);
-  // }, [counters]);
-
-  // const filtered = data?.photos?.slice(0 , 9)
-
-  return (
-    <>
-      <Seo title="about"  />
-    {/* <div className="flex flex-col gap-4">
-      {counters.map((counter, index) => (
-        <div key={index} className="flex items-center gap-4">
-          <button
-            className="bg-primary rounded-full w-[30px] h-[30px] text-white overflow-hidden grid place-items-center text-xl font-semibold"
-            onClick={() => handleCount(index, 'subtract')}
-          >
-            -
-          </button>
-          <span className="text-xl font-semibold w-[30px]">{counter.count}</span>
-          <button
-            className="bg-primary rounded-full w-[30px] h-[30px] text-white overflow-hidden grid place-items-center text-xl font-semibold"
-            onClick={() => handleCount(index, 'add')}
-          >
-            +
-          </button>
-          <span className="ml-2">{counter.label}</span>
-        </div>
-      ))}
-      <button
-        className="mt-4 bg-primary rounded-full py-2 px-4 text-white"
-        onClick={collectCounts}
-      >
-        Submit Counts
-      </button>
-    </div> */}
-
-
-  {/* <div className='gallery mt-10 grid grid-cols-4 gap-6 container'>
-    {
-      filtered?.map((photo, index) => (
-        <div key={index} className={`${photo.id === 2 ? "row-span-2 " : ""}
-        ${photo.id === 5 ? "col-span-1 row-span-2 " : ""}
-        ${photo.id === 6 ? "col-span-2 row-span-1 max-h-[300px]" : "max-h-[800px]"}
-        gallery-item rounded-3xl overflow-hidden `}>
-          <img src={photo.url} alt={photo.alt_description} className='h-full w-full object-cover' />
-        </div>
-      ))
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const makeReservation = async () => {
+    setLoading(true);
+    const url = 'https://backend.smartvision4p.com/hotel/public/api/user/rooms/1/reservation';
+    const formData = new FormData()
+    formData.append('type', 'all');
+    formData.append('no_rooms', 1);
+    formData.append('end_date', '2024-07-20');
+    formData.append('start_date', '2024-07-21');
+    formData.append('adult[0]', 1);
+    formData.append('infant[0]', 1);
+    formData.append('child[0]', 1);
+    try {
+      const response = await axios.post(url, formData, {
+        headers: {
+          'Accept': 'application/json',
+          'Lang': 'ar',
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tlbmQuc21hcnR2aXNpb240cC5jb20vaG90ZWwvcHVibGljL2FwaS91c2VyL2xvZ2luIiwiaWF0IjoxNzIxMTExOTE2LCJleHAiOjE3MzQwNzE5MTYsIm5iZiI6MTcyMTExMTkxNiwianRpIjoicnc0TmdQVnVBb2VnaTlDSCIsInN1YiI6IjIzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.SZ3-bc3MMNbFe97beQjVOA3m_2SvvVRakxiFVsJ1Rl8'
+        }
+      });
+      setResponse(response.data);
+      console.log('Reservation successful!');
+    } catch (error) {
+      setError(error.response ? error.response.data : 'Error occurred');
+      console.log('Error making reservation');
+    } finally {
+      setLoading(false);
     }
-  </div> */}
-
-  <Datec />
-
-
-  <Counterrr label="Guests" onCountChange={handleCountChange} />
-
-
-
-
-    </>
+  };
+  return (
+    <div>
+      <button onClick={makeReservation} disabled={loading}>
+        {loading ? 'Loading...' : 'Reserve Room'}
+      </button>
+      {response && <div>Response: {JSON.stringify(response)}</div>}
+      {error && <div>Error: {JSON.stringify(error)}</div>}
+    </div>
   );
 };
-
 export default About;
-

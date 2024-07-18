@@ -62,7 +62,7 @@ const Layout =()=>{
         <Route path="/register" element={<SignUp/>}/>
       </Route>
       <Route  element={<AuthGuard/>}>
-        <Route  element={<ProfileOutlet/>} >
+        <Route element={<ProfileOutlet/>} >
         <Route path='/profile' element={<Account/>} />
         <Route path='/account-password' element={<AccountPassword/>} />
         <Route path='/Wishlist' element={<Wishlist/>} />

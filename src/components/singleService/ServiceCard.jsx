@@ -1,29 +1,35 @@
-import React, { memo, useContext, useEffect, useState } from 'react';
+import React, { memo, useContext, useState } from 'react';
 import { FaStar } from 'react-icons/fa6';
 import Datec from './Datec';
 import { BookServiceContext } from '../../context/BookServiceContext';
-import Counterrr from './Counterrr'; 
 import { ConvertDecimel } from '../../helpers/ConvertDecimel';
 import RoomType from './RoomType';
 import { request } from '../../api/request';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
+import Counter from './Counter';
+import { toast } from 'react-toastify';
 
 const ServiceCard = ({ room }) => {
-  const { collectCounts, nights, mealP,  date , roomCounts , option } = useContext(BookServiceContext);
+  const { nights, mealP, date, roomCounts, option } = useContext(BookServiceContext);
   const [totalGuestPrice, setTotalGuestPrice] = useState(0);
   const [guestData, setGuestData] = useState([]);
 
-  const {id} = useParams()
+  const navigate = useNavigate()
 
-
+  const { id } = useParams();
+  console.log(date);
 
   const handleCountChange = (label, type, count, total, updatedGuestData) => {
-    collectCounts(label, type, count);
     setTotalGuestPrice(total);
     setGuestData(updatedGuestData);
   };
 
   const handleBookNow = () => {
+    if (!date || date.length < 2 || !roomCounts || !mealP || !option) {
+      console.error("Missing required fields");
+      toast.error("Missing required fields")
+      return;
+    }
 
     const formattedGuestData = guestData.reduce((acc, group, index) => {
       Object.entries(group).forEach(([key, value]) => {
@@ -32,26 +38,31 @@ const ServiceCard = ({ room }) => {
       return acc;
     }, {});
 
-    const bookingData = {
-      ...formattedGuestData,
-      start_date: date[0],
-      end_date: date[1],
-      no_rooms: roomCounts,
-      type:option,
-    };
 
-    console.log(bookingData);
+    const formData = new FormData()
 
-  request.post(`/user/rooms/${id}/reservation` ,bookingData )
-  .then((res)=>{
-    console.log(res.data);
-  })
-  .catch((err)=>{
-    console.log(err.response.data);
-  })
+    Object.entries(formattedGuestData).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    formData.append('type', option);
+    formData.append('no_rooms', roomCounts);
+    formData.append('end_date', date[1]);
+    formData.append('start_date', date[0]);
 
 
+    request.post(`/user/rooms/${id}/reservation`, formData)
+      .then((res) => {
+        console.log(res.data);
+        toast.success(res.data.message)
+        // navigate("/profile")
 
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        toast.error(err.response.data.message)
+        navigate("/login")
+      });
   };
 
   return (
@@ -72,9 +83,9 @@ const ServiceCard = ({ room }) => {
         </div>
         <div className='py-4 px-4'>
           <h4 className='mb-2 text-xl font-semibold'>day meal</h4>
-          <RoomType room={room}/>
+          <RoomType room={room} />
         </div>
-        <Counterrr
+        <Counter
           label="Guests"
           onCountChange={handleCountChange}
           adultPrice={room?.adult_price}
@@ -94,7 +105,7 @@ const ServiceCard = ({ room }) => {
       </div>
       <div className='text-black font-semibold text-lg flex items-center justify-between gap-4 my-3'>
         <p>Total</p>
-        <p>${(((room?.price_per_day * nights) + (room?.tax)) + Number(mealP) + totalGuestPrice)}</p>
+        <p>${(((room?.price_per_day * nights) + (room?.tax )) + Number(mealP) + totalGuestPrice)}</p>
       </div>
       <div className='flex justify-center'>
         <button className='btn btn-primary w-full' onClick={handleBookNow}>Book now</button>

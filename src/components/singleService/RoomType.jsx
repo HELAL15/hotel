@@ -1,16 +1,9 @@
 import { Select, Space } from 'antd';
-import React, { memo, useContext, useEffect } from 'react';
+import React, { memo, useContext } from 'react';
 import { BookServiceContext } from '../../context/BookServiceContext';
 
 const RoomType = ({ room }) => {
-
-  const {setMealP , setOption} = useContext(BookServiceContext)
-
-
- 
-
-
-
+  const { setMealP, setOption } = useContext(BookServiceContext);
 
   const options = () => {
     if (room && room.hotel_setting) {
@@ -19,17 +12,13 @@ const RoomType = ({ room }) => {
         label: setting.title,
       }));
     }
-    return []; 
+    return [];
   };
 
-
-  const handleChange = (data , option)=>{
-    console.log(option.label)
-    setOption(option.label)
-    setMealP(data)
-  }
-
-
+  const handleChange = (data, option) => {
+    setOption(option.label);
+    setMealP(data);
+  };
 
   return (
     <>

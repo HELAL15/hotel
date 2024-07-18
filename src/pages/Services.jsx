@@ -26,9 +26,9 @@ const Services = () => {
   return (
     <>
           <Seo title="services"  />
-          {
+          {/* {
             isLoading && <Loader/>
-          }
+          } */}
           <section className='mt-8'>
       <Container>
       <div className='flex items-center justify-between gap-4 flex-wrap mb-6'>

@@ -6,8 +6,9 @@ import { Flex , Rate, Spin } from "antd";
 import Review from './Review';
 import { request } from '../../api/request';
 import { useNavigate, useParams } from 'react-router';
+import useFetch from '../../hooks/useFetch';
 
-const Reviews = ({reviews ,refetch , load}) => {
+const Reviews = ({ load }) => {
   const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
   const [value, setValue] = useState(3);
   const [loading , setLoading] = useState(false)
@@ -15,6 +16,8 @@ const Reviews = ({reviews ,refetch , load}) => {
 
   const {id} = useParams()
 
+  const {data:reviews , refetch} = useFetch(`/rooms/${id}/reviews`)
+console.log(reviews);
   const { register, handleSubmit, formState: { errors } , reset } = useForm();
   const navigate = useNavigate()
 
@@ -25,10 +28,10 @@ const Reviews = ({reviews ,refetch , load}) => {
     setLoading(true)
     request.post(`user/rooms/${id}/review`, formData)
     .then((res)=>{
+      refetch()
       setLoading(false)
       toast.success(res.data.message)
       reset()
-      // refetch()
     })
     .catch((error)=>{
       toast.error(error.response.data.message)
@@ -39,7 +42,7 @@ const Reviews = ({reviews ,refetch , load}) => {
   return (
     <>
       <div className='my-4 rounded-[30px] border border-neutral-200 overflow-hidden p-4'>
-              <h2 className='text-2xl font-semibold pb-4 relative border-b border-b-neutral-200 w-fit '>Reviews {`(${reviews?.length} reviews)`}</h2>
+              <h2 className='text-2xl font-semibold pb-4 relative border-b border-b-neutral-200 w-fit '>Reviews {`(${reviews?.data.length} reviews)`}</h2>
               <Flex gap="middle" vertical className='mt-5'>
                 <Rate tooltips={desc} onChange={setValue} value={value} />
               </Flex>
@@ -55,7 +58,7 @@ const Reviews = ({reviews ,refetch , load}) => {
             </form>
               <div className='reviews mt-8 '>
               {
-                reviews?.map((review)=>{
+                reviews?.data.map((review)=>{
                   return <Review key={review.id} reviews={review} loading={load}/>
                 })
               }

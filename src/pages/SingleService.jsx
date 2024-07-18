@@ -60,7 +60,7 @@ const SingleService = () => {
               <StayInfo description={room?.description} loading={loading}/>
               {/* <ThingsToKnow/> */}
               {/* <ServiceLocation/> */}
-              {/* <Reviews reviews={room?.reviews} refetch={refetch} load={loading}/> */}
+              <Reviews reviews={room?.reviews} refetch={refetch} load={loading}/>
             </div>
             <div className=' lg:block flex-grow mt-14 lg:mt-0 order-1'>
               <ServiceCard room={room} loading={loading}/>

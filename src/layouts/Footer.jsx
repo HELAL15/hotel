@@ -78,6 +78,15 @@ const Footer = () => {
               </div>
             </div>
             <div>
+              <h3 className='text-black text-xl font-semibold mb-5'>{t("footer.pages")}</h3>
+              <div className='flex flex-col gap-3'>
+                <NavLink to="/" className='nav-link'>{t("nav.home")}</NavLink>
+                <NavLink to="/about" className='nav-link'>{t("nav.about")}</NavLink>
+                <NavLink to="/services" className='nav-link'>{t("nav.services")}</NavLink>
+                <NavLink to="/places" className='nav-link'>{t("nav.places")}</NavLink>
+              </div>
+            </div>
+            <div>
               <h3 className='text-black text-xl font-semibold mb-5'>{t("footer.helps")}</h3>
               <div className='flex flex-col gap-3'>
                 <NavLink to="/contact" className='nav-link'>{t("nav.contact")}</NavLink>
@@ -87,15 +96,7 @@ const Footer = () => {
                 {!token && !userDetails && <NavLink to="/login" className='nav-link'>{t("nav.login")}</NavLink>}
               </div>
             </div>
-            <div>
-              <h3 className='text-black text-xl font-semibold mb-5'>{t("footer.pages")}</h3>
-              <div className='flex flex-col gap-3'>
-                <NavLink to="/" className='nav-link'>{t("nav.home")}</NavLink>
-                <NavLink to="/about" className='nav-link'>{t("nav.about")}</NavLink>
-                <NavLink to="/services" className='nav-link'>{t("nav.services")}</NavLink>
-                <NavLink to="/places" className='nav-link'>{t("nav.places")}</NavLink>
-              </div>
-            </div>
+            
             <div className='md:col-span-3 lg:col-span-1'>
               <h3 className='text-black text-xl font-semibold mb-5'>{t("footer.contact")}</h3>
               <div className='flex flex-col gap-3'>

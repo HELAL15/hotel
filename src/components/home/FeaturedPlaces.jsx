@@ -38,7 +38,7 @@ const rooms = data?.data || []
             }
         </Sorting>
           <div className='grid place-items-center mt-8'>
-            <Link to="/services" className='btn btn-primary flex items-center gap-3 group'> <span>view all</span> <FaArrowRightLong className='group-hover:animate-shake' /></Link>
+            <Link to="/services" className='btn btn-primary flex items-center gap-3 group'> <span>view all</span> <FaArrowRightLong className='rtl:-scale-100' /></Link>
           </div>
       </Container>
     </section>
