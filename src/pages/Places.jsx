@@ -1,8 +1,9 @@
 import React, { memo, useState, useEffect } from 'react'
 import Container from '../helpers/Container'
 import Seo from '../helpers/Seo'
-import { Image, Tabs, Skeleton, Empty } from 'antd'
+import { Image, Tabs, Empty } from 'antd'
 import useFetch from '../hooks/useFetch'
+import Skeleton from 'react-loading-skeleton'
 
 const Places = () => {
   const [keys, setKeys] = useState("")
@@ -26,8 +27,13 @@ const Places = () => {
           <Tabs onChange={handleChange} activeKey={keys}>
             <Tabs.TabPane tab="All" key="">
               {galleryLoad ? (
-                <Skeleton active />
-              ) : gallery?.data?.length ? (
+                <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 col-span-full'>
+                  <Skeleton height={300} />
+                  <Skeleton height={300} />
+                  <Skeleton height={300} />
+                  <Skeleton height={300} />
+                </div>
+              ) : gallery?.data?.length > 0 ? (
                 <Image.PreviewGroup>
                   {gallery?.data?.map((img) => (
                     img.images.map((url, idx) => (
@@ -42,8 +48,13 @@ const Places = () => {
             {cats?.data?.map((cat) => (
               <Tabs.TabPane tab={cat.title} key={cat.id}>
                 {galleryLoad ? (
-                  <Skeleton active />
-                ) : gallery?.data?.length ? (
+                  <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 col-span-full'>
+                  <Skeleton height={300} />
+                  <Skeleton height={300} />
+                  <Skeleton height={300} />
+                  <Skeleton height={300} />
+                </div>
+                ) : gallery?.data?.length > 0 ? (
                   <Image.PreviewGroup>
                     {gallery?.data?.map((img) => (
                       img.images.map((url, idx) => (

@@ -7,7 +7,7 @@
   "nav": {
     "home" : "الرئيسية",
     "about" : "من نحن",
-    "services" : "خدماتنا",
+    "services" : "الغرف",
     "contact" : "تواصل معنا",
     "places" : "الاماكن",
     "profile": "الملف الشخصي",
@@ -29,7 +29,7 @@
   "seo" : {
     "home" : "chisfis | الرئيسية",
     "about" : "chisfis | من نحن",
-    "services" : "chisfis | خدماتنا",
+    "services" : "chisfis | الغرف",
     "contact" : "chisfis | تواصل معنا",
     "places" : "chisfis | الاماكن"
   }

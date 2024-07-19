@@ -4,8 +4,9 @@ import Sorting from '../helpers/Sorting'
 import MainCard from '../components/MainCard'
 import Seo from '../helpers/Seo'
 import useFetch from '../hooks/useFetch'
-import { Empty, Select, Skeleton } from 'antd'
+import { Empty, Select } from 'antd'
 import Loader from '../layouts/Loader'
+import Skeleton from 'react-loading-skeleton'
 
 const Services = () => {
   
@@ -51,10 +52,26 @@ const Services = () => {
       </div>
         <Sorting sx=''>
         {   isLoading ? <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full col-span-4 my-8 '>
-          <Skeleton active />
-          <Skeleton active />
-          <Skeleton active />
-          <Skeleton active />
+          <div>
+            <Skeleton height={200} />
+            <Skeleton width={100}/>
+            <Skeleton count={2} />
+          </div>
+          <div>
+            <Skeleton height={200} />
+            <Skeleton width={100}/>
+            <Skeleton count={2} />
+          </div>
+          <div>
+            <Skeleton height={200} />
+            <Skeleton width={100}/>
+            <Skeleton count={2} />
+          </div>
+          <div>
+            <Skeleton height={200} />
+            <Skeleton width={100}/>
+            <Skeleton count={2} />
+          </div>
         </div> :
               rooms?.length > 0 ? rooms.map((room) => (
                 <MainCard key={room.id} room={room} />
