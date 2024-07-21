@@ -17,7 +17,6 @@ const Reviews = ({ load }) => {
   const {id} = useParams()
 
   const {data:reviews , refetch} = useFetch(`/rooms/${id}/reviews`)
-console.log(reviews);
   const { register, handleSubmit, formState: { errors } , reset } = useForm();
   const navigate = useNavigate()
 
@@ -58,7 +57,7 @@ console.log(reviews);
             </form>
               <div className='reviews mt-8 '>
               {
-                reviews?.data.map((review)=>{
+                reviews?.data.reverse().map((review)=>{
                   return <Review key={review.id} reviews={review} loading={load}/>
                 })
               }

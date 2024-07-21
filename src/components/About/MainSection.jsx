@@ -3,6 +3,7 @@ import useFetch from '../../hooks/useFetch'
 import Container from '../../helpers/Container'
 import StyledAnim from '../../components/StyledAnim'
 import Skeleton  from 'react-loading-skeleton'
+import {motion} from 'framer-motion'
 
 
 const MainSection = () => {
@@ -24,7 +25,12 @@ const MainSection = () => {
               <Skeleton count={2} height={30} />
             </> :
             <>
-              <h2 className='text-3xl font-bold text-gray-800'>{about.title}</h2>
+              <motion.h2 
+                animate={{
+                  scale: [1, 1.05, 1],
+                  transition: {duration: 1}
+                }}
+                className='text-3xl font-bold text-gray-800'>{about.title}</motion.h2>
               <p className='text-gray-600 leading-8'>{about.description}</p>
             </>
           }

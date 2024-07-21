@@ -13,6 +13,7 @@
     "cookie-universal": "^2.2.2",
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.11",
+    "framer-motion": "^11.3.8",
     "google-map-react": "^2.2.1",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.5.2",

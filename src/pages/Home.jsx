@@ -17,13 +17,45 @@ import Suggestion from '../components/home/Suggestion'
 import FeaturedPlaces from '../components/home/FeaturedPlaces'
 import ExplorePlaces from '../components/home/ExplorePlaces'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const SomeComponent = lazy(() => import('../components/home/Hero'));
 
 
 const Home = () => {
+
+
+
+const pageVariants = {
+    initial: {
+      opacity: 0,
+      // x: "-100vw"
+    },
+    in: {
+      opacity: 1,
+      // x: 0
+    },
+    out: {
+      opacity: 0,
+      // x: "100vw"
+    }
+  };
+  
+  const pageTransition = {
+    type: "spring",
+    duration: 0.5
+  };
+
+
+
   return (
-    <>
+    <motion.div 
+      initial="initial"
+    animate="in"
+    exit="out"
+    variants={pageVariants}
+    transition={pageTransition}
+    >
 
     <Seo title="home" description="hilton hotel is placed to host you at your seconde home"  />
 
@@ -130,7 +162,7 @@ const Home = () => {
 
         <Newsletter/>
         
-    </>
+    </motion.div>
   )
 }
 

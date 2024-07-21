@@ -17,7 +17,7 @@ const Features = () => {
           <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 items-stretch'>
             { 
               isLoading ? 
-              <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 col-span-full '>
+              <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 col-span-full '>
               <Skeleton className='py-20 rounded-[30px]' />
               <Skeleton className='py-20 rounded-[30px]' />
               <Skeleton className='py-20 rounded-[30px]' />

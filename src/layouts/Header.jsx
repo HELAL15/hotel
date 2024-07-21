@@ -8,6 +8,7 @@ import { useLngContext } from '../context/ChangeLng'
 import { AiOutlineGlobal } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next'
 import { SettingContext } from '../context/SettingContext'
+import { motion } from 'framer-motion'
 
 
 const Header = () => {
@@ -27,11 +28,26 @@ const Header = () => {
     site_name
   } = data || {} ;
 
-
+  const variantsNav = {
+    hidden: { opacity: 0 , y:-100 },
+    visible: { 
+      opacity: 1 ,
+      y:0, 
+      transition:{
+        duration:.3,
+        type:"spring",
+        stiffness:150
+      }
+    }
+  }
 
   return (
     <>
-      <header className='header-bg sticky top-0 w-full left-0 right-0 z-40 shadow-sm py-1'>
+      <motion.header 
+        variants={variantsNav}
+        initial="hidden"
+        animate="visible"
+        className='header-bg sticky top-0 w-full left-0 right-0 z-40 shadow-sm py-1'>
         <div className='container mx-auto'>
           <div className='flex items-center justify-between h-16'>
             <div className='flex items-center'>
@@ -82,7 +98,7 @@ const Header = () => {
 
           </div>
         </div>
-      </header>
+      </motion.header>
     </>
   )
 }

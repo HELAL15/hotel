@@ -91,7 +91,7 @@ const Footer = () => {
               <div className='flex flex-col gap-3'>
                 <NavLink to="/contact" className='nav-link'>{t("nav.contact")}</NavLink>
                 <NavLink to="/terms" className='nav-link'>{t("nav.terms")}</NavLink>
-                <NavLink to="/policy" className='nav-link'>{t("nav.privacy")}</NavLink>
+                <NavLink to="/privacy" className='nav-link'>{t("nav.privacy")}</NavLink>
                 {token && userDetails && <NavLink to="/profile" className='nav-link'>{t("nav.profile")}</NavLink>}
                 {!token && !userDetails && <NavLink to="/login" className='nav-link'>{t("nav.login")}</NavLink>}
               </div>

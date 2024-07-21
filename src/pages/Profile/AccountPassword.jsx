@@ -6,6 +6,7 @@ import SecTitle from '../../components/SecTitle';
 import StyledAnim from '../../components/StyledAnim';
 import { request } from '../../api/request';
 import { ToastContainer, toast } from 'react-toastify';
+import {motion} from "framer-motion"
 
 const AccountPassword = () => {
   const [loading , setLoading] = useState(false)
@@ -32,8 +33,34 @@ const AccountPassword = () => {
   })
   };
 
+  const pageVariants = {
+    initial: {
+      opacity: 0,
+      // x: "-100vw"
+    },
+    in: {
+      opacity: 1,
+      // x: 0
+    },
+    out: {
+      opacity: 0,
+      // x: "100vw"
+    }
+  };
+  
+  const pageTransition = {
+    type: "spring",
+    duration: 0.5
+  };
+
   return (
-    <>
+    <motion.div
+    initial="initial"
+    animate="in"
+    exit="out"
+    variants={pageVariants}
+    transition={pageTransition}
+    >
       <Seo title="account-password" />
       <section className='relative'>
         <Container>
@@ -84,7 +111,7 @@ const AccountPassword = () => {
           </form>
         </Container>
       </section>
-    </>
+    </motion.div>
   );
 };
 

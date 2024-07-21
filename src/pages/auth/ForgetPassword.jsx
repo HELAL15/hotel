@@ -1,11 +1,17 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import StyledAnim from '../../components/StyledAnim';
 import { request } from '../../api/request';
 import { toast } from 'react-toastify';
+import { CheckCode } from '../../context/CheckCode';
 
 const ForgetPassword = () => {
+
+
+const {setCodeReady , setEmail} = useContext(CheckCode)
+
+
   const navigate = useNavigate()
 
   const [loading , setLoading] = useState(false)
@@ -15,12 +21,14 @@ const ForgetPassword = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
     setLoading(true)
-    request.post("user/login" , data)
+    request.post("/user/forget-password" , data)
     .then((res)=>{
+      console.log(data);
       setLoading(false)
-      navigate('/')
+      setEmail(data.email)
+      setCodeReady(true)
+      navigate('/otp-code')
       toast.success(res.data.message);
-      
     })
     .catch((err)=>{
       toast.error(err.response.data.message);

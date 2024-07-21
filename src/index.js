@@ -15,6 +15,7 @@ import SwiperDirProvider from './context/SwiperDir';
 import UserProvider from './context/UserContext';
 import { ToastContainer } from 'react-toastify';
 import { SettingProvider } from './context/SettingContext';
+import CheckCodeProvider from './context/CheckCode';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,8 +27,10 @@ root.render(
           <BookingProvider>
           <SwiperDirProvider>
        <SettingProvider>
+        <CheckCodeProvider>
           <ToastContainer/>
             <App />
+        </CheckCodeProvider>
        </SettingProvider>
           </SwiperDirProvider>
           </BookingProvider>

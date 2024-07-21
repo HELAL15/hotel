@@ -21,14 +21,19 @@ import AuthGuard from './Authed/AuthGuard';
 import RequireBack from './Authed/RequireBack';
 import ForgetPassword from './pages/auth/ForgetPassword';
 import Loader from './layouts/Loader';
+import { AnimatePresence } from 'framer-motion';
+import Privacy from './pages/Privacy';
+import RenterPassword from './pages/auth/RenterPassword';
+import Otp from './pages/auth/Otp';
+import OtpOutlet from './pages/auth/OtpOutlet';
 
 const App = () => {
 
   //return page to top while go to new page
-  const {pathname} = useLocation();
+  const location = useLocation();
   useEffect(()=>{
     window.scrollTo({top:0, left:0 , behavior:"instant"})
-  },[pathname])
+  },[location.key])
 
 
 
@@ -45,8 +50,7 @@ const Layout =()=>{
 
 
   return (
-    <Routes>
-    
+    <Routes >
     <Route  element={<Layout/>}>
       <Route index element={<Home/>}/>
       <Route path="/about" element={<About/>}/>
@@ -55,11 +59,15 @@ const Layout =()=>{
       <Route path="/services/:id" element={<SingleService/>}/>
       <Route path="/places" element={<Places/>}/>
       <Route path="/places/:id" element={<SinglePlace/>}/>
+      <Route path="/privacy" element={<Privacy/>}/>
       <Route element={<RequireBack/>}>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<SignUp/>}/>
         <Route path="/forgetpassword" element={<ForgetPassword/>}/>
-        <Route path="/register" element={<SignUp/>}/>
+        <Route element={<OtpOutlet/>} >
+          <Route path="/otp-code" element={<Otp/>}/>
+          <Route path="/enter-new-password" element={<RenterPassword/>}/>
+        </Route>
       </Route>
       <Route  element={<AuthGuard/>}>
         <Route element={<ProfileOutlet/>} >

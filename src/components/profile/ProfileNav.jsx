@@ -11,18 +11,37 @@ const ProfileNav = () => {
   const {setUserDetails} = useContext(UserContext)
   const [loading , setLoading] = useState(false)
 
+  const [loadingD , setLoadingD] = useState(false)
+
 const handleLogOut = ()=>{
   setLoading(true)
   request.post('/user/user-logout')
   .then(res=>{
     setLoading(false)
+    navigate('/')
     sessionStorage.removeItem("hotel")
     setUserDetails([])
-    navigate('/')
     toast.success(res.data.message)
   })
   .catch((error)=>{
     setLoading(false)
+    toast.error(error.response.data.message)
+  })
+}
+
+
+const handleDelete = ()=>{
+  setLoadingD(true)
+  request.post('/user/delete-account')
+  .then(res=>{
+    setLoadingD(false)
+    navigate('/')
+    sessionStorage.removeItem("hotel")
+    setUserDetails([])
+    toast.success(res.data.message)
+  })
+  .catch((error)=>{
+    setLoadingD(false)
     toast.error(error.response.data.message)
   })
 }
@@ -36,6 +55,7 @@ const handleLogOut = ()=>{
           <NavLink to="/wishlist" className='profile-nav'>wishlist</NavLink>
           <NavLink to="/booking-list" className='profile-nav'>booking list</NavLink>
           <button className='btn bg-red-500 text-white' onClick={handleLogOut}>{loading? <Spin/> : "logout"}</button>
+          <button className='btn bg-yellow-400 text-black' onClick={handleDelete}>{loadingD? <Spin/> : "delete account"}</button>
       </div>
     </>
   )

@@ -6,6 +6,7 @@ import MainCard from '../../components/MainCard'
 import useFetch from '../../hooks/useFetch'
 import { Empty, Skeleton } from 'antd'
 import { useLocation } from 'react-router'
+import {motion} from "framer-motion"
 
 const Wishlist = () => {
   const [removed , setRemoved] = useState(false)
@@ -17,8 +18,36 @@ const Wishlist = () => {
       refetch()
     }
   },[removed])
+
+const pageVariants = {
+    initial: {
+      opacity: 0,
+      // x: "-100vw"
+    },
+    in: {
+      opacity: 1,
+      // x: 0
+    },
+    out: {
+      opacity: 0,
+      // x: "100vw"
+    }
+  };
+  
+  const pageTransition = {
+    type: "spring",
+    duration: 0.5
+  };
+
+
   return (
-    <>
+    <motion.div
+      initial="initial"
+    animate="in"
+    exit="out"
+    variants={pageVariants}
+    transition={pageTransition}
+    >
       <Seo title="wishlist"  />
       <section className=''>
       <Container>
@@ -42,7 +71,7 @@ const Wishlist = () => {
         </div>
       </Container>
     </section>
-    </>
+    </motion.div>
   )
 }
 

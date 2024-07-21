@@ -9,6 +9,7 @@ import SecTitle from '../../components/SecTitle';
 import { request } from '../../api/request';
 import { IoCamera } from "react-icons/io5";
 import { Spin } from 'antd';
+import { motion } from 'framer-motion';
 
 const Account = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -58,8 +59,35 @@ const Account = () => {
     }
   };
 
+
+const pageVariants = {
+    initial: {
+      opacity: 0,
+      // x: "-100vw"
+    },
+    in: {
+      opacity: 1,
+      // x: 0
+    },
+    out: {
+      opacity: 0,
+      // x: "100vw"
+    }
+  };
+  
+  const pageTransition = {
+    type: "spring",
+    duration: 0.5
+  };
+
   return (
-    <>
+    <motion.div
+      initial="initial"
+    animate="in"
+    exit="out"
+    variants={pageVariants}
+    transition={pageTransition}
+    >
       <Seo title="Profile" />
       <section className='relative'>
         <Container>
@@ -119,7 +147,7 @@ const Account = () => {
           </form>
         </Container>
       </section>
-    </>
+    </motion.div>
   );
 };
 
