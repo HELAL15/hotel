@@ -32,7 +32,7 @@ section{
 
 
 .nav-link{
-  @apply text-neutral-500  font-medium text-lg
+  @apply text-neutral-500  font-medium text-base
 }
 /* .nav-link.active{
   @apply text-gray-800
@@ -48,7 +48,7 @@ section{
 
 
 .btn{
-  @apply  py-3 px-9 rounded-[30px] my-1 capitalize font-semibold
+  @apply  py-3 px-9 rounded-[30px] my-1 capitalize font-medium text-sm
 }
 
 .btn-primary{
@@ -84,9 +84,14 @@ img, video {
   height: auto;
 }
 
-
+.package-input{
+  @apply relative
+}
+.show-pass {
+  @apply absolute top-1/2 translate-y-[-50%] ltr:right-4 rtl:left-4
+}
 .profile-nav {
-  @apply bg-neutral-100 flex items-center gap-2  rounded-md w-full px-2 py-2 text-xl transition-all duration-300 hover:bg-primary/20;
+  @apply bg-neutral-100 flex items-center gap-2 rounded-md w-full px-2 py-2  transition-all duration-300 hover:bg-primary/20;
 }
 
 .profile-nav.active {
@@ -139,7 +144,9 @@ img, video {
   background-color: #ffffff;
 }
 
-
+.ant-modal-content .ant-btn{
+  @apply btn btn-primary
+}
 
 .custom-range-picker .ant-picker-input:hover ,
 .custom-range-picker .ant-picker-input:focus {
@@ -152,9 +159,6 @@ img, video {
 }
 
 
-.ant-picker-dropdown{
-  
-}
 
 .ant-picker-dropdown .ant-picker-range-wrapper .ant-picker-panels ,
 .ant-picker-panels{

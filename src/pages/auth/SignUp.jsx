@@ -6,6 +6,10 @@ import { request } from '../../api/request';
 import { UserContext } from '../../context/UserContext';
 import { ToastContainer, toast } from 'react-toastify';
 import Cookie from 'cookie-universal';
+import { Spin } from 'antd';
+import { FaEye } from 'react-icons/fa6';
+import { IoEyeOff } from "react-icons/io5";
+
 
 const SignUp = () => {
   const [type, setType] = useState(false);
@@ -43,9 +47,11 @@ const onSubmit = (data) => {
   })
 }
   
-  const changeType = () => {
-    setType(!type);
-  };
+const [types, setTypes] = useState({ password: false, password_confirmation: false });
+
+const changeType = (field) => {
+  setTypes(prevTypes => ({ ...prevTypes, [field]: !prevTypes[field] }));
+};
 
   return (
     <>
@@ -57,43 +63,49 @@ const onSubmit = (data) => {
             <form onSubmit={handleSubmit(onSubmit)} className='w-full relative z-10'>
               <div className="my-4">
                 <div className='package-input' >
-                  <span><i className="fas fa-envelope"></i></span>
                   <input className='input' {...register('first_name', { required: true })} placeholder="الاسم الاول" />
                 </div>
                 {errors.first_name && <p className='text-danger'>First Name is required</p>}
               </div>
               <div className="my-4">
                 <div className='package-input' >
-                  <span><i className="fas fa-envelope"></i></span>
                   <input className='input' {...register('last_name', { required: true })} placeholder="الاسم الاخير" />
                 </div>
                 {errors.last_name && <p className='text-danger'>Last Name is required</p>}
               </div>
               <div className="my-4">
                 <div className='package-input' >
-                  <span><i className="fas fa-envelope"></i></span>
                   <input className='input' {...register('email', { required: true, pattern: /^\S+@\S+$/i })} placeholder="البريد الإلكتروني" />
                 </div>
                 {errors.email && errors.email.type === 'required' && <p className='text-danger'>Email is required</p>}
                 {errors.email && errors.email.type === 'pattern' && <p className='text-danger'>Invalid email format</p>}
               </div>
               <div className="my-4">
-                <div className='package-input' >
-                  <span><i className="fas fa-lock"></i></span>
-                  <input className='input' type={type ? "text" : "password"} {...register('password', { required: true, minLength: 8 })} placeholder="كلمة المرور" />
-                  <button type="button" className="show-pass" onClick={changeType}>
-                    <i className={`fas fa-eye${type ? "" : "-slash"}`}></i>
-                  </button>
-                </div>
-                {errors.password && errors.password.type === 'required' && <p className='text-danger'>Password is required</p>}
-                {errors.password && errors.password.type === 'minLength' && <p className='text-danger'>Password must be at least 8 characters long</p>}
+        <div className='package-input'>
+          <input
+            className='input'
+            type={types.password ? "text" : "password"}
+            {...register('password', { required: true, minLength: 8 })}
+            placeholder="كلمة المرور"
+          />
+          <button type="button" className="show-pass" onClick={() => changeType('password')}>
+            <i className='text-2xl'>{types.password ? <FaEye /> : <IoEyeOff />}</i>
+          </button>
+        </div>
+        {errors.password && errors.password.type === 'required' && <p className='text-danger'>Password is required</p>}
+        {errors.password && errors.password.type === 'minLength' && <p className='text-danger'>Password must be at least 8 characters long</p>}
               </div>
+
               <div className="my-4">
-                <div className='package-input' >
-                  <span><i className="fas fa-lock"></i></span>
-                  <input className='input' type={type ? "text" : "password"} {...register('password_confirmation', { required: true, validate: value => value === password })} placeholder="تأكيد كلمة المرور" />
-                  <button type="button" className="show-pass" onClick={changeType}>
-                    <i className={`fas fa-eye${type ? "" : "-slash"}`}></i>
+                <div className='package-input relative'>
+                  <input
+                    className='input'
+                    type={types.password_confirmation ? "text" : "password"}
+                    {...register('password_confirmation', { required: true, validate: value => value === password })}
+                    placeholder="تأكيد كلمة المرور"
+                  />
+                  <button type="button" className="show-pass" onClick={() => changeType('password_confirmation')}>
+                    <i className='text-2xl'>{types.password_confirmation ? <FaEye /> : <IoEyeOff />}</i>
                   </button>
                 </div>
                 {errors.password_confirmation && errors.password_confirmation.type === 'required' && <p className='text-danger'>Confirm Password is required</p>}
@@ -103,7 +115,7 @@ const onSubmit = (data) => {
                 <span className='mx-2'> لديك حساب؟</span>
                 <Link to="/login" className="forget mb-4 underline">تسجيل الدخول</Link>
               </div>
-              <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? "loading..." : "انشاء حساب"}</button>
+              <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? <Spin/> : "انشاء حساب"}</button>
             </form>
           </div>
         </div>

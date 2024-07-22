@@ -30,9 +30,10 @@ const MainCard = ({ sale, room , setRemoved }) => {
   const navigate = useNavigate()
   const { pathname } = useLocation();
   const handleFav = () => {
+    setFav(!fav);
     request.post(`/user/rooms/${room.id}/wishlist`)
       .then(res => {
-        setFav(!fav);
+        // setFav(!fav);
         if(pathname === "/wishlist"){
           setRemoved((prev)=>!prev)
         }

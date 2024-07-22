@@ -13,6 +13,10 @@ const Wishlist = () => {
   const {pathname} = useLocation()
   const {data , isLoading , refetch} = useFetch('/user/rooms/wishlist')
   const rooms = data?.data || []
+
+
+
+
   useEffect(()=>{
     if(pathname === "/wishlist"){
       refetch()
@@ -57,7 +61,7 @@ const pageVariants = {
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[30px]'>
             {
               rooms?.length > 0 ?
-                rooms.map((room) => (
+              rooms.map((room) => (
                   <MainCard key={room.id} room={room} setRemoved={setRemoved} />
                 )) :
               isLoading?

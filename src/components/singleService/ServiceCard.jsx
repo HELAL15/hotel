@@ -17,7 +17,6 @@ const ServiceCard = ({ room }) => {
   const navigate = useNavigate()
 
   const { id } = useParams();
-  console.log(date);
 
   const handleCountChange = (label, type, count, total, updatedGuestData) => {
     setTotalGuestPrice(total);
@@ -53,10 +52,8 @@ const ServiceCard = ({ room }) => {
 
     request.post(`/user/rooms/${id}/reservation`, formData)
       .then((res) => {
-        console.log(res.data);
         toast.success(res.data.message)
-        // navigate("/profile")
-
+        navigate("/checkout")
       })
       .catch((err) => {
         console.log(err.response.data);

@@ -6,6 +6,9 @@ import { request } from '../../api/request';
 import Cookie from 'cookie-universal';
 import { ToastContainer, toast } from 'react-toastify';
 import { UserContext } from '../../context/UserContext';
+import { Spin } from 'antd';
+import { FaEye } from 'react-icons/fa6';
+import { IoEyeOff } from 'react-icons/io5';
 
 const Login = () => {
 
@@ -72,7 +75,7 @@ const cookie = Cookie();
               <span><i className="fas fa-lock"></i></span>
               <input className='input' type={type ? "text" : "password"} {...register('password', { required: true, minLength: 8 })} placeholder="كلمة المرور" />
               <button type="button" className="show-pass" toggle="#pass" onClick={()=>changeType()}>
-                <i className={`fas fa-eye${type? "" : "-slash"}`}></i>
+              <i className='text-2xl'>{type ? <FaEye /> : <IoEyeOff />}</i>
               </button>
             </div>
             {errors.password && errors.password.type === 'required' && <p className='text-danger'>Password is required</p>}
@@ -82,7 +85,7 @@ const cookie = Cookie();
             <div className='my-5 text-gray-500 text-right'>
               <Link to="/forgetpassword" className="forget mb-4 ">هل نسيت كلمة المرور؟</Link>
             </div>
-            <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? "loading..." : "دخول"}</button>
+            <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? <Spin/> : "دخول"}</button>
             <div className='my-4 text-gray-500 text-center'>
             <span className='mx-2'>مستخدم جديد؟</span>
               <Link to="/register" className="forget mb-4 underline">إنشاء حساب جديد</Link>

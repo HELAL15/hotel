@@ -4,6 +4,8 @@ import { request } from '../../api/request'
 import { toast } from 'react-toastify'
 import { UserContext } from '../../context/UserContext'
 import { Spin } from 'antd'
+import DeleteAccount from '../../pages/Profile/DeleteAccount'
+import { twMerge } from 'tailwind-merge'
 
 const ProfileNav = () => {
 
@@ -30,21 +32,7 @@ const handleLogOut = ()=>{
 }
 
 
-const handleDelete = ()=>{
-  setLoadingD(true)
-  request.post('/user/delete-account')
-  .then(res=>{
-    setLoadingD(false)
-    navigate('/')
-    sessionStorage.removeItem("hotel")
-    setUserDetails([])
-    toast.success(res.data.message)
-  })
-  .catch((error)=>{
-    setLoadingD(false)
-    toast.error(error.response.data.message)
-  })
-}
+
 
 
   return (
@@ -54,8 +42,8 @@ const handleDelete = ()=>{
           <NavLink to="/account-password" className='profile-nav'>Account password</NavLink>
           <NavLink to="/wishlist" className='profile-nav'>wishlist</NavLink>
           <NavLink to="/booking-list" className='profile-nav'>booking list</NavLink>
-          <button className='btn bg-red-500 text-white' onClick={handleLogOut}>{loading? <Spin/> : "logout"}</button>
-          <button className='btn bg-yellow-400 text-black' onClick={handleDelete}>{loadingD? <Spin/> : "delete account"}</button>
+          <button className={twMerge("btn bg-yellow-400 text-black mb-1")} onClick={handleLogOut}>{loading? <Spin/> : "logout"}</button>
+          <DeleteAccount/>
       </div>
     </>
   )

@@ -18,7 +18,7 @@ const MainSection = () => {
         <StyledAnim/>
         <Container>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 items-center relative z-10'>
-          <div className='flex flex-col gap-4 pe-28'>
+          <div className='flex flex-col gap-4 md:pe-28'>
           {
             isLoading ? <>
               <Skeleton count={1} width={150} height={30} />
@@ -30,7 +30,7 @@ const MainSection = () => {
                   scale: [1, 1.05, 1],
                   transition: {duration: 1}
                 }}
-                className='text-3xl font-bold text-gray-800'>{about.title}</motion.h2>
+                className='text-2xl font-bold text-gray-800'>{about.title}</motion.h2>
               <p className='text-gray-600 leading-8'>{about.description}</p>
             </>
           }

@@ -4,10 +4,12 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { toast } from 'react-toastify';
 import Container from '../helpers/Container';
 import { request } from '../api/request';
+import { Spin } from 'antd';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [empty, setEmpty] = useState(false);
+  const [loading , setLoading] = useState(false)
 
   const handleChange = (e) => {
     setEmail(e.target.value);
@@ -17,20 +19,24 @@ const Newsletter = () => {
     e.preventDefault();
     try {
       if (email !== '') {
+        setLoading(true)
         const res = await request.post("/subscribe", { email });
         setEmpty(false);
         if (res.status === 200) {
           toast.success(res.data.message);
+          setLoading(false)
         }
       } else {
         setEmpty(true);
+        setLoading(false)
         toast.error("Please enter your email address");
-        setTimeout(() => setEmpty(false), 1000); // إزالة تأثير الاهتزاز بعد 1 ثانية
+        setTimeout(() => setEmpty(false), 1000); 
       }
     } catch (error) {
       setEmpty(true);
       toast.error(error.response?.data?.message || "An error occurred");
-      setTimeout(() => setEmpty(false), 1000); // إزالة تأثير الاهتزاز بعد 1 ثانية
+      setTimeout(() => setEmpty(false), 1000);
+      setLoading(false)
     }
     setEmail('');
   }
@@ -66,7 +72,7 @@ const Newsletter = () => {
                   aria-label='subscribe-newsletter' 
                   className='btn-primary p-0 w-[40px] h-[40px] bg-transparent grid place-items-center rounded-full absolute rtl:left-2 rtl:right-[unset] ltr:right-2 top-[50%] translate-y-[-50%]'
                 >
-                  <FaArrowRightLong className='rtl:-scale-100' />
+                  {loading? <Spin/>:<FaArrowRightLong className='rtl:-scale-100' />}
                 </button>
               </form>
             </div>

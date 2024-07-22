@@ -5,6 +5,7 @@ import StyledAnim from '../../components/StyledAnim';
 import { request } from '../../api/request';
 import { toast } from 'react-toastify';
 import { CheckCode } from '../../context/CheckCode';
+import { Spin } from 'antd';
 
 const ForgetPassword = () => {
 
@@ -53,13 +54,12 @@ const {setCodeReady , setEmail} = useContext(CheckCode)
           <form onSubmit={handleSubmit(onSubmit)} className='w-full relative z-10'>
           <div className="my-4">
             <div className='package-input' >
-              <span><i className="fas fa-envelope"></i></span>
               <input className='input' {...register('email', { required: true, pattern: /^\S+@\S+$/i })} placeholder="البريد الإلكتروني" />
             </div>
             {errors.email && errors.email.type === 'required' && <p className='text-danger'>Email is required</p>}
             {errors.email && errors.email.type === 'pattern' && <p className='text-danger'>Invalid email format</p>}
           </div>
-            <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? "loading..." : "التالي"}</button>
+            <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? <Spin/> : "التالي"}</button>
     </form>
           </div>
         </div>

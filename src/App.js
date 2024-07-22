@@ -26,6 +26,7 @@ import Privacy from './pages/Privacy';
 import RenterPassword from './pages/auth/RenterPassword';
 import Otp from './pages/auth/Otp';
 import OtpOutlet from './pages/auth/OtpOutlet';
+import CheckOut from './pages/CheckOut';
 
 const App = () => {
 
@@ -59,6 +60,7 @@ const Layout =()=>{
       <Route path="/services/:id" element={<SingleService/>}/>
       <Route path="/places" element={<Places/>}/>
       <Route path="/places/:id" element={<SinglePlace/>}/>
+      <Route path="/checkout" element={<CheckOut/>}/>
       <Route path="/privacy" element={<Privacy/>}/>
       <Route element={<RequireBack/>}>
         <Route path="/login" element={<Login/>}/>

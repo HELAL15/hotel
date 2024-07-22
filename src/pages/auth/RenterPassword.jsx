@@ -4,6 +4,10 @@ import { CheckCode } from '../../context/CheckCode';
 import { toast } from 'react-toastify';
 import { request } from '../../api/request';
 import { useForm } from 'react-hook-form';
+import { Spin } from 'antd';
+import { FaEye } from 'react-icons/fa6';
+import { IoEyeOff } from 'react-icons/io5';
+import  Container  from "../../helpers/Container"
 
 const RenterPassword = () => {
   const { email } = useContext(CheckCode);
@@ -32,41 +36,59 @@ const RenterPassword = () => {
       });
   };
 
+
+  const [types, setTypes] = useState({ password: false, password_confirmation: false });
+
+const changeType = (field) => {
+  setTypes(prevTypes => ({ ...prevTypes, [field]: !prevTypes[field] }));
+};
+
   return (
     <section className='mt-10'>
-      <div className='w-full md:w-[500px] h-full py-5 m-auto'>
+    <Container>
         <h2 className='text-3xl capitalize mb-10 text-center'>اعادة تعيين كلمة المرور</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className='flex items-center justify-center flex-col gap-4'>
-          <div className='w-full'>
+        <form onSubmit={handleSubmit(onSubmit)} className=' w-full md:w-[500px] h-full py-5 m-auto'>
+        <div className="my-4">
             <label htmlFor='password' className='block text-sm font-medium text-gray-700'>كلمة المرور الجديدة</label>
+          <div className='package-input'>
             <input
               id='password'
-              type='password'
+              type={types.password ? "text" : "password"}
               className={`input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 ${errors.password ? 'border-red-500' : ''}`}
               {...register('password', { required: 'هذا الحقل مطلوب', minLength: { value: 6, message: 'كلمة المرور يجب أن تكون على الأقل 6 أحرف' } })}
             />
-            {errors.password && <span className='text-red-500 text-sm'>{errors.password.message}</span>}
+            
+            <button type="button" className="show-pass" onClick={() => changeType('password')}>
+            <i className='text-2xl'>{types.password ? <FaEye /> : <IoEyeOff />}</i>
+          </button>
           </div>
+            {errors.password && <span className='text-red-500 text-sm'>{errors.password.message}</span>}
+        </div>
           
-          <div className='w-full'>
+          <div className='my-4'>
             <label htmlFor='password_confirmation' className='block text-sm font-medium text-gray-700'>تأكيد كلمة المرور</label>
+          <div className='package-input'>
             <input
               id='password_confirmation'
-              type='password'
+              type={types.password_confirmation ? "text" : "password"}
               className={`input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 ${errors.password_confirmation ? 'border-red-500' : ''}`}
               {...register('password_confirmation', {
                 required: 'هذا الحقل مطلوب',
                 validate: value => value === watch('password') || 'كلمتا المرور غير متطابقتين'
               })}
             />
+            <button type="button" className="show-pass" onClick={() => changeType('password_confirmation')}>
+            <i className='text-2xl'>{types.password_confirmation ? <FaEye /> : <IoEyeOff />}</i>
+          </button>
+          </div>
             {errors.password_confirmation && <span className='text-red-500 text-sm'>{errors.password_confirmation.message}</span>}
           </div>
           
           <button type='submit' className='btn btn-primary w-full' disabled={loading}>
-            {loading ? 'جارٍ الإرسال...' : 'إعادة تعيين كلمة المرور'}
+            {loading ? <Spin/> : 'إعادة تعيين كلمة المرور'}
           </button>
         </form>
-      </div>
+    </Container>
     </section>
   );
 };
