@@ -14,7 +14,7 @@ const FeaturedPlaces = () => {
 
 const {data , refetch} = useFetch('/rooms' , [lang])
 
-const rooms = data?.data || []
+const rooms = data?.data.data || []
 
 // useEffect(()=>{
 //   console.log("done lang");

@@ -221,3 +221,15 @@ html[dir=rtl]{
     direction:ltr;
   }
 }
+
+
+
+
+:where(.css-dev-only-do-not-override-17seli4).ant-pagination .ant-pagination-item-active {
+
+  @apply border-primary text-primary !important;
+}
+
+:where(.css-dev-only-do-not-override-17seli4).ant-pagination .ant-pagination-item-active a {
+  @apply text-primary !important;
+}

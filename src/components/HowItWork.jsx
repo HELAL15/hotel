@@ -10,7 +10,6 @@ import { useLngContext } from '../context/ChangeLng'
 
 const HowItWork = () => {
   const {data , refetch } = useFetch("/about-relax")
-  console.log(data);
   const relaxes = data?.data || []
 
   const {lang} = useLngContext()
