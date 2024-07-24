@@ -40,7 +40,7 @@ const BookList = () => {
     >
       <Seo title="booklist"  />
           <section className=''>
-      <Container>
+
       <SecTitle 
           head="booking list"
           />
@@ -50,7 +50,7 @@ const BookList = () => {
           <MainCard sale/>
           <MainCard/>
         </div>
-      </Container>
+
     </section>
     </motion.div>
   )

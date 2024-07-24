@@ -6,6 +6,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { CiBookmarkCheck } from "react-icons/ci";
 import { UserContext } from '../../context/UserContext';
 import userImg from '../../img/olp.jpeg'
+import LogOut from '../profile/LogOut';
 
 
 function UserDropdown() {
@@ -72,6 +73,9 @@ const {userDetails} = useContext(UserContext)
                   <span>wishlist</span>
                 </Link>
               )}
+            </Menu.Item>
+            <Menu.Item>
+              <LogOut/>
             </Menu.Item>
           </div>
         </Menu.Items>

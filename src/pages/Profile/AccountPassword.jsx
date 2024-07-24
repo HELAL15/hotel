@@ -63,7 +63,7 @@ const AccountPassword = () => {
     >
       <Seo title="account-password" />
       <section className='relative'>
-        <Container>
+
           <SecTitle head="update your password" />
           <form className='relative z-20' onSubmit={handleSubmit(onSubmit)}>
             <div className='grid grid-cols-1 gap-6 md:grid-cols-2 mb-8'>
@@ -109,7 +109,7 @@ const AccountPassword = () => {
             </div>
             <button type="submit" className='btn btn-primary' disabled={loading}>{loading? "loading..." : "update password"}</button>
           </form>
-        </Container>
+
       </section>
     </motion.div>
   );

@@ -212,7 +212,7 @@ html[dir=rtl] .ant-tabs-tab {
   @apply bg-primary text-white !important;
 }
 
-.ant-space-item , .ant-select , .ant-space{
+.single-room .ant-space-item , .single-room .ant-select , .single-room .ant-space{
   width: 100% !important;
 }
 
@@ -232,4 +232,10 @@ html[dir=rtl]{
 
 :where(.css-dev-only-do-not-override-17seli4).ant-pagination .ant-pagination-item-active a {
   @apply text-primary !important;
+}
+
+
+
+.hero {
+  height: calc(100vh - 72px);
 }

@@ -7,6 +7,7 @@ import { CiBookmarkCheck, CiUser } from 'react-icons/ci'
 import { Menu } from 'antd'
 import { FaRegHeart } from 'react-icons/fa'
 import { UserContext } from '../../context/UserContext'
+import LogOut from '../profile/LogOut'
 
 const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
 
@@ -79,8 +80,11 @@ const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
               <Link to='/register' className='btn btn-primary'>register</Link>
             </>
           }
-
-
+           
+           {
+            token && userDetails && <LogOut/>
+           }
+          
 
 
           </div>

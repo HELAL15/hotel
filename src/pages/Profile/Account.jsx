@@ -90,7 +90,7 @@ const pageVariants = {
     >
       <Seo title="Profile" />
       <section className='relative'>
-        <Container>
+
           <SecTitle head="Your Main Information" />
           <form onSubmit={handleSubmit(onSubmit)} className='w-full relative z-10'>
             <div className="my-4">
@@ -145,7 +145,7 @@ const pageVariants = {
               {loading ? <Spin/> : 'update profile'}
             </button>
           </form>
-        </Container>
+
       </section>
     </motion.div>
   );

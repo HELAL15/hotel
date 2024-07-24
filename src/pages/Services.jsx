@@ -33,11 +33,11 @@ const Services = () => {
       <section className='mt-8'>
         <Container>
           <div className='flex items-center justify-between gap-4 flex-wrap mb-6'>
-            <h3 className='text-xl md:text-3xl capitalize font-semibold'>
+            <h3 className='text-lg md:text-2xl capitalize font-semibold'>
               Rooms (<span className='text-primary'>{totalRooms}</span>)
             </h3>
             <div className='flex items-center gap-4 '>
-              <p className='text-lg md:text-xl'>Filter by Guests</p>
+              <p className='text-base'>Filter by Guests</p>
               <Select
                 defaultValue=""
                 style={{ width: 90 }}

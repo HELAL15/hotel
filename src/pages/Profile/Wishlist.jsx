@@ -4,17 +4,26 @@ import Container from '../../helpers/Container'
 import SecTitle from '../../components/SecTitle'
 import MainCard from '../../components/MainCard'
 import useFetch from '../../hooks/useFetch'
-import { Empty, Skeleton } from 'antd'
+import { Empty, Pagination } from 'antd'
 import { useLocation } from 'react-router'
 import {motion} from "framer-motion"
+import Skeleton from 'react-loading-skeleton'
 
 const Wishlist = () => {
   const [removed , setRemoved] = useState(false)
+  const [current, setCurrent] = useState(1);
   const {pathname} = useLocation()
   const {data , isLoading , refetch} = useFetch('/user/rooms/wishlist')
-  const rooms = data?.data || []
+  const rooms = data?.data.data || []
+  const totalRooms = data?.data.meta.total || 0;
 
+  const handlePaginationChange = (page) => {
+    setCurrent(page);
+  };
 
+  useEffect(() => {
+    refetch();
+  }, [ current]);
 
 
   useEffect(()=>{
@@ -54,7 +63,7 @@ const pageVariants = {
     >
       <Seo title="wishlist"  />
       <section className=''>
-      <Container>
+
       <SecTitle 
           head="wishlist"
           />
@@ -66,14 +75,25 @@ const pageVariants = {
                 )) :
               isLoading?
               <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full col-span-4 my-8 '>
-                <Skeleton />
-                <Skeleton />
-                <Skeleton />
+              {[...Array(8)].map((_, index) => (
+                  <div key={index}>
+                    <Skeleton height={200} />
+                    <Skeleton width={100} />
+                    <Skeleton count={2} />
+                  </div>
+                ))}
               </div> :
               <Empty className='col-span-4 my-8'/>
             }
         </div>
-      </Container>
+        <Pagination
+            className='mt-10'
+            current={current}
+            total={totalRooms}
+            pageSize={data?.data.meta.per_page}
+            onChange={handlePaginationChange}
+          />
+
     </section>
     </motion.div>
   )
