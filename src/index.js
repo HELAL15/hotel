@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
@@ -8,24 +8,25 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './slider.css';
-import OpenProvider from './context/OpenContext'
-import { ChangeLng, useLngContext } from './context/ChangeLng';
+import OpenProvider from './context/OpenContext';
 import BookingProvider from './context/BookServiceContext';
-import SwiperDirProvider from './context/SwiperDir';
 import UserProvider from './context/UserContext';
 import { ToastContainer } from 'react-toastify';
-import { SettingProvider } from './context/SettingContext';
-import CheckCodeProvider from './context/CheckCode';
 import { ConfigProvider } from 'antd';
+import { Provider, useSelector } from 'react-redux';
+import { store } from './redux/store';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
 
+disableReactDevTools();
 
 const MainApp = () => {
-  const { lang } = useLngContext();
-  const direction = lang === "ar" ? "rtl" : "ltr";
+  const lang = useSelector((state) => state.lang.value);
+  const direction = lang === 'ar' ? 'rtl' : 'ltr';
 
   return (
     <ConfigProvider direction={direction}>
+      <ToastContainer />
       <App />
     </ConfigProvider>
   );
@@ -33,23 +34,15 @@ const MainApp = () => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
-          <UserProvider>
-      <ChangeLng>
+  <Provider store={store}>
+    <Router>
+      <UserProvider>
         <OpenProvider>
           <BookingProvider>
-          <SwiperDirProvider>
-        <SettingProvider>
-        <CheckCodeProvider>
-          <ToastContainer/>
-          <MainApp/>
-        </CheckCodeProvider>
-        </SettingProvider>
-          </SwiperDirProvider>
+              <MainApp />
           </BookingProvider>
         </OpenProvider>
-      </ChangeLng>
-          </UserProvider>
-  </Router>
+      </UserProvider>
+    </Router>
+  </Provider>
 );
-

@@ -1,22 +1,19 @@
-import React, { memo, useContext } from 'react'
+import React, {memo} from 'react'
 import Container from '../../helpers/Container'
 import { twMerge } from 'tailwind-merge'
 import { Link } from 'react-router-dom'
 import StyledAnim from '../StyledAnim'
-import img1 from '../../img/p1.webp';
-import img2 from '../../img/p2.webp';
-import img3 from '../../img/p3.webp';
 import { useTranslation } from 'react-i18next'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import PlaceCard from '../PlaceCard'
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import { SwiperDirContext } from '../../context/SwiperDir'
+import { Autoplay, Pagination } from 'swiper/modules'
 import { CiSearch } from 'react-icons/ci'
 import { Select  } from 'antd'
+import { useSelector } from 'react-redux'
 const { Option } = Select;
 const Hero = () => {
   const {t} = useTranslation()
-  const {dir} = useContext(SwiperDirContext)
+  const lang = useSelector((state) => state.lang.value);
+  const dir = lang === 'ar' ? 'rtl' : 'ltr'
 
   const handleChange= (data)=>{
     console.log(data);

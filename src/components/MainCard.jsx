@@ -9,15 +9,12 @@ import 'swiper/css/navigation';
 import '../slider.css';
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { SwiperDirContext } from '../context/SwiperDir';
 import { request } from '../api/request';
 import { ConvertDecimel } from '../helpers/ConvertDecimel';
-import empty from '../img/emptyImg.PNG'
-import { SettingContext } from '../context/SettingContext';
+import { useSelector } from 'react-redux';
 
 const MainCard = ({ sale, room , setRemoved }) => {
-  const {memoizedSetting:setting} = useContext(SettingContext)
- 
+  const setting = useSelector((state) => state.setting.value);
   let data = setting?.data || null
   const {
     logo ,
@@ -25,8 +22,10 @@ const MainCard = ({ sale, room , setRemoved }) => {
   } = data || {} ;
 
 
+  const lang = useSelector((state) => state.lang.value);
+  const dir = lang === 'ar' ? 'rtl' : 'ltr'
+
   const [fav, setFav] = useState(room?.is_fav === 1);
-  const { dir } = useContext(SwiperDirContext);
   const navigate = useNavigate()
   const { pathname } = useLocation();
   const handleFav = () => {
@@ -54,7 +53,7 @@ const MainCard = ({ sale, room , setRemoved }) => {
         </button>
         {sale && <span className='bg-red-700 text-white text-sm font-semibold px-4 rounded-2xl absolute top-3 left-2 z-40'>-10% today</span>}
         <Link to={`/services/${room?.id}`}>
-          <div className='card-header h-[250px] md:h-[300px] mb-4 overflow-hidden rounded-xl'>
+          <div className='card-header h-[250px] md:h-[280px] mb-4 overflow-hidden rounded-xl'>
             <Swiper
               className='h-full w-full'
               modules={[Navigation, Pagination, Scrollbar]}

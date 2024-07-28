@@ -12,7 +12,7 @@ const Services = () => {
   const [noGuests, setNoGuests] = useState("");
   const [current, setCurrent] = useState(1);
 
-  const { data, isLoading, refetch } = useFetch(`/rooms?no_guests=${noGuests}&page=${current}`);
+  const { data, isLoading } = useFetch(`/rooms?no_guests=${noGuests}&page=${current}` , [noGuests, current]);
   const rooms = data?.data.data || [];
   const totalRooms = data?.data.meta.total || 0;
 
@@ -23,9 +23,6 @@ const Services = () => {
     setCurrent(page);
   };
 
-  useEffect(() => {
-    refetch();
-  }, [noGuests, current]);
 
   return (
     <>

@@ -6,20 +6,19 @@ import MainCard from '../MainCard'
 import { Link } from 'react-router-dom'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import useFetch from '../../hooks/useFetch'
+import { useSelector } from 'react-redux'
 
 const FeaturedPlaces = () => {
 
-  const lang = localStorage.getItem("lang")
 
 
-const {data , refetch} = useFetch('/rooms' , [lang])
+  const lang = useSelector((state) => state.lang.value)
+
+
+const {data } = useFetch('/rooms' , [lang])
 
 const rooms = data?.data.data || []
 
-// useEffect(()=>{
-//   console.log("done lang");
-//   refetch()
-// },[lang])
 
 
   return (

@@ -74,9 +74,9 @@ const {userDetails} = useContext(UserContext)
                 </Link>
               )}
             </Menu.Item>
-            <Menu.Item>
+            {/* <Menu.Item>
               <LogOut/>
-            </Menu.Item>
+            </Menu.Item> */}
           </div>
         </Menu.Items>
       </Transition>

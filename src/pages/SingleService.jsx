@@ -8,14 +8,15 @@ import ServiceCard from '../components/singleService/ServiceCard'
 import { useParams } from 'react-router'
 import useFetch from '../hooks/useFetch'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useLngContext } from '../context/ChangeLng'
+import { useSelector } from 'react-redux'
 // import Loader from '../layouts/Loader'
 
 const SingleService = () => {
   const {id} = useParams()
   
   const {data , refetch , isLoading:loading} = useFetch(`/rooms/${id}`)
-  const {lang} = useLngContext()
+  
+  const lang = useSelector((state)=>state.lang.value)
   
   const room = useMemo(() => data?.data || {}, [data])
   

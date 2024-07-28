@@ -9,20 +9,15 @@ import { UserContext } from '../../context/UserContext';
 import { Spin } from 'antd';
 import { FaEye } from 'react-icons/fa6';
 import { IoEyeOff } from 'react-icons/io5';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/features/userSlice';
 
 const Login = () => {
 
   const navigate = useNavigate()
-
-  // const {setUser , user} = useContext(UserContext)
-
-// cookies
-const cookie = Cookie();
-
   const [loading , setLoading] = useState(false)
-
-
   const [type , setType] = useState(false)
+  const dispatch = useDispatch()
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
@@ -32,12 +27,12 @@ const cookie = Cookie();
       setLoading(false)
       const userData = res.data.data
       // setUser(userData)
-      // console.log(user);
+      console.log(userData);
       const token = res.data.data.token
       // set token in cookies
       sessionStorage.setItem('hotel' , token);
-      sessionStorage.setItem('user-info' , userData)
-      navigate('/')
+      dispatch(setUser(userData))
+      // navigate('/')
       toast.success(res.data.message);
       
     })

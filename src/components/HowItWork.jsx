@@ -1,22 +1,15 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo} from 'react'
 import Container from '../helpers/Container'
-import img from '../img/HIW1.webp'
-import img2 from '../img/HIW2.webp'
-import img3 from '../img/HIW3.webp'
 import dashed from '../img/dashed.svg'
 import { twMerge } from 'tailwind-merge'
 import useFetch from '../hooks/useFetch'
-import { useLngContext } from '../context/ChangeLng'
+import { useSelector } from 'react-redux'
 
 const HowItWork = () => {
-  const {data , refetch } = useFetch("/about-relax")
+  const lang = useSelector((state) => state.lang.value)
+
+  const {data} = useFetch("/about-relax" ,[lang])
   const relaxes = data?.data || []
-
-  const {lang} = useLngContext()
-
-useEffect(()=>{
-  refetch()
-},[lang])
 
 
   return (

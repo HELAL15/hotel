@@ -13,7 +13,7 @@ const Wishlist = () => {
   const [removed , setRemoved] = useState(false)
   const [current, setCurrent] = useState(1);
   const {pathname} = useLocation()
-  const {data , isLoading , refetch} = useFetch('/user/rooms/wishlist')
+  const {data , isLoading , refetch} = useFetch(`/user/rooms/wishlist?page=${current}` , [ current])
   const rooms = data?.data.data || []
   const totalRooms = data?.data.meta.total || 0;
 
@@ -21,9 +21,6 @@ const Wishlist = () => {
     setCurrent(page);
   };
 
-  useEffect(() => {
-    refetch();
-  }, [ current]);
 
 
   useEffect(()=>{

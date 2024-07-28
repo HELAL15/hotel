@@ -38,7 +38,7 @@ export const ChangeLng = ({ children }) => {
     window.document.dir = i18n.dir(lang);
     window.document.documentElement.lang = lang;
     Cookies.set('i18next', lang);
-    localStorage.setItem("lang", lang);
+    // localStorage.setItem("lang", lang);
 
     // Update Axios headers whenever the language changes
     request.defaults.headers['accept-language'] = lang;

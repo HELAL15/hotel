@@ -6,15 +6,16 @@ import OTP from 'antd/es/input/OTP';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { Spin } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCodeReady } from '../../redux/features/forgetPasswordSlice';
 
 const Otp = () => {
-  const { email } = useContext(CheckCode);
+  const email = useSelector((state)=>state.forgetPassword.email)
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
 
   const handleChange = (code) => {
-    console.log(code);
     setOtp(code);
   };
 

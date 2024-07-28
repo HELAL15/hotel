@@ -7,7 +7,6 @@ const CheckCodeProvider = ({ children }) => {
   const [codeReady, setCodeReady] = useState(false);
   const [email , setEmail] = useState('')
   
-
   return (
     <CheckCode.Provider value={{ codeReady, setCodeReady , email , setEmail }}>
       {children}

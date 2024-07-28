@@ -10,7 +10,7 @@ export const SettingProvider = ({ children }) => {
   const [setting, setSetting] = useState(null);
   const { data: fetchedSetting , isLoading , refetch } = useFetch("setting");
 
-  const { lang } = useLngContext();
+  // const { lang } = useLngContext();
 
   const location = useLocation()
 
@@ -20,9 +20,6 @@ export const SettingProvider = ({ children }) => {
     }
   }, [fetchedSetting ]);
 
-  useEffect(() => {
-    refetch()
-  },[lang])
 
   const memoizedSetting = useMemo(() => ( setting ), [setting ]);
 

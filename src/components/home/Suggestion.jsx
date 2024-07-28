@@ -1,13 +1,14 @@
-import React, { memo, useContext, useEffect, useState } from 'react'
+import React, { memo} from 'react'
 import Container from '../../helpers/Container'
 import SecTitle from '../SecTitle'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import PlaceCard from '../PlaceCard'
-import { SwiperDirContext } from '../../context/SwiperDir';
+import { useSelector } from 'react-redux';
 
 const Suggestion = () => {
-  const {dir} = useContext(SwiperDirContext)
+  const lang = useSelector((state) => state.lang.value);
+  const dir = lang === 'ar' ? 'rtl' : 'ltr'
   return (
     <>
           <section className=''>

@@ -1,5 +1,5 @@
 import React, { memo, useContext } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import UserDropdown from '../components/nav/UserDropdown'
 import { FaBars } from "react-icons/fa6";
 import { OpeningContext } from '../context/OpenContext'
@@ -9,17 +9,20 @@ import { AiOutlineGlobal } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next'
 import { SettingContext } from '../context/SettingContext'
 import { motion } from 'framer-motion'
+import { useDispatch, useSelector } from 'react-redux';
+import { changeLang } from '../redux/features/langSlice';
+import { UserContext } from '../context/UserContext';
 
 
 const Header = () => {
-  const user = sessionStorage.getItem("user-info")
+
+  const {userDetails:user} = useContext(UserContext)
   const token = sessionStorage.getItem("hotel")
   const {isOpen , setIsOpen} = useContext(OpeningContext)
-  const { lang , changeLanguage } = useLngContext()
   const {t}= useTranslation()
 
 
-  const {memoizedSetting:setting} = useContext(SettingContext)
+  const setting = useSelector((state) => state.setting.value);
 
   let data = setting?.data || null
 
@@ -40,6 +43,21 @@ const Header = () => {
       }
     }
   }
+
+
+  const lang = useSelector((state) => state.lang.value)
+  const dispatch = useDispatch()
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleLang = ()=>{
+    dispatch(changeLang())
+    navigate(location.pathname, { replace: true });
+  }
+
+
+
 
   return (
     <>
@@ -66,18 +84,10 @@ const Header = () => {
             </nav>
             <div className='flex items-center gap-4'>
             <div className='flex items-center gap-4'>
-              <div>
-                {
-                  lang === 'en' ? <button className="flex items-center gap-1 text-gray-500 text-lg" onClick={()=>{ changeLanguage("ar") }}>
-                  <span>{t("lng")}</span>
-                  <AiOutlineGlobal/>
-                  </button> :
-                  <button  className="flex items-center gap-1 text-gray-500 text-lg" onClick={()=>{ changeLanguage("en") }}>
-                  <span>{t("lng")}</span>
-                  <AiOutlineGlobal/>
-                </button>
-                }
-              </div>
+              <button className='flex items-center gap-1' onClick={handleLang}>
+              {lang === 'ar' ? 'english' : 'العربية'}
+              <AiOutlineGlobal/>
+              </button>
               <ul className='hidden items-center space-x-2 gap-3 lg:flex'>
                 {
                   user && token ? <li className='relative'><UserDropdown/></li> :

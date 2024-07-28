@@ -8,9 +8,12 @@ import { Spin } from 'antd';
 import { FaEye } from 'react-icons/fa6';
 import { IoEyeOff } from 'react-icons/io5';
 import  Container  from "../../helpers/Container"
+import { useDispatch, useSelector } from 'react-redux';
+import { setCodeReady } from '../../redux/features/forgetPasswordSlice';
 
 const RenterPassword = () => {
-  const { email } = useContext(CheckCode);
+  const email = useSelector((state)=>state.forgetPassword.email)
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -29,6 +32,7 @@ const RenterPassword = () => {
         setLoading(false);
         navigate('/login');
         toast.success(res.data.message);
+        dispatch(setCodeReady(false))
       })
       .catch((err) => {
         toast.error(err.response.data.message);

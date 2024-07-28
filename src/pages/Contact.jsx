@@ -11,10 +11,11 @@ import { SettingContext } from '../context/SettingContext'
 import { Link } from 'react-router-dom'
 import { FiYoutube } from 'react-icons/fi'
 import StyledAnim from '../components/StyledAnim'
+import { useSelector } from 'react-redux'
 
 const Contact = () => {
   
-  const {memoizedSetting:setting} = useContext(SettingContext)
+  const setting = useSelector((state) => state.setting.value);
 
   let data = setting?.data || null
 
@@ -33,7 +34,8 @@ const Contact = () => {
 
 
 
-  const lang = localStorage.getItem("lang")
+
+  const lang = useSelector((state) => state.lang.value)
 
   return (
     <>

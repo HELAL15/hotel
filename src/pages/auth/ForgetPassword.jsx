@@ -6,11 +6,15 @@ import { request } from '../../api/request';
 import { toast } from 'react-toastify';
 import { CheckCode } from '../../context/CheckCode';
 import { Spin } from 'antd';
+import { useDispatch } from 'react-redux';
+import { setCodeReady, setEmail } from '../../redux/features/forgetPasswordSlice';
 
 const ForgetPassword = () => {
 
 
-const {setCodeReady , setEmail} = useContext(CheckCode)
+// const {setCodeReady , setEmail} = useContext(CheckCode)
+
+const dispatch = useDispatch()
 
 
   const navigate = useNavigate()
@@ -24,10 +28,10 @@ const {setCodeReady , setEmail} = useContext(CheckCode)
     setLoading(true)
     request.post("/user/forget-password" , data)
     .then((res)=>{
-      console.log(data);
       setLoading(false)
-      setEmail(data.email)
-      setCodeReady(true)
+      dispatch(setEmail(data.email))
+      // setCodeReady(true)
+      dispatch(setCodeReady(true))
       navigate('/otp-code')
       toast.success(res.data.message);
     })

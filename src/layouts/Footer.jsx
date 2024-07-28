@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react'
+import React, { memo, useContext, useEffect, useMemo } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { RiFacebookBoxLine } from "react-icons/ri";
 import { FaXTwitter } from "react-icons/fa6";
@@ -13,20 +13,33 @@ import { IoLocationSharp } from "react-icons/io5";
 import { UserContext } from '../context/UserContext';
 import { SettingContext } from '../context/SettingContext';
 import { useTranslation } from 'react-i18next';
+import useFetch from '../hooks/useFetch';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSettings } from '../redux/features/settingSlice';
 
 
 
 
 
 const Footer = () => {
-  const token = sessionStorage.getItem("hotel")
-  const {userDetails} = useContext(UserContext)
+  const token = sessionStorage.getItem("hotel");
+  const { userDetails } = useContext(UserContext);
+  const { data: fetchedSetting } = useFetch("setting");
+  const memoizedSetting = useMemo(() => fetchedSetting, [fetchedSetting]);
 
-  const {memoizedSetting:setting} = useContext(SettingContext)
+  const dispatch = useDispatch();
+  const lang = useSelector((state) => state.lang.value);
+  const setting = useSelector((state) => state.setting.value);
 
-  const {t} = useTranslation()
+  useEffect(() => {
+    if (memoizedSetting) {
+      dispatch(setSettings(memoizedSetting));
+    }
+  }, [memoizedSetting, dispatch]);
 
-  let data = setting?.data || null
+  const { t } = useTranslation();
+
+  let data = setting?.data || null;
 
   const {
     logo ,
@@ -43,7 +56,6 @@ const Footer = () => {
 
 
 
-  const lang = localStorage.getItem("lang")
 
 
   return (

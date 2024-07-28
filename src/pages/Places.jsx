@@ -15,9 +15,6 @@ const Places = () => {
   const { data: gallery, refetch: refetchGallery, isLoading: galleryLoad } = useFetch(`/gallerys?category_id=${keys}`, [keys])
   const { data: cats, isLoading: catLoad } = useFetch('/categorys')
 
-  useEffect(() => {
-    refetchGallery()
-  }, [keys])
 
   return (
     <>
@@ -49,11 +46,11 @@ const Places = () => {
               <Tabs.TabPane tab={cat.title} key={cat.id}>
                 {galleryLoad ? (
                   <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 col-span-full'>
-                  <Skeleton height={300} />
-                  <Skeleton height={300} />
-                  <Skeleton height={300} />
-                  <Skeleton height={300} />
-                </div>
+                    <Skeleton height={300} />
+                    <Skeleton height={300} />
+                    <Skeleton height={300} />
+                    <Skeleton height={300} />
+                  </div>
                 ) : gallery?.data?.length > 0 ? (
                   <Image.PreviewGroup>
                     {gallery?.data?.map((img) => (
