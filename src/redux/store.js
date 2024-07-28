@@ -13,5 +13,5 @@ export const store = configureStore({
     forgetPassword: forgetPasswordSlice,
     user:userSlice,
   },
-  // devTools: true,
+  devTools: false,
 })
