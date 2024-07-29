@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { CheckCode } from '../../context/CheckCode';
 import { toast } from 'react-toastify';
 import { request } from '../../api/request';
 import { useForm } from 'react-hook-form';
@@ -10,8 +9,14 @@ import { IoEyeOff } from 'react-icons/io5';
 import  Container  from "../../helpers/Container"
 import { useDispatch, useSelector } from 'react-redux';
 import { setCodeReady } from '../../redux/features/forgetPasswordSlice';
+import StyledAnim from '../../components/StyledAnim';
+import { useTranslation } from 'react-i18next';
 
 const RenterPassword = () => {
+
+const {t} = useTranslation()
+
+
   const email = useSelector((state)=>state.forgetPassword.email)
   const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -48,18 +53,19 @@ const changeType = (field) => {
 };
 
   return (
-    <section className='mt-10'>
+    <section className='mt-10 relative'>
+    <StyledAnim/>
     <Container>
-        <h2 className='text-3xl capitalize mb-10 text-center'>اعادة تعيين كلمة المرور</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className=' w-full md:w-[500px] h-full py-5 m-auto'>
+        <h2 className='heading-center'>{t("changePass.head")}</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className=' w-full md:w-[500px] h-full py-5 m-auto relative z-10'>
         <div className="my-4">
-            <label htmlFor='password' className='block text-sm font-medium text-gray-700'>كلمة المرور الجديدة</label>
           <div className='package-input'>
             <input
               id='password'
               type={types.password ? "text" : "password"}
-              className={`input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 ${errors.password ? 'border-red-500' : ''}`}
-              {...register('password', { required: 'هذا الحقل مطلوب', minLength: { value: 6, message: 'كلمة المرور يجب أن تكون على الأقل 6 أحرف' } })}
+              className={`input `}
+              placeholder={t("changePass.password")}
+              {...register('password', { required: t("changePass.validation.password") , minLength: { value: 6, message: t("changePass.validation.passwordInvalid")} })}
             />
             
             <button type="button" className="show-pass" onClick={() => changeType('password')}>
@@ -70,15 +76,15 @@ const changeType = (field) => {
         </div>
           
           <div className='my-4'>
-            <label htmlFor='password_confirmation' className='block text-sm font-medium text-gray-700'>تأكيد كلمة المرور</label>
           <div className='package-input'>
             <input
               id='password_confirmation'
               type={types.password_confirmation ? "text" : "password"}
-              className={`input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 ${errors.password_confirmation ? 'border-red-500' : ''}`}
+              className={`input `}
+              placeholder={t("changePass.confirm")}
               {...register('password_confirmation', {
-                required: 'هذا الحقل مطلوب',
-                validate: value => value === watch('password') || 'كلمتا المرور غير متطابقتين'
+                required: t("changePass.validation.confirm"),
+                validate: value => value === watch('password') || t("changePass.validation.confirmInvalid")
               })}
             />
             <button type="button" className="show-pass" onClick={() => changeType('password_confirmation')}>
@@ -89,7 +95,7 @@ const changeType = (field) => {
           </div>
           
           <button type='submit' className='btn btn-primary w-full' disabled={loading}>
-            {loading ? <Spin/> : 'إعادة تعيين كلمة المرور'}
+            {loading ? <Spin/> : t("changePass.change")}
           </button>
         </form>
     </Container>

@@ -6,12 +6,14 @@ import { FaRegHeart } from "react-icons/fa";
 import { CiBookmarkCheck } from "react-icons/ci";
 import { UserContext } from '../../context/UserContext';
 import userImg from '../../img/olp.jpeg'
-import LogOut from '../profile/LogOut';
+import { useTranslation } from 'react-i18next'
 
 
 function UserDropdown() {
 const {userDetails} = useContext(UserContext)
   const token = sessionStorage.getItem("hotel")
+
+  const {t} = useTranslation()
 
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -35,7 +37,7 @@ const {userDetails} = useContext(UserContext)
                 <img src={userDetails?.photo_profile || userImg} alt={userDetails?.name} className='w-12 h-12 object-cover rounded-full overflow-hidden'/>
                 <div className='ml-2'>
                   <p className='font-semibold'>{userDetails?.name}</p>
-                  <p className='text-gray-500 text-sm'><span className='font-semibold'>type: </span>{userDetails?.account_type}</p>
+                  <p className='text-gray-500 text-sm'><span className='font-semibold'>{t("dropdown.type")} : </span>{userDetails?.account_type}</p>
                 </div>
               </div>
             <Menu.Item>
@@ -46,7 +48,7 @@ const {userDetails} = useContext(UserContext)
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                 >
                   <i><CiUser/></i>
-                  <span>my account</span>
+                  <span>{t("dropdown.profile")}</span>
                 </Link>
               )}
             </Menu.Item>
@@ -58,7 +60,7 @@ const {userDetails} = useContext(UserContext)
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                 >
                   <i><CiBookmarkCheck/></i>
-                  <span>booking list</span>
+                  <span>{t("dropdown.booking")}</span>
                 </Link>
               )}
             </Menu.Item>
@@ -70,7 +72,7 @@ const {userDetails} = useContext(UserContext)
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                 > 
                   <i><FaRegHeart/></i>
-                  <span>wishlist</span>
+                  <span>{t("dropdown.wishlist")}</span>
                 </Link>
               )}
             </Menu.Item>

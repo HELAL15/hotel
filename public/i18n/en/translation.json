@@ -15,6 +15,12 @@
       "terms" : "terms & condition",
       "login" : "login"
     },
+    "dropdown": {
+      "type": "Type",
+      "profile": "Profile",
+      "wishlist": "Wishlist",
+      "booking": "Booking list"
+    },
     "social" : {
       "facebook" : "facebook",
       "twitter" : "twitter",
@@ -32,5 +38,74 @@
       "services" : "chisfis | rooms",
       "contact" : "chisfis | contact us",
       "places" : "chisfis | our places"
+    },
+
+    "login": {
+      "head": "Login",
+      "email": "Email",
+      "password": "Password",
+      "new": "New User?",
+      "forgot": "Forgot Password?",
+      "login": "Login",
+      "register": "Create a New Account",
+      "validation": {
+        "email": "Email is required",
+        "password": "Password is required",
+        "emailInvalid": "Invalid email address",
+        "passwordInvalid": "Password must be at least 6 characters long"
+      }
+    },
+
+    "register": {
+      "head": "Register",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "confirm": "Confirm Password",
+      "exist": "Already have an account?",
+      "login": "Login",
+      "register": "Register",
+      "validation": {
+        "firstName": "First name is required",
+        "lastName": "Last name is required",
+        "email": "Email is required",
+        "password": "Password is required",
+        "confirm": "Confirmation password is required",
+        "emailInvalid": "Invalid email address",
+        "passwordInvalid": "Password must be at least 6 characters long",
+        "confirmInvalid": "Password confirmation does not match"
+      }
+    },
+
+    "forgetPass": {
+      "head": "Enter Email",
+      "email": "Email",
+      "next": "Next",
+      "validation": {
+        "email": "Email is required",
+        "emailInvalid": "Invalid email address"
+      }
+    },
+
+    "otp": {
+      "head": "Enter the code",
+      "otp": "Code",
+      "next": "Next"
+    },
+
+    "changePass": {
+      "head": "Reset Password",
+      "password": "New Password",
+      "confirm": "Confirm New Password",
+      "change": "Change",
+      "validation": {
+        "password": "Password is required",
+        "confirm": "Confirmation password is required",
+        "passwordInvalid": "Password must be at least 6 characters long",
+        "confirmInvalid": "Password confirmation does not match"
+      }
     }
+
+
 }

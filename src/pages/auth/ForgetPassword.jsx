@@ -1,18 +1,18 @@
-import React, { memo, useContext, useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import StyledAnim from '../../components/StyledAnim';
 import { request } from '../../api/request';
 import { toast } from 'react-toastify';
-import { CheckCode } from '../../context/CheckCode';
 import { Spin } from 'antd';
 import { useDispatch } from 'react-redux';
 import { setCodeReady, setEmail } from '../../redux/features/forgetPasswordSlice';
+import { useTranslation } from 'react-i18next';
 
 const ForgetPassword = () => {
 
+const {t} = useTranslation()
 
-// const {setCodeReady , setEmail} = useContext(CheckCode)
 
 const dispatch = useDispatch()
 
@@ -50,20 +50,20 @@ const dispatch = useDispatch()
 
   return (
     <>
-      <section className='relative'>
+      <section className='relative mt-10'>
         <StyledAnim/>
         <div className='container mx-auto'>
           <div className='w-full md:w-[500px] h-full py-5  m-auto'>
-          <h2 className='text-3xl capitalize mb-10 relative z-10 text-center'>ادخل البريد الإلكتروني</h2>
+          <h2 className='heading-center'>{t("forgetPass.head")}</h2>
           <form onSubmit={handleSubmit(onSubmit)} className='w-full relative z-10'>
           <div className="my-4">
             <div className='package-input' >
-              <input className='input' {...register('email', { required: true, pattern: /^\S+@\S+$/i })} placeholder="البريد الإلكتروني" />
+              <input className='input' {...register('email', { required: true, pattern: /^\S+@\S+$/i })} placeholder={t("forgetPass.email")} />
             </div>
-            {errors.email && errors.email.type === 'required' && <p className='text-danger'>Email is required</p>}
-            {errors.email && errors.email.type === 'pattern' && <p className='text-danger'>Invalid email format</p>}
+            {errors.email && errors.email.type === 'required' && <p className='text-danger'>{t("forgetPass.validation.email")}</p>}
+            {errors.email && errors.email.type === 'pattern' && <p className='text-danger'>{t("forgetPass.validation.emailInvalid")}</p>}
           </div>
-            <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? <Spin/> : "التالي"}</button>
+            <button type="submit" className="btn btn-primary w-full mt-4" disabled={loading}>{loading? <Spin/> : t("forgetPass.next")}</button>
     </form>
           </div>
         </div>

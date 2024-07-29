@@ -8,8 +8,13 @@ import { Menu } from 'antd'
 import { FaRegHeart } from 'react-icons/fa'
 import { UserContext } from '../../context/UserContext'
 import LogOut from '../profile/LogOut'
+import { useTranslation } from 'react-i18next'
 
 const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
+
+
+const {t} = useTranslation()
+
 
   const token = sessionStorage.getItem("hotel")
   const {userDetails} = useContext(UserContext)
@@ -34,11 +39,11 @@ const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
       <div className='flex justify-between flex-col h-[90%] gap-4'>
         <nav className=' mt-10 '>
           <ul className='flex items-center justify-center flex-col gap-3'>
-            <li className='w-full'><NavLink to='/' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">Home</NavLink></li>
-            <li className='w-full'><NavLink to='/about' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">About</NavLink></li>
-            <li className='w-full'><NavLink to='/services' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">Services</NavLink></li>
-            <li className='w-full'><NavLink to='/places' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">Places</NavLink></li>
-            <li className='w-full'><NavLink to='/contact' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">Contact</NavLink></li>
+            <li className='w-full'><NavLink to='/' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.home")}</NavLink></li>
+            <li className='w-full'><NavLink to='/about' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.about")}</NavLink></li>
+            <li className='w-full'><NavLink to='/services' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.services")}</NavLink></li>
+            <li className='w-full'><NavLink to='/places' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.places")}</NavLink></li>
+            <li className='w-full'><NavLink to='/contact' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.contact")}</NavLink></li>
           </ul>
         </nav>
         <div className='flex flex-col gap-3'>
@@ -53,7 +58,7 @@ const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                 >
                   <i><CiUser/></i>
-                  <span>my account</span>
+                  <span>{t("dropdown.profile")}</span>
                 </NavLink>
 
                 <NavLink to='/booking-list'
@@ -62,7 +67,7 @@ const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                 >
                   <i><CiBookmarkCheck/></i>
-                  <span>booking list</span>
+                  <span>{t("dropdown.booking")}</span>
                 </NavLink>
 
                 <NavLink to='wishlist'
@@ -71,13 +76,13 @@ const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                 > 
                   <i><FaRegHeart/></i>
-                  <span>wishlist</span>
+                  <span>{t("dropdown.wishlist")}</span>
                 </NavLink>
             </>
             
             : <>
-              <Link to='/login' className='btn btn-primary'>login</Link>
-              <Link to='/register' className='btn btn-primary'>register</Link>
+              <Link to='/login' className='btn btn-primary'>{t("login.head")}</Link>
+              <Link to='/register' className='btn btn-primary'>{t("register.head")}</Link>
             </>
           }
            

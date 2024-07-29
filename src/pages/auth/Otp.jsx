@@ -1,15 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Container from '../../helpers/Container';
 import { request } from '../../api/request';
-import { CheckCode } from '../../context/CheckCode';
 import OTP from 'antd/es/input/OTP';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { Spin } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCodeReady } from '../../redux/features/forgetPasswordSlice';
+import { useSelector } from 'react-redux';
+import StyledAnim from '../../components/StyledAnim';
+import { useTranslation } from 'react-i18next';
 
 const Otp = () => {
+
+  const {t} = useTranslation()
+
+
   const email = useSelector((state)=>state.forgetPassword.email)
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
@@ -36,14 +40,15 @@ const Otp = () => {
 
   return (
     <>
-      <section className='mt-10'>
+      <section className='mt-10 relative'>
+      <StyledAnim/>
         <Container>
-          <form onSubmit={handleClick} className='w-full md:w-[500px] h-full py-5 m-auto'>
-            <h2 className='text-3xl capitalize mb-10 text-center'>ادخل الرمز المرسل</h2>
+          <form onSubmit={handleClick} className='w-full md:w-[500px] h-full py-5 m-auto relative z-10'>
+            <h2 className='heading-center'>{t("otp.head")}</h2>
             <div className='flex items-center justify-center flex-col gap-4'>
               <OTP length={4} onChange={handleChange} />
               <button className='btn btn-primary w-full' disabled={loading}>
-                {loading ? <Spin/> : 'Send'}
+                {loading ? <Spin/> : t("otp.next")}
               </button>
             </div>
           </form>

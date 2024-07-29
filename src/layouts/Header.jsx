@@ -93,7 +93,7 @@ const Header = () => {
                   user && token ? <li className='relative'><UserDropdown/></li> :
 
                   <li>
-                    <Link to='/login' className='btn btn-primary'>login</Link>
+                    <Link to='/login' className='btn btn-primary'>{t("login.head")}</Link>
                   </li>
                 }
                   

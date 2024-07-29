@@ -239,3 +239,8 @@ html[dir=rtl]{
 .hero {
   height: calc(100vh - 72px);
 }
+
+
+.heading-center {
+  @apply text-xl md:text-2xl capitalize mb-5 relative z-10 text-center font-semibold
+}

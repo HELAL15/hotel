@@ -2,9 +2,9 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    fontFamily: {
-      primary: '"Exo 2"',
-    },
+    // fontFamily: {
+    //   primary: '"Exo 2"',
+    // },
     container: {
       center: true,
       padding: {
@@ -16,11 +16,10 @@ module.exports = {
       },
     },
     screens: {
-      sm: '576px',
-      md: '768px',
-      lg: '992px',
-      xl: '1200px',
-      '2xl': '1400px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
     },
     extend: {
       colors: {
@@ -30,9 +29,6 @@ module.exports = {
           DEFAULT: '#4F46E5',
           hover: '#4439CC',
         },
-      },
-      backgroundImage: {
-        mainSlider: "urt('img/mainSlider_bg.png')",
       },
       keyframes: {
         shake: {
