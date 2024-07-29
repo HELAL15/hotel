@@ -33,7 +33,8 @@ const Login = () => {
       // set token in cookies
       sessionStorage.setItem('hotel' , token);
       dispatch(setUser(userData))
-      navigate('/')
+
+      window.history.back();
       toast.success(res.data.message);
       
     })

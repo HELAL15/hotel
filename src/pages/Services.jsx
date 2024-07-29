@@ -7,12 +7,28 @@ import useFetch from '../hooks/useFetch';
 import { Empty, Pagination, Select } from 'antd';
 import Loader from '../layouts/Loader';
 import Skeleton from 'react-loading-skeleton';
+import { useLocation } from 'react-router';
 
 const Services = () => {
   const [noGuests, setNoGuests] = useState("");
   const [current, setCurrent] = useState(1);
+  const location = useLocation();
+  console.log(location);
+  
+  const searchParam = new URLSearchParams(location.search);
+  console.log(searchParam);
+  
+  const fromPrice = searchParam.get('from_price');
+  const toPrice = searchParam.get('to_price');
+  const type = searchParam.get('type');
+  const noGuest = searchParam.get("no_guests")
+  
+  console.log('From Price:', fromPrice);
+  console.log('To Price:', toPrice);
+  console.log('Type:', type);
+  console.log('No Guest:', noGuest);
 
-  const { data, isLoading } = useFetch(`/rooms?no_guests=${noGuests}&page=${current}` , [noGuests, current]);
+  const { data, isLoading } = useFetch(`/rooms?no_guests=${noGuests}&page=${current}${type ? `&type=${type}` : ''}${fromPrice ? `&from_price=${fromPrice}` : ''}${toPrice ? `&to_price=${toPrice}` : ''}`, [noGuests, current]);
   const rooms = data?.data.data || [];
   const totalRooms = data?.data.meta.total || 0;
 

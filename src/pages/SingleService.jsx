@@ -5,17 +5,20 @@ import StayInfo from '../components/singleService/StayInfo'
 import Reviews from '../components/singleService/Reviews'
 import ServiceImgs from '../components/singleService/ServiceImgs'
 import ServiceCard from '../components/singleService/ServiceCard'
-import { useParams } from 'react-router'
+import { Navigate, useParams } from 'react-router'
 import useFetch from '../hooks/useFetch'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useSelector } from 'react-redux'
+import NotFound from './NotFound'
 // import Loader from '../layouts/Loader'
 
 const SingleService = () => {
   const {id} = useParams()
   
-  const {data , refetch , isLoading:loading} = useFetch(`/rooms/${id}`)
-  
+  const {data , refetch , isLoading:loading  , response} = useFetch(`/rooms/${id}`)
+
+
+  const res404 = response?.response?.status
   const lang = useSelector((state)=>state.lang.value)
   
   const room = useMemo(() => data?.data || {}, [data])
@@ -30,6 +33,13 @@ const SingleService = () => {
   useEffect(()=>{
     refetch()
   },[lang])
+
+
+
+if (res404 === 404) {
+  return <NotFound/>
+}
+
 
   return (
     <>

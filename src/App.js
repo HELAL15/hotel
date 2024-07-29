@@ -56,8 +56,8 @@ const Layout =()=>{
       <Route index element={<Home/>}/>
       <Route path="/about" element={<About/>}/>
       <Route path="/contact" element={<Contact/>}/>
-      <Route path="/services" element={<Services/>}/>
-      <Route path="/services/:id" element={<SingleService/>}/>
+      <Route path="/rooms" element={<Services/>}/>
+      <Route path="/rooms/:id" element={<SingleService/>}/>
       <Route path="/places" element={<Places/>}/>
       <Route path="/places/:id" element={<SinglePlace/>}/>
       <Route path="/checkout" element={<CheckOut/>}/>

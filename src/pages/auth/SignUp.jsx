@@ -43,7 +43,7 @@ const onSubmit = (data) => {
     sessionStorage.setItem('hotel' , token);
       sessionStorage.setItem('user-info' , userData)
       toast.success(res.data.message);
-    navigate('/')
+      window.history.back();
     
   })
   .catch((err)=>{

@@ -52,7 +52,7 @@ const MainCard = ({ sale, room , setRemoved }) => {
           <i className='text-white'>{fav ? <FaHeart /> : <FaRegHeart />}</i>
         </button>
         {sale && <span className='bg-red-700 text-white text-sm font-semibold px-4 rounded-2xl absolute top-3 left-2 z-40'>-10% today</span>}
-        <Link to={`/services/${room?.id}`}>
+        <Link to={`/rooms/${room?.id}`}>
           <div className='card-header h-[250px] md:h-[280px] mb-4 overflow-hidden rounded-xl'>
             <Swiper
               className='h-full w-full'

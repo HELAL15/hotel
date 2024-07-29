@@ -77,7 +77,7 @@ const Header = () => {
               <ul className='flex items-center gap-7'>
                 <li><NavLink to='/' className='nav-link'>{t("nav.home")}</NavLink></li>
                 <li><NavLink to='/about' className='nav-link'>{t("nav.about")}</NavLink></li>
-                <li><NavLink to='/services' className='nav-link'>{t("nav.services")}</NavLink></li>
+                <li><NavLink to='/rooms' className='nav-link'>{t("nav.services")}</NavLink></li>
                 <li><NavLink to='/places' className='nav-link'>{t("nav.places")}</NavLink></li>
                 <li><NavLink to='/contact' className='nav-link'>{t("nav.contact")}</NavLink></li>
               </ul>

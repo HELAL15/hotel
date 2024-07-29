@@ -41,7 +41,7 @@ const {t} = useTranslation()
           <ul className='flex items-center justify-center flex-col gap-3'>
             <li className='w-full'><NavLink to='/' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.home")}</NavLink></li>
             <li className='w-full'><NavLink to='/about' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.about")}</NavLink></li>
-            <li className='w-full'><NavLink to='/services' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.services")}</NavLink></li>
+            <li className='w-full'><NavLink to='/rooms' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.services")}</NavLink></li>
             <li className='w-full'><NavLink to='/places' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.places")}</NavLink></li>
             <li className='w-full'><NavLink to='/contact' className="nav-link mobile w-full flex py-3 px-3 text-2xl font-semibold">{t("nav.contact")}</NavLink></li>
           </ul>
@@ -81,8 +81,8 @@ const {t} = useTranslation()
             </>
             
             : <>
-              <Link to='/login' className='btn btn-primary'>{t("login.head")}</Link>
-              <Link to='/register' className='btn btn-primary'>{t("register.head")}</Link>
+              <Link to='/login' className='btn btn-primary w-full block text-center'>{t("login.head")}</Link>
+              <Link to='/register' className='btn btn-primary w-full block text-center'>{t("register.head")}</Link>
             </>
           }
            
