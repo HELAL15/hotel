@@ -3,7 +3,7 @@ import axios from 'axios';
 import { baseUrl } from './api';
 
 // Initial language from localStorage or default to 'ar'
-const lang = localStorage.getItem("lang") || 'ar';
+const lang = localStorage.getItem("i18nextLng") || 'ar';
 
 export const request = axios.create({
   baseURL: baseUrl,
