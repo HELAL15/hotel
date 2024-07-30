@@ -7,62 +7,55 @@ import useFetch from '../hooks/useFetch';
 import { Empty, Pagination, Select } from 'antd';
 import Skeleton from 'react-loading-skeleton';
 import { useLocation } from 'react-router';
+import { TbFilterSearch } from "react-icons/tb";
+import Filter from '../components/singleService/Filter';
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../redux/features/filterSlice';
 
 const Services = () => {
   const [noGuests, setNoGuests] = useState("");
   const [current, setCurrent] = useState(1);
   const location = useLocation();
-  console.log(location);
-  
+
   const searchParam = new URLSearchParams(location.search);
-  console.log(searchParam);
-  
+
   const fromPrice = searchParam.get('from_price');
   const toPrice = searchParam.get('to_price');
   const type = searchParam.get('type');
-  const noGuest = searchParam.get("no_guests")
-  
+  const noGuest = searchParam.get("no_guests");
+
   console.log('From Price:', fromPrice);
   console.log('To Price:', toPrice);
   console.log('Type:', type);
   console.log('No Guest:', noGuest);
 
-  const { data, isLoading } = useFetch(`/rooms?no_guests=${noGuests}&page=${current}${type ? `&type=${type}` : ''}${fromPrice ? `&from_price=${fromPrice}` : ''}${toPrice ? `&to_price=${toPrice}` : ''}`, [noGuests, current]);
+  const { data, isLoading } = useFetch(`/rooms?${noGuest ? `no_guests=${noGuest}` : ''}&page=${current}${type ? `&type=${type}` : ''}${fromPrice ? `&from_price=${fromPrice}` : ''}${toPrice ? `&to_price=${toPrice}` : ''}`, [noGuest, current]);
   const rooms = data?.data.data || [];
   const totalRooms = data?.data.meta.total || 0;
 
-  const handleChange = (value) => {
-    setNoGuests(value || "");
-  };
   const handlePaginationChange = (page) => {
     setCurrent(page);
   };
 
+  const dispatch = useDispatch();
+  const handleOpen = () => {
+    dispatch(setFilter(true));
+  };
 
   return (
     <>
       <Seo title="Services" />
+      <Filter/>
       <section className='mt-8'>
         <Container>
           <div className='flex items-center justify-between gap-4 flex-wrap mb-6'>
             <h3 className='text-lg md:text-2xl capitalize font-semibold'>
               Rooms (<span className='text-primary'>{totalRooms}</span>)
             </h3>
-            <div className='flex items-center gap-4 '>
-              <p className='text-base'>Filter by Guests</p>
-              <Select
-                defaultValue=""
-                style={{ width: 90 }}
-                onChange={handleChange}
-                options={[
-                  { value: '', label: 'All' },
-                  { value: '1', label: '1' },
-                  { value: '2', label: '2' },
-                  { value: '3', label: '3' },
-                  { value: '4', label: '4' },
-                ]}
-              />
-            </div>
+            <button onClick={handleOpen} className='flex items-center gap-2 duration-500 '>
+              <TbFilterSearch />
+              <p>filter</p>
+            </button>
           </div>
           <Sorting sx=''>
             {isLoading ? (
