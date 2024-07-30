@@ -15,5 +15,5 @@ export const store = configureStore({
     user:userSlice,
     filter:filterSlice,
   },
-  // devTools: false,
+  devTools: false,
 })
