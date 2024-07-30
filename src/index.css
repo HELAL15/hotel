@@ -244,3 +244,23 @@ html[dir=rtl]{
 .heading-center {
   @apply text-xl md:text-2xl capitalize mb-5 relative z-10 text-center font-semibold
 }
+
+
+
+.dropdown-link {
+  @apply bg-slate-300/20 hover:text-primary hover:bg-primary/10 w-full py-1 px-4 font-medium rounded-md flex items-center mb-2 gap-1 duration-300;
+  &.active{
+    @apply bg-primary/10;
+  }
+}
+
+.ant-modal-footer{
+  @apply flex items-center gap-2;
+}
+
+.ant-btn-primary{
+  @apply bg-primary hover:bg-accent-hover duration-300 grid items-center btn btn-primary py-0 !important;
+}
+.ant-btn-default {
+  @apply  border-primary text-primary bg-transparent hover:bg-slate-400/30 border duration-300 grid items-center py-0 !important;
+}

@@ -62,7 +62,7 @@ const pageVariants = {
       <section className=''>
 
       <SecTitle 
-          head="wishlist"
+          head="profile.wishlist.head"
           />
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[30px]'>
             {

@@ -1,22 +1,23 @@
 import React, { memo, useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Seo from '../../helpers/Seo';
-import Container from '../../helpers/Container';
 import SecTitle from '../../components/SecTitle';
 import { request } from '../../api/request';
 import { IoCamera } from "react-icons/io5";
 import { Spin } from 'antd';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Account = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { userDetails, setUserDetails , refetch } = useContext(UserContext);
+  const { userDetails , refetch } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const [photo, setPhoto] = useState(userDetails?.photo_profile);
 
+
+  const {t} = useTranslation()
 
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const Account = () => {
       });
       refetch()
       setLoading(false);
-      const userData = res.data.data;
+      // const userData = res.data.data;
       const token = res.data.data.token;
       sessionStorage.setItem("hotel" , token)
 
@@ -91,7 +92,7 @@ const pageVariants = {
       <Seo title="Profile" />
       <section className='relative'>
 
-          <SecTitle head="Your Main Information" />
+          <SecTitle head="profile.profile.head" />
           <form onSubmit={handleSubmit(onSubmit)} className='w-full relative z-10'>
             <div className="my-4">
               <div className='package-input cursor-pointer relative group w-[200px] h-[200px] border border-gray-300 overflow-hidden rounded-full'>
@@ -117,32 +118,32 @@ const pageVariants = {
                 <span><i className="fas fa-user"></i></span>
                 <input className='input' {...register('first_name', { required: true })} 
                   defaultValue={userDetails?.name?.split(' ')[0] || ''}
-                  placeholder="الاسم الأول" />
+                  placeholder={t('profile.profile.firstName')} />
               </div>
-              {errors.first_name && <p className='text-danger'>First Name is required</p>}
+              {errors.first_name && <p className='text-danger'>{t('profile.profile.validation.firstName')}</p>}
             </div>
             <div className="my-4">
               <div className='package-input'>
                 <span><i className="fas fa-user"></i></span>
                 <input className='input' {...register('last_name', { required: true })}
                   defaultValue={userDetails?.name?.split(' ')[1] || ''}
-                  placeholder="الاسم الأخير" />
+                  placeholder={t('profile.profile.lastName')} />
               </div>
-              {errors.last_name && <p className='text-danger'>Last Name is required</p>}
+              {errors.last_name && <p className='text-danger'>{t('profile.profile.validation.lastName')}</p>}
             </div>
             <div className="my-4">
               <div className='package-input'>
                 <span><i className="fas fa-envelope"></i></span>
                 <input className='input' {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                   defaultValue={userDetails?.email || ''}
-                  placeholder="البريد الإلكتروني" />
+                  placeholder={t('profile.profile.email')} />
               </div>
-              {errors.email && errors.email.type === 'required' && <p className='text-danger'>Email is required</p>}
-              {errors.email && errors.email.type === 'pattern' && <p className='text-danger'>Invalid email format</p>}
+              {errors.email && errors.email.type === 'required' && <p className='text-danger'>{t('profile.profile.validation.email')} </p>}
+              {errors.email && errors.email.type === 'pattern' && <p className='text-danger'>{t('profile.profile.validation.emailInvalid')}</p>}
             </div>
             
             <button type="submit" className="btn btn-primary mt-4" disabled={loading}>
-              {loading ? <Spin/> : 'update profile'}
+              {loading ? <Spin/> : t('profile.profile.update')}
             </button>
           </form>
 

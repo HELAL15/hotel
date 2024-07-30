@@ -1,23 +1,20 @@
-import React, { useContext, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { request } from '../../api/request'
-import { toast } from 'react-toastify'
-import { UserContext } from '../../context/UserContext'
-import { Spin } from 'antd'
-import DeleteAccount from '../../pages/Profile/DeleteAccount'
-import { twMerge } from 'tailwind-merge'
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import DeleteAccount from './DeleteAccount' ;
 import LogOut from './LogOut'
+import { useTranslation } from 'react-i18next';
 
 const ProfileNav = () => {
 
+  const {t} = useTranslation()
 
   return (
     <>
       <div className='flex flex-col gap-4 sticky top-28 '>
-          <NavLink to="/profile" className='profile-nav'>Profile</NavLink>
-          <NavLink to="/account-password" className='profile-nav'>Account password</NavLink>
-          <NavLink to="/wishlist" className='profile-nav'>wishlist</NavLink>
-          <NavLink to="/booking-list" className='profile-nav'>booking list</NavLink>
+          <NavLink to="/profile" className='profile-nav'>{t("profile.profile.link")}</NavLink>
+          <NavLink to="/account-password" className='profile-nav'>{t("profile.password.link")}</NavLink>
+          <NavLink to="/wishlist" className='profile-nav'>{t("profile.wishlist.link")}</NavLink>
+          <NavLink to="/booking-list" className='profile-nav'>{t("profile.booklist.link")}</NavLink>
           <LogOut/>
           <DeleteAccount/>
       </div>

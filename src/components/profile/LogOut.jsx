@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { request } from '../../api/request'
 import { twMerge } from 'tailwind-merge'
 import { Spin } from 'antd'
+import { useTranslation } from 'react-i18next'
 
 const LogOut = () => {
 
@@ -30,11 +31,11 @@ const handleLogOut = ()=>{
   })
 }
 
-
+const {t} = useTranslation()
 
   return (
     <>
-       <button className={twMerge("btn bg-yellow-400 text-black mb-1 w-full")} onClick={handleLogOut}>{loading? <Spin/> : "logout"}</button>
+       <button className={twMerge("btn bg-yellow-400 text-black mb-1 w-full")} onClick={handleLogOut}>{loading? <Spin/> : t("profile.logout")}</button>
     </>
   )
 }

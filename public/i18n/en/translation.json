@@ -105,7 +105,65 @@
         "passwordInvalid": "Password must be at least 6 characters long",
         "confirmInvalid": "Password confirmation does not match"
       }
+    },
+
+    "profile" : {
+      "logout" : "logout",
+      "delete" : {
+        "btn" : "Delete Account",
+        "title" : "Deleting your account",
+        "p" : "You are about to permanently delete your account. Are you sure you want to delete your account?",
+        "cancel" : "Cancel",
+        "delete" : "Delete",
+        "sure" : "Are you sure",
+        "confirm" : "Confirm",
+        "pass" : "Enter your password"
+      },
+      "profile" : {
+        "link" : "profile",
+        "head" : "main info",
+        "firstName" : "First Name",
+      "lastName" : "Last Name",
+      "email" : "Email",
+      "update" : "Update",
+      "validation" : {
+        "firstName" : "First name is required",
+        "lastName" : "Last name is required",
+        "email" : "Email is required",
+        "emailInvalid" : "Invalid email address",
+        "img" : "profile image is required"
+        }
+      },
+      "password":{
+        "link" : "Account password",
+        "head" : "update password",
+        "password" : "Old Password",
+        "newPassword" : "New Password",
+        "confirm" : "Confirm New Password",
+        "change" : "Change",
+        "validation" : {
+          "password" : "Old password is required",
+          "newPassword" : "New password is required",
+          "confirm" : "Confirmation password is required",
+          "passwordInvalid" : "Password must be at least 6 characters long",
+          "confirmInvalid" : "Password confirmation does not match"
+        }
+      },
+
+      "wishlist" : {
+        "link" : "wishlist",
+        "head" : "wishlist"
+      },
+
+      "booklist" : {
+        "link" : "booking list",
+        "head" : "booking list"
+      }
+
+
+
+
     }
 
-
 }
+

@@ -3,7 +3,6 @@ import Container from '../../helpers/Container'
 import { twMerge } from 'tailwind-merge'
 import { Link, useNavigate } from 'react-router-dom'
 import StyledAnim from '../StyledAnim'
-import { useTranslation } from 'react-i18next'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { CiSearch } from 'react-icons/ci'
@@ -12,7 +11,7 @@ import { useSelector } from 'react-redux'
 import useFetch from '../../hooks/useFetch'
 const { Option } = Select;
 const Hero = () => {
-  const {t} = useTranslation()
+  // const {t} = useTranslation()
   const lang = useSelector((state) => state.lang.value);
   const dir = lang === 'ar' ? 'rtl' : 'ltr'
 

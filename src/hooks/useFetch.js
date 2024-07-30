@@ -129,7 +129,6 @@ function useFetch(url, deps = [], params = {}) {
           })
           .catch((err) => {
             // if the request is cancelled, don't set the error
-            const mute = err
             if (isCancel(err)) return;
             setError(err?.message || "Something went wrong");
             setIsLoading(false);

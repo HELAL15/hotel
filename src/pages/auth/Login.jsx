@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import StyledAnim from '../../components/StyledAnim';
 import { request } from '../../api/request';
 import { toast } from 'react-toastify';
@@ -15,7 +15,7 @@ const Login = () => {
 
   const {t} = useTranslation()
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [loading , setLoading] = useState(false)
   const [type , setType] = useState(false)
   const dispatch = useDispatch()

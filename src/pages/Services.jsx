@@ -1,11 +1,10 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useState } from 'react';
 import Container from '../helpers/Container';
 import Sorting from '../helpers/Sorting';
 import MainCard from '../components/MainCard';
 import Seo from '../helpers/Seo';
 import useFetch from '../hooks/useFetch';
 import { Empty, Pagination, Select } from 'antd';
-import Loader from '../layouts/Loader';
 import Skeleton from 'react-loading-skeleton';
 import { useLocation } from 'react-router';
 

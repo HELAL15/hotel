@@ -24,9 +24,9 @@ const navigate = useNavigate()
                     </h1>
                     <p className="my-2 text-gray-800">Sorry about that! Please visit our hompage to get where you need to go.</p>
                     <button className="btn btn-primary" onClick={handleNav}>back home page</button>
-                    <img src="https://i.ibb.co/G9DC8S0/404-2.png" className='absolute top-0 ltr:left-0 rtl:right-0 z-[-1]' />
+                    <img src="https://i.ibb.co/G9DC8S0/404-2.png" alt="error 404" className='absolute top-0 ltr:left-0 rtl:right-0 z-[-1]' />
                 </div>
-                <img src="https://i.ibb.co/ck1SGFJ/Group.png" />
+                <img src="https://i.ibb.co/ck1SGFJ/Group.png" alt="not found img" />
                 {/* <div class="relative h-full">
                     <div className='h-full w-full'>
                     </div>
