@@ -14,19 +14,28 @@ const Filter = () => {
 
   const setting = useSelector((state)=>state.setting.value)
   
+  const location = useLocation()
+  const searchParam = new URLSearchParams(location.search);
+  
+  const fromPrice = searchParam.get('from_price');
+  const toPrice = searchParam.get('to_price');
+  const noGuest = searchParam.get("no_guests");
+
+
   const {
     max_no_guests,
     max_price_per_day,
     min_price_per_day
   } = setting?.data || {}
-  const defaultPrice = [min_price_per_day, max_price_per_day]
-  const [prices, setPrices] = useState([min_price_per_day, max_price_per_day])
-  const [guests, setGuests] = useState(1)
-  const [type, setType] = useState("room")
 
+
+
+  const defaultPrice = [fromPrice || 800 , toPrice || 3000 ]
+  const [prices, setPrices] = useState(defaultPrice)
+  const [guests, setGuests] = useState(noGuest || 1)
+  const [type, setType] = useState(searchParam.get('type') || "room")
   
   
-
   const { Option } = Select
 
   const onChange = (value) => {
@@ -51,7 +60,7 @@ const Filter = () => {
     dispatch(setFilter(false))
   }
 
-  const location = useLocation()
+
   useEffect(() => {
     dispatch(setFilter(false))
   }, [location])
@@ -72,8 +81,8 @@ const Filter = () => {
               range
               onChange={onChange}
               defaultValue={defaultPrice}
-              max={10000}
-              min={0}
+              max={parseFloat(max_price_per_day)}
+              min={parseFloat(min_price_per_day)}
               trackStyle={[{ backgroundColor: '#4F46E5' }]}
               handleStyle={[
                 { borderColor: '#4F46E5', backgroundColor: 'white' },
@@ -82,8 +91,8 @@ const Filter = () => {
               railStyle={{ backgroundColor: '#737373' }}
             />
             <div className="price-display flex items-center justify-between px-6">
-              <span>${prices[0]}</span>
-              <span>${prices[1]}</span>
+              <span>${prices[0] || defaultPrice[0] }</span>
+              <span>${prices[1] || defaultPrice[1]}</span>
             </div>
           </div>
           <div className='mt-4 pb-4 border-b border-b-slate-300'>
@@ -95,9 +104,10 @@ const Filter = () => {
                 </Option>
               ))}
             </Select> */}
+            
             <input 
               type='number' 
-              className='w-full input mt-2' 
+              className='w-full border-none outline-none py-2 px-1' 
               placeholder='no of guests' 
               value={guests}
               onChange={(e) => setGuests(+e.target.value)} />

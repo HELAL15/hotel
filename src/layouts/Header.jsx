@@ -12,6 +12,8 @@ import { motion } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLang } from '../redux/features/langSlice';
 import { UserContext } from '../context/UserContext';
+import { twMerge } from 'tailwind-merge';
+import { FaUserPlus } from 'react-icons/fa';
 
 
 const Header = () => {
@@ -93,7 +95,9 @@ const Header = () => {
                   user && token ? <li className='relative'><UserDropdown/></li> :
 
                   <li>
-                    <Link to='/login' className='btn btn-primary'>{t("login.head")}</Link>
+                    <Link to='/login' className={twMerge(' grid place-items-center text-xl rounded-full aspect-square p-1 ')}>
+                      <FaUserPlus />
+                    </Link>
                   </li>
                 }
                   

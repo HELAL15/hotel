@@ -137,13 +137,26 @@ img, video {
 .custom-range-picker input ,.custom-range-picker input::placeholder{
   font-size: 1.2rem;
 }
-:where(.css-dev-only-do-not-override-17seli4).ant-picker-outlined:focus, :where(.css-dev-only-do-not-override-17seli4).ant-picker-outlined:focus-within {
-  border-color: #1677ff;
+.ant-picker-outlined:focus, .ant-picker-outlined:focus-within {
+  border-color: unset;
   box-shadow: 0 0 0 0px transparent;
   outline: 0;
   background-color: #ffffff;
 }
 
+.ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
+  border: none;
+  background: transparent;
+}
+.ant-select-focused.ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector{
+  border-color: unset;
+  box-shadow: unset;
+  border: none;
+}
+.ant-select-focused.ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+  box-shadow: unset;
+  border: none;
+}
 .ant-modal-content .ant-btn{
   @apply btn btn-primary
 }
@@ -178,11 +191,11 @@ img, video {
 
 
 
-:where(.css-dev-only-do-not-override-17seli4).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn ,
-:where(.css-dev-only-do-not-override-17seli4).ant-tabs .ant-tabs-tab:hover {
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn ,
+.ant-tabs .ant-tabs-tab:hover {
   @apply text-primary !important;
 }
-:where(.css-dev-only-do-not-override-17seli4).ant-tabs .ant-tabs-ink-bar {
+.ant-tabs .ant-tabs-ink-bar {
   @apply bg-primary !important;
 }
 
@@ -200,7 +213,7 @@ html[dir=rtl] .ant-tabs-tab {
   @apply bg-white !important;
 }
 
-:where(.css-dev-only-do-not-override-17seli4).ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
+.ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
   @apply border-primary !important;
 }
 
@@ -225,12 +238,12 @@ html[dir=rtl]{
 
 
 
-:where(.css-dev-only-do-not-override-17seli4).ant-pagination .ant-pagination-item-active {
+.ant-pagination .ant-pagination-item-active {
 
   @apply border-primary text-primary !important;
 }
 
-:where(.css-dev-only-do-not-override-17seli4).ant-pagination .ant-pagination-item-active a {
+.ant-pagination .ant-pagination-item-active a {
   @apply text-primary !important;
 }
 
