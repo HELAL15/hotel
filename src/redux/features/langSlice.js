@@ -51,12 +51,13 @@ export const langSlice = createSlice({
         window.document.dir = i18n.dir(newLang);
         window.document.documentElement.lang = newLang;
 
-        // Update Axios headers whenever the language changes
-        request.defaults.headers['accept-language'] = newLang;
-        request.defaults.headers['Lang'] = newLang;
+        // // Update localStorage to keep the language preference
+        // localStorage.setItem('i18nextLng', newLang);
 
-        // Update localStorage to keep the language preference
-        localStorage.setItem('i18nextLng', newLang);
+        // Update Axios headers whenever the language changes
+        // request.defaults.headers['accept-language'] = newLang;
+        // request.defaults.headers['Lang'] = newLang;
+
       });
     }
   },

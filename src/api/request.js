@@ -17,8 +17,13 @@ export const request = axios.create({
 
 request.interceptors.request.use((config) => {
   const token = sessionStorage.getItem('hotel');
+  const lang = localStorage.getItem("i18nextLng")
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
+  }
+  if(lang){
+    config.headers['accept-language'] = lang;
+    config.headers['lang'] = lang
   }
   return config;
 }, (error) => {
