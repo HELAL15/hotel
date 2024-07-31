@@ -1,15 +1,30 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import Seo from '../../helpers/Seo'
 import Container from '../../helpers/Container'
 import SecTitle from '../../components/SecTitle'
-import Sorting from '../../helpers/Sorting'
 import MainCard from '../../components/MainCard'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import useFetch from '../../hooks/useFetch'
+import { Empty, Pagination } from 'antd'
+import { useLocation } from 'react-router'
+import {motion} from "framer-motion"
+import Skeleton from 'react-loading-skeleton'
+import Sorting from '../../helpers/Sorting'
 
 const BookList = () => {
 
-  const pageVariants = {
+  const [current, setCurrent] = useState(1);
+  const {pathname} = useLocation()
+  const {data , isLoading , refetch} = useFetch(`/user/rooms/reservations?page=${current}` , [ current])
+  const rooms = data?.data.data || []
+  const totalRooms = data?.data.meta.total || 0;
+
+  const handlePaginationChange = (page) => {
+    setCurrent(page);
+  };
+
+
+
+const pageVariants = {
     initial: {
       opacity: 0,
       // x: "-100vw"
@@ -32,24 +47,44 @@ const BookList = () => {
 
   return (
     <motion.div
-    initial="initial"
+      initial="initial"
     animate="in"
     exit="out"
     variants={pageVariants}
     transition={pageTransition}
     >
-      <Seo title="booklist"  />
-          <section className=''>
+      <Seo title="reservations"  />
+      <section className=''>
 
       <SecTitle 
-          head="profile.booklist.head"
+          head="profile.BookList.head"
           />
-          <span>test</span>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[30px]'>
-          <MainCard/>
-          <MainCard sale/>
-          <MainCard/>
+            {
+              rooms?.length > 0 ?
+              rooms.map((room) => (
+                  <MainCard key={room.id} room={room}  />
+                )) :
+              isLoading?
+              <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full col-span-4 my-8 '>
+              {[...Array(8)].map((_, index) => (
+                  <div key={index}>
+                    <Skeleton height={200} />
+                    <Skeleton width={100} />
+                    <Skeleton count={2} />
+                  </div>
+                ))}
+              </div> :
+              <Empty className='col-span-4 my-8'/>
+            }
         </div>
+        <Pagination
+            className='mt-10'
+            current={current}
+            total={totalRooms}
+            pageSize={data?.data.meta.per_page}
+            onChange={handlePaginationChange}
+          />
 
     </section>
     </motion.div>

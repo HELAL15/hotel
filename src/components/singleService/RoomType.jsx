@@ -15,19 +15,27 @@ const RoomType = ({ room }) => {
     return [];
   };
 
-  const handleChange = (data, option) => {
-    setOption(option.label);
+  const handleChange = (data, Option) => {
+    setOption(Option.children);
     setMealP(data);
   };
-
+const {Option} = Select
   return (
     <>
       <Space wrap>
         <Select
-          defaultValue="all"
-          options={options()}
+          defaultValue=""
           onChange={handleChange}
-        />
+        >
+          <Option value="" disabled>choose your day meals</Option>
+          {
+            room?.hotel_setting?.map((setting) => (
+              <Option key={setting.id} value={setting.value}>
+                {setting.title}
+              </Option>
+            ))
+          }
+        </Select>
       </Space>
     </>
   );

@@ -91,6 +91,7 @@ console.log(min);
                   type='number' 
                   className='w-full border-none outline-none py-2 px-1 ' 
                   placeholder='no of guests' 
+                  min={1}
                   value={guests}
                   onChange={(e) => setGuests(+e.target.value)} />
 
