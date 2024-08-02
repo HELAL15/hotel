@@ -188,7 +188,26 @@ img, video {
   overflow-x: auto;
 }
 }
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-in-range:not(.ant-picker-cell-disabled):before, .ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-disabled):before, .ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-disabled):before {
+  @apply bg-primary/20
+}
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-selected:not(.ant-picker-cell-disabled) .ant-picker-cell-inner, .ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-disabled) .ant-picker-cell-inner {
+  @apply bg-primary
+}
+.ant-picker-cell-inner:hover{
+  @apply bg-primary
+}
+.ant-picker-cell.ant-picker-cell-range-start.ant-picker-cell-in-view .ant-picker-cell-inner{
+  @apply bg-primary
+}
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-selected:not(.ant-picker-cell-disabled) .ant-picker-cell-inner, .ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-disabled) .ant-picker-cell-inner, .ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-disabled) .ant-picker-cell-inner {
+  color: #fff;
+  @apply bg-primary
+}
 
+.ant-picker-cell.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner{
+  @apply border-primary
+}
 
 
 .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn ,

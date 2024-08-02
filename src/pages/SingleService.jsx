@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState } from 'react'
+import React, {memo, useEffect, useMemo, useState } from 'react'
 import Container from '../helpers/Container'
 import MainInfo from '../components/singleService/MainInfo'
 import StayInfo from '../components/singleService/StayInfo'
@@ -10,6 +10,7 @@ import useFetch from '../hooks/useFetch'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useSelector } from 'react-redux'
 import NotFound from './NotFound'
+import ReservationForm from '../components/singleService/ReservationForm'
 // import Loader from '../layouts/Loader'
 
 const SingleService = () => {
@@ -74,7 +75,7 @@ if (res404 === 404) {
               <Reviews reviews={room?.reviews} refetch={refetch} load={loading}/>
             </div>
             <div className=' lg:block flex-grow mt-14 lg:mt-0 order-1'>
-              <ServiceCard room={room} loading={loading}/>
+              <ReservationForm room={room} />
             </div>
           </div>
         </Container>
@@ -83,4 +84,4 @@ if (res404 === 404) {
   )
 }
 
-export default SingleService
+export default memo(SingleService)

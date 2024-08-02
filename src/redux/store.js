@@ -6,6 +6,7 @@ import settingSlice from './features/settingSlice'
 import forgetPasswordSlice from './features/forgetPasswordSlice'
 import userSlice from './features/userSlice'
 import filterSlice from './features/filterSlice'
+import reservationSlice from './features/reservationSlice'
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     forgetPassword: forgetPasswordSlice,
     user:userSlice,
     filter:filterSlice,
+    reservation:reservationSlice,
   },
-  devTools: false,
+  devTools: true,
 })

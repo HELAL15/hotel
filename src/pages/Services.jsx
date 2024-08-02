@@ -24,10 +24,6 @@ const Services = () => {
   const type = searchParam.get('type');
   const noGuest = searchParam.get("no_guests");
 
-  console.log('From Price:', fromPrice);
-  console.log('To Price:', toPrice);
-  console.log('Type:', type);
-  console.log('No Guest:', noGuest);
 
   const { data, isLoading } = useFetch(`/rooms?${noGuest ? `no_guests=${noGuest}` : ''}&page=${current}${type ? `&type=${type}` : ''}${fromPrice ? `&from_price=${fromPrice}` : ''}${toPrice ? `&to_price=${toPrice}` : ''}`, [noGuest, current]);
   const rooms = data?.data.data || [];

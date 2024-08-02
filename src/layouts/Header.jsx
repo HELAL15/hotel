@@ -95,8 +95,9 @@ const Header = () => {
                   user && token ? <li className='relative'><UserDropdown/></li> :
 
                   <li>
-                    <Link to='/login' className={twMerge(' grid place-items-center text-xl rounded-full aspect-square p-1 ')}>
-                      <FaUserPlus />
+                    <Link to='/login' className={twMerge(' flex items-center gap-2 btn btn-primary ')}>
+                      <span>{t("login.head")}</span>
+                      {/* <FaUserPlus /> */}
                     </Link>
                   </li>
                 }
