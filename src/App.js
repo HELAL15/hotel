@@ -27,6 +27,8 @@ import RenterPassword from './pages/auth/RenterPassword';
 import Otp from './pages/auth/Otp';
 import OtpOutlet from './pages/auth/OtpOutlet';
 import CheckOut from './pages/CheckOut';
+import { useDispatch } from 'react-redux';
+import { setChildDefault, setDate, setID, setInfantDefault, setType } from './redux/features/reservationSlice';
 
 const App = () => {
 
@@ -36,7 +38,15 @@ const App = () => {
     window.scrollTo({top:0, left:0 , behavior:"instant"})
   },[location.key])
 
-
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if(location.pathname !== '/checkout'){
+      dispatch(setType(''));
+      dispatch(setInfantDefault());
+      dispatch(setChildDefault());
+      dispatch(setDate([]));
+    }
+  }, [location.pathname, dispatch]);
 
   //Layout
 const Layout =()=>{
@@ -60,7 +70,6 @@ const Layout =()=>{
       <Route path="/rooms/:id" element={<SingleService/>}/>
       <Route path="/places" element={<Places/>}/>
       <Route path="/places/:id" element={<SinglePlace/>}/>
-      <Route path="/checkout" element={<CheckOut/>}/>
       <Route path="/privacy" element={<Privacy/>}/>
       <Route element={<RequireBack/>}>
         <Route path="/login" element={<Login/>}/>
@@ -72,6 +81,7 @@ const Layout =()=>{
         </Route>
       </Route>
       <Route  element={<AuthGuard/>}>
+        <Route path="/checkout/:id" element={<CheckOut/>}/>
         <Route element={<ProfileOutlet/>} >
         <Route path='/profile' element={<Account/>} />
         <Route path='/account-password' element={<AccountPassword/>} />

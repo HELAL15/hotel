@@ -6,7 +6,7 @@ import Skeleton from 'react-loading-skeleton';
 const ServiceImgs = ({ imgs = [] , loading }) => {
   return (
     <>
-      <section className='images pt-5'>
+      <section className='images pt-5 mb-1'>
         <Container>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
            {
@@ -36,7 +36,7 @@ const ServiceImgs = ({ imgs = [] , loading }) => {
                   loading='lazy'
                   src={imgs[0]?.url}
                   alt='service'
-                  className='w-full h-full object-cover rounded-lg'
+                  className='w-full h-full object-cover rounded-lg aspect-[5/3]'
                 />
               )}
             </div>

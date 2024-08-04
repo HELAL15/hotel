@@ -3,7 +3,7 @@ import { FaStar } from 'react-icons/fa6'
 import { ConvertDecimel } from '../../helpers/ConvertDecimel'
 import { Select , DatePicker } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { decreaseChild, decreaseInfant, increaseChild, increaseInfant, setChildDefault, setDate, setInfantDefault, setType } from '../../redux/features/reservationSlice'
+import { decreaseChild, decreaseInfant, increaseChild, increaseInfant, setChildDefault, setDate, setID, setInfantDefault, setType } from '../../redux/features/reservationSlice'
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { request } from '../../api/request'
 import { toast } from 'react-toastify'
@@ -14,7 +14,7 @@ const ReservationForm = ({room}) => {
   const [daysCount, setDaysCount] = useState(1);
 
   const onDateChange = (dates, dateStrings) => {
-    console.log(dateStrings);
+
     if (dates) {
       const startDate = dates[0];
       const endDate = dates[1];
@@ -52,12 +52,15 @@ const {
     dispatch(setType(Option.children))
   }
 
-  const location = useLocation()
-  useEffect(()=>{
-    dispatch(setType(''))
-    dispatch(setInfantDefault())
-    dispatch(setChildDefault())
-  },[location])
+  // const location = useLocation()
+  // console.log(location);
+  // useEffect(() => {
+  //   dispatch(setType(''));
+  //   dispatch(setInfantDefault());
+  //   dispatch(setChildDefault());
+  //   dispatch(setID(null));
+  //   dispatch(setDate([]));
+  // }, [location.pathname, dispatch]);
   
     const tax = room?.tax
     const pricePerDay = room?.price_per_day
@@ -93,14 +96,12 @@ const onSubmit = (e) => {
   request.post(`/user/rooms/${id}/reservation`, data)
   .then((res) => {
     toast.success(res.data.message)
-    navigate("/checkout")
+    navigate(`/checkout/${res?.data?.data?.id}`)
   })
   .catch((err) => {
-    console.log(err.response.data);
     toast.error(err.response.data.message)
     navigate("/login")
   });
-  
 }
 
 

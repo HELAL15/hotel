@@ -28,7 +28,6 @@ const Login = () => {
       setLoading(false)
       const userData = res.data.data
       // setUser(userData)
-      console.log(userData);
       const token = res.data.data.token
       // set token in cookies
       sessionStorage.setItem('hotel' , token);

@@ -5,12 +5,14 @@ import StayInfo from '../components/singleService/StayInfo'
 import Reviews from '../components/singleService/Reviews'
 import ServiceImgs from '../components/singleService/ServiceImgs'
 import ServiceCard from '../components/singleService/ServiceCard'
-import { Navigate, useParams } from 'react-router'
+import { Navigate, useLocation, useParams } from 'react-router'
 import useFetch from '../hooks/useFetch'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import NotFound from './NotFound'
 import ReservationForm from '../components/singleService/ReservationForm'
+import { setChildDefault, setID, setInfantDefault, setType } from '../redux/features/reservationSlice'
+import { setDate } from 'date-fns'
 // import Loader from '../layouts/Loader'
 
 const SingleService = () => {
@@ -37,6 +39,10 @@ const SingleService = () => {
 
 
 
+
+
+
+
 if (res404 === 404) {
   return <NotFound/>
 }
@@ -49,7 +55,7 @@ if (res404 === 404) {
 
     <ServiceImgs imgs={room?.images} loading={loading} />
 
-      <section className='mt-5 single-room'>
+      <section className='mt-0 single-room'>
         <Container>
           <div className='relative z-10 mt-11 flex flex-col lg:flex-row flex-wrap-reverse'>
             <div className='w-full lg:w-3/5 xl:w-2/3 space-y-8 lg:space-y-10 ltr:lg:pr-10 rtl:lg:pl-10 order-2 lg:order-1'>

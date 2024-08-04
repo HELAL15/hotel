@@ -67,7 +67,7 @@ const MainInfo = ({
                 <div className='flex flex-col gap-4 my-4'>
                   <h2 className='text-3xl text-black capitalize'>{title}</h2>
                   <div className='flex items-center gap-8'>
-                    <p className='flex items-center gap-2 rate text-neutral-500'>
+                    <p className='flex items-center gap-2 rate '>
                       <i className='text-yellow-400'><FaStar /></i>
                       <span className='text-black'>{ConvertDecimel(rates)}</span>
                     </p>
@@ -83,19 +83,19 @@ const MainInfo = ({
                       <Skeleton className=' px-16 rounded-[30px]' />
                     </> :
                     <>
-                    <p className='flex items-center gap-2 text-neutral-500'>
+                    <p className='flex items-center gap-2 '>
                       <i className=''><CiUser /></i>
                       <span className=''>{guests} guests</span>
                     </p>
-                    <p className='flex items-center gap-2 text-neutral-500'>
+                    <p className='flex items-center gap-2 '>
                       <i className=''><IoBedOutline /></i>
                       <span className=''>{beds} beds</span>
                     </p>
-                    <p className='flex items-center gap-2 text-neutral-500'>
+                    <p className='flex items-center gap-2 '>
                       <i className=''><PiBathtubLight /></i>
                       <span className=''>{bathroom} baths</span>
                     </p>
-                    <p className='flex items-center gap-2 text-neutral-500'>
+                    <p className='flex items-center gap-2 '>
                       <i className=''><LiaDoorOpenSolid /></i>
                       <span className=''>{bedroom} bedrooms</span>
                     </p>
