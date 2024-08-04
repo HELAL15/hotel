@@ -26,7 +26,7 @@ const MainApp = () => {
 
   return (
     <ConfigProvider direction={direction}>
-      <ToastContainer />
+      <ToastContainer rtl={lang === 'ar' ? true : false} />
       <App />
     </ConfigProvider>
   );

@@ -4,6 +4,7 @@ import Seo from '../helpers/Seo'
 import { Image, Tabs, Empty } from 'antd'
 import useFetch from '../hooks/useFetch'
 import Skeleton from 'react-loading-skeleton'
+import { useTranslation } from 'react-i18next'
 
 const Places = () => {
   const [keys, setKeys] = useState("")
@@ -15,6 +16,7 @@ const Places = () => {
   const { data: gallery, refetch: refetchGallery, isLoading: galleryLoad } = useFetch(`/gallerys?category_id=${keys}`, [keys])
   const { data: cats, isLoading: catLoad } = useFetch('/categorys')
 
+  const {t} = useTranslation()
 
   return (
     <>
@@ -22,7 +24,7 @@ const Places = () => {
       <section className='mt-8'>
         <Container>
           <Tabs onChange={handleChange} activeKey={keys}>
-            <Tabs.TabPane tab="All" key="">
+            <Tabs.TabPane tab={t("all")} key="">
               {galleryLoad ? (
                 <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 col-span-full'>
                   <Skeleton height={300} />

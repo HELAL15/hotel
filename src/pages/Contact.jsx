@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import { FiYoutube } from 'react-icons/fi'
 import StyledAnim from '../components/StyledAnim'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 const Contact = () => {
   
@@ -33,7 +34,7 @@ const Contact = () => {
   } = data || {} ;
 
 
-
+const {t} = useTranslation()
 
   const lang = useSelector((state) => state.lang.value)
 
@@ -44,34 +45,34 @@ const Contact = () => {
       <section className='mt-6 mb-20 relative'>
       <StyledAnim/>
         <Container>
-          <h2 className='text-4xl font-bold text-center mt-10 mb-8'>contact us</h2>
+          <h2 className='text-4xl font-bold text-center mt-10 mb-8'>{t("contact.head")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px] items-center relative z-20">
             <div className='flex flex-col gap-6'>
               <div className='item'>
-                <div className="flex items-center gap-2 text-black text-2xl font-semibold">
+                <div className="flex items-center gap-2 text-black text-lg font-semibold">
                   <MdLocationPin className='text-primary' />
-                  <span>address</span>
+                  <span className=''>{t("contact.address")}</span>
                 </div>
-                <p className='text-xl'>{lang === "ar" ? address_ar : address_en }</p>
+                <p className='text-base mt-2'>{lang === "ar" ? address_ar : address_en }</p>
               </div>
               <div className='item'>
-                <div className="flex items-center gap-2 text-black text-2xl font-semibold">
+                <div className="flex items-center gap-2 text-black text-lg font-semibold">
                   <MdEmail className='text-primary' />
-                  <span>email</span>
+                  <span className=''>{t("contact.email")}</span>
                 </div>
-                <Link to={`mailto:${email}`} className='text-xl'>{email}</Link>
+                <Link to={`mailto:${email}`} className='text-base mt-2'>{email}</Link>
               </div>
               <div className='item'>
-                <div className="flex items-center gap-2 text-black text-2xl font-semibold">
+                <div className="flex items-center gap-2 text-black text-lg font-semibold">
                   <FaPhone className='text-primary' />
-                  <span>mobile</span>
+                  <span className=''>{t("contact.mobile")}</span>
                 </div>
-                <Link to={`tel:+${mobile}`} className='text-xl'>{mobile}</Link>
+                <Link to={`tel:+${mobile}`} className='text-base mt-2'>{mobile}</Link>
               </div>
               <div className='item'>
-                <div className="flex items-center gap-2 text-black text-2xl font-semibold">
+                <div className="flex items-center gap-2 text-black text-lg font-semibold">
                   <RiGlobalFill className='text-primary' />
-                  <span>socials</span>
+                  <span className=''>{t("contact.socials")}</span>
                 </div>
                 <div className='text-xl flex items-center gap-3 mr-2 ltr:mr-0 ltr:ml-2 mt-4'>
                   <Link to={facebook} aria-label='facebook' target="_blank" className='hover:text-primary duration-300'>

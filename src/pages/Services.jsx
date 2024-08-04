@@ -11,6 +11,7 @@ import { TbFilterSearch } from "react-icons/tb";
 import Filter from '../components/singleService/Filter';
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../redux/features/filterSlice';
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
   const [noGuests, setNoGuests] = useState("");
@@ -38,6 +39,8 @@ const Services = () => {
     dispatch(setFilter(true));
   };
 
+  const {t} = useTranslation()
+
   return (
     <>
       <Seo title="Services" />
@@ -46,11 +49,11 @@ const Services = () => {
         <Container>
           <div className='flex items-center justify-between gap-4 flex-wrap mb-6'>
             <h3 className='text-lg md:text-2xl capitalize font-semibold'>
-              Rooms (<span className='text-primary'>{totalRooms}</span>)
+              {t("rooms.head")} (<span className='text-primary'>{totalRooms}</span>)
             </h3>
             <button onClick={handleOpen} className='flex items-center gap-2 duration-500 '>
               <TbFilterSearch />
-              <p>filter</p>
+              <p>{t("rooms.filteration")}</p>
             </button>
           </div>
           <Sorting sx=''>

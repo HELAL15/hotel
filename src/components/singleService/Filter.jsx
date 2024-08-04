@@ -65,6 +65,8 @@ const Filter = () => {
     dispatch(setFilter(false))
   }, [location])
 
+
+
   return (
     <div
       className={`h-screen ${isOpen ? 'ltr:left-0 rtl:right-0 rtl:left-[unset]' : 'ltr:-left-full rtl:-right-full rtl:-left-[unset]'} fixed top-0 bottom-0 w-full h-screen transition-all duration-300 z-50`}
@@ -72,11 +74,11 @@ const Filter = () => {
       <form onSubmit={handleSubmit} className='bg-white w-full md:w-[450px] h-full p-8 shadow-xl flex flex-col justify-between'>
         <div>
           <div className='mb-8 flex items-center justify-between'>
-            <h3 className='text-lg font-semibold'>{t('filtration')}</h3>
+            <h3 className='text-lg font-semibold'>{t('rooms.filteration')}</h3>
             <IoIosCloseCircle onClick={handleClose} className='text-2xl text-slate-700 cursor-pointer' />
           </div>
           <div className='price mt-4 pb-4 border-b border-b-slate-300'>
-            <h3 className='text-lg font-semibold'>{t('Price')}</h3>
+            <h3 className='text-lg font-semibold'>{t('rooms.filter.price')}</h3>
             <Slider
               range
               onChange={onChange}
@@ -96,7 +98,7 @@ const Filter = () => {
             </div>
           </div>
           <div className='mt-4 pb-4 border-b border-b-slate-300'>
-            <h3 className='text-lg font-semibold'>{t('noGuests')}</h3>
+            <h3 className='text-lg font-semibold'>{t('rooms.filter.guests')}</h3>
             {/* <Select className='w-full mt-2' defaultValue={1} onChange={handleChange}>
               {[...Array(5)].map((_, index) => (
                 <Option value={index + 1} key={index}>
@@ -108,13 +110,13 @@ const Filter = () => {
             <input 
               type='number' 
               className='w-full border-none outline-none py-2 px-1' 
-              placeholder='no of guests' 
+              placeholder={t('rooms.filter.guests')}
               min={1}
               value={guests}
               onChange={(e) => setGuests(+e.target.value)} />
           </div>
           <div className='mt-4 pb-4 border-b border-b-slate-300 mb-8'>
-            <h3 className='text-lg font-semibold'>{t('type')}</h3>
+            <h3 className='text-lg font-semibold'>{t('rooms.filter.type')}</h3>
             <Select className='w-full mt-2' defaultValue={"room"} onChange={handleTypeChange}>
               <Select.Option value='suite'>suite</Select.Option>
               <Select.Option value='poo_view'>pool view</Select.Option>
@@ -123,7 +125,7 @@ const Filter = () => {
           </div>
         </div>
         <button type="submit" className='btn btn-primary w-full'>
-          filter
+        {t('rooms.filter.search')}
         </button>
       </form>
     </div>

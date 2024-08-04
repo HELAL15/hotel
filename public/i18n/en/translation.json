@@ -27,6 +27,39 @@
       "instagram" : "instagram",
       "youtube" : "youtube"
     },
+
+    "all" : "all",
+
+    "rooms" : {
+      "head" : "rooms",
+      "filteration" : "filter",
+      "filter" : {
+        "type" : "type",
+        "price" : "price",
+        "guests" : "guests number",
+        "search" : "search"
+      }
+    },
+
+    "join" : {
+      "head" : "Join our newsletter",
+      "subhead" : "Read and share new perspectives on just about any topic. Everyone’s welcome.",
+      "email" : "enter your email address",
+      "first" : {
+        "label" : "01",
+        "placeholder" : "Get more discount"
+      },
+      "second" : {
+        "label" : "02",
+        "placeholder" : "Get premium magazines"
+      },
+      "validation" : {
+        "email" : "Email is required",
+        "emailInvalid" : "Invalid email address"
+      }
+    },
+
+
     "footer" : {
       "pages" : "pages",
       "helps" : "helps",
@@ -38,6 +71,29 @@
       "services" : "chisfis | rooms",
       "contact" : "chisfis | contact us",
       "places" : "chisfis | our places"
+    },
+
+    "contact":{
+      "head": "Contact Us",
+      "address" : "address",
+      "email": "email",
+      "mobile" : "mobile",
+      "social" : "socials",
+      "form" : {
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "send": "send"
+      },
+      "validation": {
+        "name": "Name is required",
+        "email": "Email is required",
+        "subject": "Subject is required",
+        "message": "Message is required",
+        "emailInvalid": "Invalid email address"
+      }
+    
     },
 
     "login": {
