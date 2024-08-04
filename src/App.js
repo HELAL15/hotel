@@ -29,6 +29,7 @@ import OtpOutlet from './pages/auth/OtpOutlet';
 import CheckOut from './pages/CheckOut';
 import { useDispatch } from 'react-redux';
 import { setChildDefault, setDate, setID, setInfantDefault, setType } from './redux/features/reservationSlice';
+import PayDone from './pages/PayDone';
 
 const App = () => {
 
@@ -82,6 +83,7 @@ const Layout =()=>{
       </Route>
       <Route  element={<AuthGuard/>}>
         <Route path="/checkout/:id" element={<CheckOut/>}/>
+        <Route path="/pay-done" element={<PayDone/>}/>
         <Route element={<ProfileOutlet/>} >
         <Route path='/profile' element={<Account/>} />
         <Route path='/account-password' element={<AccountPassword/>} />
