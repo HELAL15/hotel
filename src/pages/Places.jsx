@@ -41,7 +41,7 @@ const Places = () => {
                   ))}
                 </Image.PreviewGroup>
               ) : (
-                <Empty />
+                <Empty className='col-span-3' />
               )}
             </Tabs.TabPane>
             {cats?.data?.map((cat) => (
@@ -62,7 +62,7 @@ const Places = () => {
                     ))}
                   </Image.PreviewGroup>
                 ) : (
-                  <Empty />
+                  <Empty className='col-span-3' />
                 )}
               </Tabs.TabPane>
             ))}

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import { useParams } from 'react-router'
 import useFetch from '../hooks/useFetch'
 
@@ -6,10 +6,24 @@ const PayDone = () => {
 
 const {id} = useParams()
 
-const {data} = useFetch(`/reservations/${id}`)
+const {data , response} = useFetch(`user/reservations/${id}`)
 
 console.log(data?.data);
+console.log(data?.status);
 
+
+
+
+const reserveId = localStorage.getItem("reservationId")
+  if(id !== reserveId ) {
+    return <NotFound/>
+  }
+
+  useEffect(() => {
+    if (response?.ok) {
+      localStorage.removeItem("reservationId");
+    }
+  }, [response]);
 
   return (
     <>

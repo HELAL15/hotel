@@ -43,9 +43,11 @@ const SingleService = () => {
 
 
 
-if (res404 === 404) {
+if (res404 === 404 ) {
   return <NotFound/>
 }
+
+
 
 
   return (

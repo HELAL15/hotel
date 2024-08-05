@@ -61,9 +61,8 @@ const handleConfirm = async ()=>{
 
 
 
-
-const res404 = response?.response?.status
-  if(res404 === 404 ) {
+const reserveId = localStorage.getItem("reservationId")
+  if(id !== reserveId ) {
     return <NotFound/>
   }
 

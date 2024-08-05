@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { SettingContext } from '../context/SettingContext'
 import { useLocation } from 'react-router'
+import { useSelector } from 'react-redux'
 
 const Loader = () => {
-  const {memoizedSetting:setting} = useContext(SettingContext)
+  // const {memoizedSetting:setting} = useContext(SettingContext)
+
+  const setting = useSelector((state)=> state.setting.value)
   
   let data = setting?.data || null
-
+console.log(setting);
   const {
     logo ,
     site_name,
@@ -26,6 +29,8 @@ const Loader = () => {
   // };
 
 // useEffect(()=>{showLoader()},[location])
+
+if(setting !== null) return null
 
   return (
     <>

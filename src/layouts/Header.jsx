@@ -87,7 +87,7 @@ const Header = () => {
             <div className='flex items-center gap-4'>
             <div className='flex items-center gap-4'>
               <button className='flex items-center gap-1' onClick={handleLang}>
-              {lang === 'ar' ? 'english' : 'العربية'}
+              {lang === 'ar' ? 'EN' : 'AR'}
               <AiOutlineGlobal/>
               </button>
               <ul className='hidden items-center space-x-2 gap-3 lg:flex'>

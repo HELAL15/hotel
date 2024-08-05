@@ -16,6 +16,7 @@ import { ConfigProvider } from 'antd';
 import { Provider, useSelector } from 'react-redux';
 import { store } from './redux/store';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+import Loader from './layouts/Loader';
 
 
 disableReactDevTools();
@@ -27,6 +28,7 @@ const MainApp = () => {
   return (
     <ConfigProvider direction={direction}>
       <ToastContainer rtl={lang === 'ar' ? true : false} />
+      {/* <Loader/> */}
       <App />
     </ConfigProvider>
   );

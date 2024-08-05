@@ -96,7 +96,9 @@ const onSubmit = (e) => {
   request.post(`/user/rooms/${id}/reservation`, data)
   .then((res) => {
     toast.success(res.data.message)
-    navigate(`/checkout/${res?.data?.data?.id}`)
+    const id = res?.data?.data?.id
+    localStorage.setItem("reservationId" , id )
+    navigate(`/checkout/${id}`)
   })
   .catch((err) => {
     toast.error(err.response.data.message)

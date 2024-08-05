@@ -17,5 +17,5 @@ export const store = configureStore({
     filter:filterSlice,
     reservation:reservationSlice,
   },
-  devTools: false,
+  devTools: true,
 })
