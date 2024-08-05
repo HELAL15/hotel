@@ -13,7 +13,7 @@ console.log(data?.status);
 
 
 
-
+// get reservation id
 const reserveId = localStorage.getItem("reservationId")
   if(id !== reserveId ) {
     return <NotFound/>
