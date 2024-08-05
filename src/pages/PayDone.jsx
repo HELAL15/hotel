@@ -14,7 +14,7 @@ console.log(data?.status);
 
 
 useEffect(() => {
-  if (response?.ok) {
+  if (data?.status === "completed" ) {
     localStorage.removeItem("reservationId");
   }
 }, [response]);
