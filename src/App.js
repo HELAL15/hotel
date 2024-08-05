@@ -83,7 +83,7 @@ const Layout =()=>{
       </Route>
       <Route  element={<AuthGuard/>}>
         <Route path="/checkout/:id" element={<CheckOut/>}/>
-        <Route path="/pay-done" element={<PayDone/>}/>
+        <Route path="/pay-done/:id" element={<PayDone/>}/>
         <Route element={<ProfileOutlet/>} >
         <Route path='/profile' element={<Account/>} />
         <Route path='/account-password' element={<AccountPassword/>} />
