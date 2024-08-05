@@ -50,7 +50,7 @@ const handleConfirm = async ()=>{
       // const fullUrl = `${window.location.origin}/${res?.data?.data}`;
       const link = res?.data?.data;
       const fullUrl = link.startsWith('http://') || link.startsWith('https://') ? link : `http://${link}`;
-      window.open(fullUrl, '_blank');
+      window.open(fullUrl, '_parent');
     }
   }catch(err){
     console.log(err);

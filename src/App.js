@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Outlet, Route, Routes, useLocation } from 'react-router'
+import { Outlet, Route, Routes, useLocation, useParams } from 'react-router'
 import Home from './pages/Home'
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
@@ -38,7 +38,7 @@ const App = () => {
   useEffect(()=>{
     window.scrollTo({top:0, left:0 , behavior:"instant"})
   },[location.key])
-
+const {id} = useParams()
   const dispatch = useDispatch()
   useEffect(() => {
     if(location.pathname !== '/checkout'){
@@ -46,6 +46,7 @@ const App = () => {
       dispatch(setInfantDefault());
       dispatch(setChildDefault());
       dispatch(setDate([]));
+      // localStorage.removeItem('reservationId');
     }
   }, [location.pathname, dispatch]);
 
