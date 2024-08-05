@@ -6,7 +6,7 @@ const PayDone = () => {
 
 const {id} = useParams()
 
-const {data} = useFetch(`/payment/${id}`)
+const {data} = useFetch(`/reservations/${id}`)
 
 console.log(data?.data);
 
