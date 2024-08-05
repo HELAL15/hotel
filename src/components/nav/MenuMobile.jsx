@@ -16,7 +16,7 @@ const MenuMobile = ({catNavMobile ,setCatNavMobile}) => {
 const {t} = useTranslation()
 
 
-  const token = sessionStorage.getItem("hotel")
+  const token = localStorage.getItem("hotel")
   const {userDetails} = useContext(UserContext)
 
 

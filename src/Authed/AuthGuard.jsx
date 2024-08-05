@@ -4,7 +4,7 @@ import { UserContext } from '../context/UserContext';
 
 const AuthGuard = () => {
   const {userDetails} = useContext(UserContext)
-  const token = sessionStorage.getItem("hotel")
+  const token = localStorage.getItem("hotel")
   const location = useLocation();
   
 

@@ -38,7 +38,7 @@ export default function DeleteAccount() {
     request.post('/user/delete-account', data)
       .then(res => {
         setUserDetails([]);
-        sessionStorage.removeItem("hotel");
+        localStorage.removeItem("hotel");
         toast.success(res.data.message);
         navigate("/");
         close();

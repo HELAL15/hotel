@@ -49,7 +49,7 @@ const Account = () => {
       setLoading(false);
       // const userData = res.data.data;
       const token = res.data.data.token;
-      sessionStorage.setItem("hotel" , token)
+      localStorage.setItem("hotel" , token)
 
       // setUserDetails(userData);
 

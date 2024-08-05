@@ -40,8 +40,8 @@ const onSubmit = (data) => {
     const userData = res.data.data
     const token = res.data.data.token
     // set token in cookies
-    sessionStorage.setItem('hotel' , token);
-      sessionStorage.setItem('user-info' , userData)
+    localStorage.setItem('hotel' , token);
+      localStorage.setItem('user-info' , userData)
       toast.success(res.data.message);
       window.history.back();
     

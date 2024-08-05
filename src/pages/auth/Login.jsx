@@ -30,7 +30,7 @@ const Login = () => {
       // setUser(userData)
       const token = res.data.data.token
       // set token in cookies
-      sessionStorage.setItem('hotel' , token);
+      localStorage.setItem('hotel' , token);
       dispatch(setUser(userData))
 
       window.history.back();

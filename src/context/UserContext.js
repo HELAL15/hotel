@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [userDetails, setUserDetails] = useState([]);
-  const token = sessionStorage.getItem("hotel");
+  const token = localStorage.getItem("hotel");
 const location = useLocation()
 const { data , refetch } = useFetch(token ? "user/profile" : null , [token]);
   useEffect(() => {

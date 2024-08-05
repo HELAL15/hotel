@@ -19,7 +19,7 @@ import { FaUserPlus } from 'react-icons/fa';
 const Header = () => {
 
   const {userDetails:user} = useContext(UserContext)
-  const token = sessionStorage.getItem("hotel")
+  const token = localStorage.getItem("hotel")
   const {isOpen , setIsOpen} = useContext(OpeningContext)
   const {t}= useTranslation()
 

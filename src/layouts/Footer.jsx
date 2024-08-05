@@ -22,7 +22,7 @@ import { setSettings } from '../redux/features/settingSlice';
 
 
 const Footer = () => {
-  const token = sessionStorage.getItem("hotel");
+  const token = localStorage.getItem("hotel");
   const { userDetails } = useContext(UserContext);
   const { data: fetchedSetting } = useFetch("setting");
   const memoizedSetting = useMemo(() => fetchedSetting, [fetchedSetting]);

@@ -5,8 +5,8 @@ import { UserContext } from '../context/UserContext'
 
 export default function RequireBack() {
   const cookie = Cookie()
-  // const user = sessionStorage.getItem("user-info")
+  // const user = localStorage.getItem("user-info")
   const {userDetails} = useContext(UserContext)
-  const token = sessionStorage.getItem("hotel")
+  const token = localStorage.getItem("hotel")
   return userDetails && token ? window.history.back() : <Outlet/>
 }

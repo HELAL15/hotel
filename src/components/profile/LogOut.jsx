@@ -21,7 +21,7 @@ const handleLogOut = ()=>{
   .then(res=>{
     setLoading(false)
     navigate('/')
-    sessionStorage.removeItem("hotel")
+    localStorage.removeItem("hotel")
     setUserDetails([])
     toast.success(res.data.message)
   })

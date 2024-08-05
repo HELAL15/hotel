@@ -16,7 +16,7 @@ export const request = axios.create({
 });
 
 request.interceptors.request.use((config) => {
-  const token = sessionStorage.getItem('hotel');
+  const token = localStorage.getItem('hotel');
   const lang = localStorage.getItem("i18nextLng")
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
