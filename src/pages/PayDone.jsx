@@ -8,12 +8,10 @@ const PayDone = () => {
 
   const { data, response, isLoading, error } = useFetch(`user/reservations/${id}`);
 
-  useEffect(() => {
-    if (data?.status === 'completed') {
-      localStorage.removeItem('reservationId');
-    }
-  }, [data]);
-
+  
+  if (data?.status === 'completed') {
+    localStorage.removeItem('reservationId');
+  }
   const reserveId = localStorage.getItem('reservationId');
 
   // Render NotFound if the reservation ID doesn't match
