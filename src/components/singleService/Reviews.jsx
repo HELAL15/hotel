@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
 import { toast } from 'react-toastify';
@@ -7,6 +7,8 @@ import Review from './Review';
 import { request } from '../../api/request';
 import { useNavigate, useParams } from 'react-router';
 import useFetch from '../../hooks/useFetch';
+import { UserContext } from '../../context/UserContext';
+import { Link } from 'react-router-dom';
 
 const Reviews = ({ load }) => {
   const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
@@ -19,6 +21,9 @@ const Reviews = ({ load }) => {
   const { data: reviews, refetch } = useFetch(`/rooms/${id}/reviews?page=${page}`);
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("hotel")
+const {userDetails} = useContext(UserContext)
 
 
 useEffect(()=>{
@@ -70,9 +75,13 @@ useEffect(()=>{
           </div>
           {errors.review && <p className='text-danger'>Review is required</p>}
         </div>
-        <button type="submit" className="btn btn-primary w-full mt-2">
+        {
+          userDetails && token ?  
+          <button type="submit" className="btn btn-primary w-full mt-2">
           {loading ? <Spin /> : "Add Review"}
-        </button>
+          </button> :
+          <Link className='btn btn-primary w-full block text-center' to='/login' >login first</Link>
+        }
       </form>
       <div className='reviews mt-8'>
         {revs.map((review) => (

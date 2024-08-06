@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useContext, useEffect, useState } from 'react'
 import { FaStar } from 'react-icons/fa6'
 import { ConvertDecimel } from '../../helpers/ConvertDecimel'
 import { Select , DatePicker } from 'antd'
@@ -7,8 +7,16 @@ import { decreaseChild, decreaseInfant, increaseChild, increaseInfant, setChildD
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { request } from '../../api/request'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
+import { UserContext } from '../../context/UserContext'
 
 const ReservationForm = ({room}) => {
+
+const token = localStorage.getItem("hotel")
+const {userDetails} = useContext(UserContext)
+
+
+
 
   const [mealPrice , setMealPrice] = useState(0)
   const [daysCount, setDaysCount] = useState(1);
@@ -140,7 +148,10 @@ const onSubmit = (e) => {
               <Option value={''} disabled >choose meal</Option>
               {
                 meals?.map((meal)=>(
-                  <Option key={meal.id} value={meal.value}>{meal.title}</Option>
+                  <Option key={meal.id} value={meal.value} className="flex items-center justify-between w-full">
+                    {meal.title}
+                    {/* <span>${meal.value}</span> */}
+                  </Option>
                 ))
               }
             </Select>
@@ -202,9 +213,12 @@ const onSubmit = (e) => {
           <p>Total</p>
           <p>${Math.floor(totalPrice)}</p>
         </div>
-        <div className='flex justify-center'>
-          <button className='btn btn-primary w-full' onClick={onSubmit} >Book now</button>
-        </div>
+        {
+          userDetails && token ? <button className='btn btn-primary w-full ' onClick={onSubmit} >Book now</button> :
+          <Link className='btn btn-primary w-full block text-center' to='/login' >login first</Link>
+        }
+          
+
     </div>
     </>
   )

@@ -41,6 +41,18 @@
       }
     },
 
+    "about" : {
+      "features" : "Our Features",
+      "comfort" : "our comforts",
+      "policies" : "our policies"
+    },
+
+
+    "howItWork" : {
+      "head" : "how it work",
+      "subhead" : "Keep calm & travel on"
+    },
+
     "join" : {
       "head" : "Join our newsletter",
       "subhead" : "Read and share new perspectives on just about any topic. Everyone’s welcome.",

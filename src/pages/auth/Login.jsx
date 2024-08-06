@@ -1,6 +1,6 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import StyledAnim from '../../components/StyledAnim';
 import { request } from '../../api/request';
 import { toast } from 'react-toastify';
@@ -10,12 +10,15 @@ import { IoEyeOff } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/features/userSlice';
 import { useTranslation } from 'react-i18next';
+import { website } from '../../api/api';
 
 const Login = () => {
 
-  const {t} = useTranslation()
+  const navigate = useNavigate()
 
-  // const navigate = useNavigate()
+
+
+  const {t} = useTranslation()
   const [loading , setLoading] = useState(false)
   const [type , setType] = useState(false)
   const dispatch = useDispatch()
@@ -33,7 +36,8 @@ const Login = () => {
       localStorage.setItem('hotel' , token);
       dispatch(setUser(userData))
 
-      window.history.back();
+        window.history.back();
+
       toast.success(res.data.message);
       
     })

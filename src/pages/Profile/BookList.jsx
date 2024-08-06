@@ -59,14 +59,14 @@ const pageVariants = {
       <SecTitle 
           head="profile.booklist.link"
           />
-        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[30px]'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-8'>
             {
               rooms?.length > 0 ?
               rooms.map((room) => (
                   <MainCard key={room.id} room={room}  />
                 )) :
               isLoading?
-              <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full col-span-4 my-8 '>
+              <div className='grid gap-x-5 gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full col-span-4  '>
               {[...Array(8)].map((_, index) => (
                   <div key={index}>
                     <Skeleton height={200} />

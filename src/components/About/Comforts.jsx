@@ -4,17 +4,20 @@ import useFetch from '../../hooks/useFetch'
 import Card from './Card'
 import Skeleton from 'react-loading-skeleton'
 import { Empty } from 'antd'
+import { useTranslation } from 'react-i18next'
 
-const Comforts = () => {
+const Comforts = ({data , isLoading , head}) => {
 
-  const {data , isLoading} = useFetch("/about-comforts")
+
   const comforts = data?.data || []
+
+
 
   return (
     <>
       <section className='relative z-10'>
         <Container>
-          <h2 className='text-3xl px-4 pb-8 font-bold text-center lg:text-left rtl:lg:text-right'>Our Comforts</h2>
+          <h2 className='text-xl md:text-2xl px-4 pb-8 font-bold text-center lg:text-left rtl:lg:text-right'>{head}</h2>
           <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 items-stretch'>
             { 
               isLoading ? 

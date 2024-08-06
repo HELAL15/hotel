@@ -31,9 +31,9 @@ const Filter = () => {
 
 
   const defaultPrice = [fromPrice || 800 , toPrice || 3000 ]
-  const [prices, setPrices] = useState(defaultPrice)
-  const [guests, setGuests] = useState(noGuest || 1)
-  const [type, setType] = useState(searchParam.get('type') || "room")
+  const [prices, setPrices] = useState([])
+  const [guests, setGuests] = useState(null)
+  const [type, setType] = useState('')
   
   
   const { Option } = Select
@@ -56,7 +56,7 @@ const Filter = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate(`/rooms?no_guests=${guests}&type=${type}&from_price=${prices[0]}&to_price=${prices[1]}`)
+    navigate(`/rooms?${guests !== null ? `no_guests=${guests}` : '' }${type && `&type=${type}`}${prices[0] !== undefined ? `&from_price=${prices[0]}&to_price=${prices[1]}` : '' }`)
     dispatch(setFilter(false))
   }
 
@@ -82,7 +82,7 @@ const Filter = () => {
             <Slider
               range
               onChange={onChange}
-              defaultValue={defaultPrice}
+              // defaultValue={defaultPrice}
               max={parseFloat(max_price_per_day)}
               min={parseFloat(min_price_per_day)}
               trackStyle={[{ backgroundColor: '#4F46E5' }]}
@@ -93,19 +93,13 @@ const Filter = () => {
               railStyle={{ backgroundColor: '#737373' }}
             />
             <div className="price-display flex items-center justify-between px-6">
-              <span>${prices[0] || defaultPrice[0] }</span>
-              <span>${prices[1] || defaultPrice[1]}</span>
+              <span>${prices[0] || 0 }</span>
+              <span>${prices[1] || 0 }</span>
             </div>
           </div>
           <div className='mt-4 pb-4 border-b border-b-slate-300'>
             <h3 className='text-lg font-semibold'>{t('rooms.filter.guests')}</h3>
-            {/* <Select className='w-full mt-2' defaultValue={1} onChange={handleChange}>
-              {[...Array(5)].map((_, index) => (
-                <Option value={index + 1} key={index}>
-                  {index + 1} {index + 1 === 1 ? "guest" : "guests"}
-                </Option>
-              ))}
-            </Select> */}
+
             
             <input 
               type='number' 
@@ -117,7 +111,8 @@ const Filter = () => {
           </div>
           <div className='mt-4 pb-4 border-b border-b-slate-300 mb-8'>
             <h3 className='text-lg font-semibold'>{t('rooms.filter.type')}</h3>
-            <Select className='w-full mt-2' defaultValue={"room"} onChange={handleTypeChange}>
+            <Select className='w-full mt-2' defaultValue={""} onChange={handleTypeChange}>
+              <Select.Option value="">All</Select.Option>
               <Select.Option value='suite'>suite</Select.Option>
               <Select.Option value='poo_view'>pool view</Select.Option>
               <Select.Option value='room'>room</Select.Option>

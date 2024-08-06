@@ -6,11 +6,19 @@ import AboutPolicies from '../components/About/AboutPolicies'
 import Features from '../components/About/Features'
 import HowItWork from '../components/HowItWork'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import useFetch from '../hooks/useFetch'
 
 
 
 
 const About = () => {
+
+  const {t} = useTranslation()
+
+  const {data:policies , isLoading:policiesLoading} = useFetch("/about-policys")
+  const {data:comfort , isLoading:comfortLoading} = useFetch("/about-comforts")
+  const { data:features, isLoading:featuresLoading } = useFetch("/about-features");
 
 
 const pageVariants = {
@@ -44,10 +52,10 @@ const pageVariants = {
     transition={pageTransition}
     >
       <MainSection/>
-      <Features/>
+      <Features  data={features} isLoading={featuresLoading} head={t("about.features")} />
       <HowItWork/>
-      <Comforts/>
-      <AboutPolicies/>
+      <Comforts  data={comfort} isLoading={comfortLoading} head={t("about.comfort")}/>
+      <AboutPolicies data={policies} isLoading={policiesLoading} head={t("about.policies")}  />
       <Newsletter/>
     </motion.div>
   )

@@ -42,11 +42,24 @@ const content =  useReactToPrint({
 const navigate = useNavigate()
 
 const componentRef = useRef();
-  const handlePrint =  ()=>{
-     content();
-     localStorage.removeItem('reservationId');
-     navigate('/rooms')
-  } 
+  // const handlePrint =  ()=>{
+  //     content()
+  //    .then(()=>{
+  //     localStorage.removeItem('reservationId')
+  //    })
+  //    .then(()=>{
+  //       navigate('/rooms')
+  //    })
+
+  // } 
+
+  const handlePrint =  () => {
+       content()
+      setTimeout(() => {
+        localStorage.removeItem('reservationId')
+        navigate('/rooms')
+      }, 2500);
+  };
 
 
 
@@ -62,10 +75,7 @@ const componentRef = useRef();
     return <NotFound />;
   }
 
-  // Handle loading state
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+
 
   // Handle error state
   if (error) {

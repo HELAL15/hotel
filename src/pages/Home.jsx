@@ -18,6 +18,7 @@ import Seo from '../helpers/Seo'
 import Suggestion from '../components/home/Suggestion'
 import FeaturedPlaces from '../components/home/FeaturedPlaces'
 import ExplorePlaces from '../components/home/ExplorePlaces'
+import TopRated from '../components/home/TopRated'
 
 
 
@@ -58,6 +59,14 @@ const Home = () => {
       <OurFeatures />
       <WhyUs />
       <FeaturedPlaces />
+
+
+      <TopRated/>
+
+
+      
+
+
       <HowItWork />
 
       <section>

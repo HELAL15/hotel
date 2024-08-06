@@ -40,7 +40,7 @@ const ServiceImgs = ({ imgs = [] , loading }) => {
                 />
               )}
             </div>
-            <div className='relative grid grid-cols-2 gap-2'>
+            <div className='relative grid grid-cols-2 gap-2 aspect-[5/3]'>
               
                 <div className='rounded-md overflow-hidden'>
                   <img
