@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCodeReady } from '../../redux/features/forgetPasswordSlice';
 import StyledAnim from '../../components/StyledAnim';
 import { useTranslation } from 'react-i18next';
+import Seo from '../../helpers/Seo';
 
 const RenterPassword = () => {
 
@@ -52,7 +53,9 @@ const changeType = (field) => {
   setTypes(prevTypes => ({ ...prevTypes, [field]: !prevTypes[field] }));
 };
 
-  return (
+  return (<>
+
+    <Seo title="changePass" />
     <section className='mt-10 relative'>
     <StyledAnim/>
     <Container>
@@ -100,6 +103,7 @@ const changeType = (field) => {
         </form>
     </Container>
     </section>
+  </>
   );
 };
 

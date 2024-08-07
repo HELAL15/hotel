@@ -8,6 +8,7 @@ import { Spin } from 'antd';
 import { useDispatch } from 'react-redux';
 import { setCodeReady, setEmail } from '../../redux/features/forgetPasswordSlice';
 import { useTranslation } from 'react-i18next';
+import Seo from '../../helpers/Seo';
 
 const ForgetPassword = () => {
 
@@ -50,6 +51,7 @@ const dispatch = useDispatch()
 
   return (
     <>
+        <Seo title="forgetPass" />
       <section className='relative mt-10'>
         <StyledAnim/>
         <div className='container mx-auto'>

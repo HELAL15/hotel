@@ -10,6 +10,7 @@ import { Spin } from 'antd';
 import { FaEye } from 'react-icons/fa6';
 import { IoEyeOff } from "react-icons/io5";
 import { useTranslation } from 'react-i18next';
+import Seo from '../../helpers/Seo';
 
 
 const SignUp = () => {
@@ -60,6 +61,7 @@ const changeType = (field) => {
 
   return (
     <>
+    <Seo title="register" />
      <section className='relative mt-10'>
   <StyledAnim />
   <div className='container mx-auto'>

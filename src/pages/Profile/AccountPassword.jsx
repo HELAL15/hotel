@@ -59,7 +59,7 @@ const AccountPassword = () => {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <Seo title="account-password" />
+      <Seo title="changePass" />
       <section className='relative'>
         <SecTitle head="profile.password.head" />
         <form className='relative z-20' onSubmit={handleSubmit(onSubmit)}>

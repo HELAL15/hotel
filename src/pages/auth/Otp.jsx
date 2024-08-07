@@ -8,6 +8,7 @@ import { Spin } from 'antd';
 import { useSelector } from 'react-redux';
 import StyledAnim from '../../components/StyledAnim';
 import { useTranslation } from 'react-i18next';
+import Seo from '../../helpers/Seo';
 
 const Otp = () => {
 
@@ -40,6 +41,7 @@ const Otp = () => {
 
   return (
     <>
+          <Seo title="otp" />
       <section className='mt-10 relative'>
       <StyledAnim/>
         <Container>

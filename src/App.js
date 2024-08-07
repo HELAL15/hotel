@@ -11,7 +11,6 @@ import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
 import Places from './pages/Places';
 import SingleService from './pages/SingleService';
-import SinglePlace from './pages/SinglePlace';
 import Account from './pages/Profile/Account';
 import AccountPassword from './pages/Profile/AccountPassword';
 import Wishlist from './pages/Profile/Wishlist';
@@ -20,15 +19,13 @@ import ProfileOutlet from './pages/Profile/ProfileOutlet';
 import AuthGuard from './Authed/AuthGuard';
 import RequireBack from './Authed/RequireBack';
 import ForgetPassword from './pages/auth/ForgetPassword';
-import Loader from './layouts/Loader';
-import { AnimatePresence } from 'framer-motion';
 import Privacy from './pages/Privacy';
 import RenterPassword from './pages/auth/RenterPassword';
 import Otp from './pages/auth/Otp';
 import OtpOutlet from './pages/auth/OtpOutlet';
 import CheckOut from './pages/CheckOut';
 import { useDispatch } from 'react-redux';
-import { setChildDefault, setDate, setID, setInfantDefault, setType } from './redux/features/reservationSlice';
+import { setChildDefault, setDate, setInfantDefault, setType } from './redux/features/reservationSlice';
 import PayDone from './pages/PayDone';
 
 const App = () => {
@@ -71,7 +68,6 @@ const Layout =()=>{
       <Route path="/rooms" element={<Services/>}/>
       <Route path="/rooms/:id" element={<SingleService/>}/>
       <Route path="/places" element={<Places/>}/>
-      <Route path="/places/:id" element={<SinglePlace/>}/>
       <Route path="/privacy" element={<Privacy/>}/>
       <Route element={<RequireBack/>}>
         <Route path="/login" element={<Login/>}/>

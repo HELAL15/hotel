@@ -84,8 +84,63 @@
     "about" : "chisfis | من نحن",
     "services" : "chisfis | الغرف",
     "contact" : "chisfis | تواصل معنا",
-    "places" : "chisfis | الاماكن"
+    "places" : "chisfis | الاماكن",
+    "profile" : "chisfis | الملف الشخصي",
+    "privacy" : "chisfis | سياسة الخصوصية",
+    "terms" : "chisfis | الشروط والأحكام",
+    "login" : "chisfis | تسجيل الدخول",
+    "register" : "chisfis | إنشاء حساب",
+    "forgetPass" : "chisfis | نسيت كلمة المرور",
+    "otp" : "chisfis | الرمز",
+    "changePass" : "chisfis | تغيير كلمة المرور",
+    "wishlist" : "chisfis | قائمة المفضلة",
+    "booklist" : "chisfis | قائمة الحجوزات"
   },
+
+
+
+  
+    "suggestions": {
+      "head": "اقتراحات للاكتشاف",
+      "body": "غرف شائعة نوصي بها لك"
+    },
+
+    "benefits": {
+      "head": "المنافع",
+      "body": "مدن حية"
+    },
+  
+  "more" : "معرفة المزيد",
+
+  "featured": {
+    "head": "الغرف المميزة",
+    "body": "غرف مميزة لك"
+  },
+
+  
+    "rated": {
+      "head": "الأعلى تقييماً",
+      "body": "غرف ذات تقييم عالي لك"
+    },
+
+      "fact": {
+        "head": "حقائق سريعة",
+        "body": "نحن محايدون ومستقلون، ونقوم كل يوم بإنشاء برامج ومحتوى متميز وعالمي"
+      },
+
+    
+
+    
+      "testimonials": {
+        "head": "أخبار سارة من بعيد",
+        "body": "لنرى ما رأي الناس في Chisfis"
+      },
+    
+    
+  
+  
+
+
   "contact": {
     "head": "اتصل بنا",
     "address": "العنوان",
@@ -107,6 +162,9 @@
       "emailInvalid": "عنوان البريد الإلكتروني غير صالح"
     }
   },
+
+
+
 
 
   "login":{

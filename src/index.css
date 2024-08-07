@@ -6,9 +6,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Wittgenstein:ital,wght@0,400..900;1,400..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Wittgenstein:ital,wght@0,400..900;1,400..900&display=swap'); */
 
-
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000');
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
 
 *{
@@ -16,10 +16,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  @apply capitalize;
 }
 
 html{
-  font-family: "Wittgenstein", sans-serif;
+  font-family: "Cairo", sans-serif;
   /* font-family: "Roboto", sans-serif; */
 
 }
@@ -57,7 +58,7 @@ section{
 
 
 .input {
-  @apply py-3 rounded-[30px] w-full outline-none px-6 text-primary border border-gray-300 focus:border-primary rtl:text-right ltr:text-left  ;
+  @apply py-3 lowercase rounded-[30px] w-full outline-none px-6 text-primary border border-gray-300 focus:border-primary rtl:text-right ltr:text-left  ;
 }
 
 
@@ -297,4 +298,14 @@ html[dir=rtl]{
 }
 .ant-btn-default {
   @apply  border-primary text-primary bg-transparent hover:bg-slate-400/30 border duration-300 grid items-center py-0 !important;
+}
+
+
+
+.testimonials .swiper-pagination-bullet{
+  @apply bg-primary/50 !important;
+}
+
+.testimonials .swiper-pagination-bullet.swiper-pagination-bullet-active{
+  @apply bg-primary !important;
 }

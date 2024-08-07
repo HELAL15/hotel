@@ -8,6 +8,7 @@ import HowItWork from '../components/HowItWork'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import useFetch from '../hooks/useFetch'
+import Seo from '../helpers/Seo'
 
 
 
@@ -51,6 +52,7 @@ const pageVariants = {
     variants={pageVariants}
     transition={pageTransition}
     >
+      <Seo title='about' description='hilton hotel is placed to host you and in this page you will know about us' />
       <MainSection/>
       <Features  data={features} isLoading={featuresLoading} head={t("about.features")} />
       <HowItWork/>

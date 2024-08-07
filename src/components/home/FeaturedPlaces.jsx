@@ -26,8 +26,8 @@ const rooms = data?.data.data || []
       <section className=''>
       <Container>
       <SecTitle 
-          head="Featured places to stay"
-          body="Popular places to stay that Chisfis recommends for you"
+          head="featured.head"
+          body="featured.body"
           />
         <Sorting sx=''>
         {

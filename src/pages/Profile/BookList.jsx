@@ -53,7 +53,7 @@ const pageVariants = {
     variants={pageVariants}
     transition={pageTransition}
     >
-      <Seo title="reservations"  />
+      <Seo title="booklist"  />
       <section className=''>
 
       <SecTitle 

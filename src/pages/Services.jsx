@@ -12,6 +12,7 @@ import Filter from '../components/singleService/Filter';
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../redux/features/filterSlice';
 import { useTranslation } from 'react-i18next';
+import Newsletter from '../components/Newsletter';
 
 const Services = () => {
   const [noGuests, setNoGuests] = useState("");
@@ -43,7 +44,7 @@ const Services = () => {
 
   return (
     <>
-      <Seo title="Services" />
+      <Seo title="services" description='hilton hotel is placed to host you , here you will find all our rooms enjoy experience' />
       <Filter/>
       <section className='mt-8'>
         <Container>
@@ -85,6 +86,10 @@ const Services = () => {
           />
         </Container>
       </section>
+
+      <Newsletter/>
+
+
     </>
   );
 };

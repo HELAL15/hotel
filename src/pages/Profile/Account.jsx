@@ -89,7 +89,7 @@ const pageVariants = {
     variants={pageVariants}
     transition={pageTransition}
     >
-      <Seo title="Profile" />
+      <Seo title="profile" />
       <section className='relative'>
 
           <SecTitle head="profile.profile.head" />

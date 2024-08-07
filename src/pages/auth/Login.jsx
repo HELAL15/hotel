@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/features/userSlice';
 import { useTranslation } from 'react-i18next';
 import { website } from '../../api/api';
+import Seo from '../../helpers/Seo'
 
 const Login = () => {
 
@@ -56,6 +57,7 @@ const Login = () => {
 
   return (
     <>
+      <Seo title="login" />
       <section className='relative mt-10'>
         <StyledAnim/>
         <div className='container mx-auto'>

@@ -19,6 +19,8 @@ import Suggestion from '../components/home/Suggestion'
 import FeaturedPlaces from '../components/home/FeaturedPlaces'
 import ExplorePlaces from '../components/home/ExplorePlaces'
 import TopRated from '../components/home/TopRated'
+import Testimonials from '../components/home/Testimonials'
+import Facts from '../components/home/Facts'
 
 
 
@@ -64,42 +66,17 @@ const Home = () => {
       <TopRated/>
 
 
-      
 
 
       <HowItWork />
+ 
+      
+      <Testimonials/>
 
-      <section>
-        <Container>
-          <div className='bg-orange-50 rounded-[30px] py-8 px-8'>
-            <SecTitle 
-              head="popular places"
-              body="Popular places to recommend for you"
-            />
-            <Swiper
-              className='h-full w-full'
-              modules={[Navigation]}
-              navigation
-              pagination={{ clickable: true }}
-              scrollbar={{ draggable: true }}
-              breakpoints={{
-                625: { slidesPerView: 1, spaceBetween: 10 },
-                768: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 25 },
-                1444: { slidesPerView: 4, spaceBetween: 35 },
-              }}
-            >
-              {[...Array(9)].map((_, index) => (
-                <SwiperSlide key={index}>
-                  <PlaceCard />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </Container>
-      </section>
 
-      <ExplorePlaces />
+      <Facts/>
+
+
       <Newsletter />
     </motion.div>
   )

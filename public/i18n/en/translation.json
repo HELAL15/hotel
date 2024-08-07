@@ -77,12 +77,55 @@
       "helps" : "helps",
       "contact" : "contact"
     },
-    "seo" : {
-      "home" : "chisfis | home",
-      "about" : "chisfis | about us",
-      "services" : "chisfis | rooms",
-      "contact" : "chisfis | contact us",
-      "places" : "chisfis | our places"
+    "seo": {
+      "home": "chisfis | Home",
+      "about": "chisfis | About Us",
+      "services": "chisfis | Rooms",
+      "contact": "chisfis | Contact Us",
+      "places": "chisfis | Places",
+      "profile": "chisfis | Profile",
+      "privacy": "chisfis | Privacy Policy",
+      "terms": "chisfis | Terms and Conditions",
+      "login": "chisfis | Login",
+      "register": "chisfis | Register",
+      "forgetPass": "chisfis | Forgot Password",
+      "otp": "chisfis | OTP",
+      "changePass": "chisfis | Change Password",
+      "wishlist": "chisfis | Wishlist",
+      "booklist": "chisfis | Bookings"
+    },
+
+
+    "suggestions" : {
+      "head" : "Suggestions for discovery",
+      "body" : "Popular rooms to recommends for you"
+    },
+
+    "benefits" : {
+      "head" : "Benefits",
+      "body" : "Happening cities"
+    },
+
+    "more" : "know more",
+
+    "featured" : {
+      "head" : "featured rooms",
+      "body" : "featured rooms for you"
+    },
+
+    "rated" : {
+      "head" : "Top Rated",
+      "body" : "Top rated rooms for you"
+    },
+
+    "testimonials" : {
+      "head" : "Good news from far away",
+      "body" : "Let's see what people think of Chisfis"
+    },
+
+    "fact" : {
+      "head" : "fast fact",
+      "body" : "We’re impartial and independent, and every day we create distinctive, world-class programmes and content"
     },
 
     "contact":{
