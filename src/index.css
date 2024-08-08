@@ -42,6 +42,9 @@ section{
   @apply text-gray-800
 } */
 
+.nav-link.active{
+  @apply font-bold;
+}
 
 .text-danger{
   @apply text-red-500 mx-5 my-1
@@ -308,4 +311,13 @@ html[dir=rtl]{
 
 .testimonials .swiper-pagination-bullet.swiper-pagination-bullet-active{
   @apply bg-primary !important;
+}
+.suggest-swiper{
+  @apply pb-12 !important ;
+}
+.suggest-swiper .swiper-pagination-bullet{
+  @apply bg-primary !important;
+}
+.card-swiper .swiper-pagination-bullet{
+  @apply bg-white !important;
 }

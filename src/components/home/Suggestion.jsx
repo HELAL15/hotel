@@ -2,7 +2,7 @@ import React, { memo} from 'react'
 import Container from '../../helpers/Container'
 import SecTitle from '../SecTitle'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import PlaceCard from '../PlaceCard'
 import { useSelector } from 'react-redux';
 import useFetch from '../../hooks/useFetch';
@@ -28,15 +28,15 @@ const cards = data?.data?.data || {}
           body="suggestions.body"
           />
                 <Swiper
-                className='h-full w-full'
-                modules={[Navigation , Autoplay]}
-                // spaceBetween={50}
+                className='h-full w-full suggest-swiper'
+                modules={[Navigation , Autoplay , Pagination]}
+                spaceBetween={20}
                 // slidesPerView={5}
                 dir={dir}
-                navigation
+
                 loop
                 autoplay={{
-                  delay: 2000,
+                  delay: 4000,
                   disableOnInteraction: false,
                 }}
                 pagination={{ clickable: true }}
@@ -67,7 +67,7 @@ const cards = data?.data?.data || {}
               {
                 cards?.length > 0 ?
                 cards.map((card, index) => (
-                  <SwiperSlide key={index}>
+                  <SwiperSlide key={index} className='suggest-slide' >
                     <MainCard room={card} />
                   </SwiperSlide>
                 ))

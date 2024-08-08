@@ -59,7 +59,7 @@ if (res404 === 404 ) {
 
       <section className='mt-0 single-room'>
         <Container>
-          <div className='relative z-10 mt-11 flex flex-col lg:flex-row flex-wrap-reverse'>
+          <div className='relative z-10 mt-4 md:mt-11 flex flex-col lg:flex-row flex-wrap-reverse'>
             <div className='w-full lg:w-3/5 xl:w-2/3 space-y-8 lg:space-y-10 ltr:lg:pr-10 rtl:lg:pl-10 order-2 lg:order-1'>
               <MainInfo 
                 title={room?.title}

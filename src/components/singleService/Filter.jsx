@@ -114,7 +114,7 @@ const Filter = () => {
             <Select className='w-full mt-2' defaultValue={""} onChange={handleTypeChange}>
               <Select.Option value="">All</Select.Option>
               <Select.Option value='suite'>suite</Select.Option>
-              <Select.Option value='poo_view'>pool view</Select.Option>
+              <Select.Option value='pool_view'>pool view</Select.Option>
               <Select.Option value='room'>room</Select.Option>
             </Select>
           </div>

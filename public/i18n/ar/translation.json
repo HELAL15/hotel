@@ -2,7 +2,7 @@
   "lng": "en",
   "hero" : {
     "head":"احجز فندقك واستمتع بالخبرة",
-    "subhead" : "برفقتنا، لديكم رحلة مليئة بالتجارب. مع Chisfis، حجز أماكن الإقامة والمنتجعات والفنادق"
+    "subhead" : "برفقتنا، لديكم رحلة مليئة بالتجارب. مع Riviera، حجز أماكن الإقامة والمنتجعات والفنادق"
   },
   "nav": {
     "home" : "الرئيسية",
@@ -44,7 +44,43 @@
       "search": "بحث"
     }
   },
+  "room" : {
+    "wishlist" : "أضف إلى المفضلة",
+    "added" : "إزالة من المفضلة",
+    "description" : "الوصف",
+    "reviews" : "التعليقات",
+    "revCounts" : "تعليقات",
+    "revCount" : "تعليق",
+    "addReview" : "أضف تعليق",
+    "guests" : "ضيوف",
+    "guest" : "ضيف",
+    "beds" : "أسِرَّة",
+    "bed" : "سرير",
+    "baths" : "حمامات",
+    "bath" : "حمام",
+    "bedrooms" : "غرف النوم",
+    "bedroom" : "غرفة نوم",
+    "login" : "سجل الدخول أولاً",
+    "valid" : "التعليق مطلوب",
+    "addRev" : "اضف تعليقك",
+    "total" : "الإحمالي",
+    "book" : "احجز الآن",
+    "charge" : "ضريبة الخدمة",
+    "days" : "ايام",
+    "day1" : "يوم",
+    "child" : "طفل",
+    "infant" : "رضيع",
+    "sDate" : "اختر التاريخ",
+    "meal" : "وجبات اليوم",
+    "choose" : "اختر الوجبة"
 
+  },
+  
+"selectMeal" : {
+  "all" : "الكل",
+  "breakfast" : "الفطور",
+  "breakfast_dinner" : "الفطور و الغداء"
+},
 
   "about": {
     "features": "ميزاتنا",
@@ -80,21 +116,21 @@
   },
 
   "seo" : {
-    "home" : "chisfis | الرئيسية",
-    "about" : "chisfis | من نحن",
-    "services" : "chisfis | الغرف",
-    "contact" : "chisfis | تواصل معنا",
-    "places" : "chisfis | الاماكن",
-    "profile" : "chisfis | الملف الشخصي",
-    "privacy" : "chisfis | سياسة الخصوصية",
-    "terms" : "chisfis | الشروط والأحكام",
-    "login" : "chisfis | تسجيل الدخول",
-    "register" : "chisfis | إنشاء حساب",
-    "forgetPass" : "chisfis | نسيت كلمة المرور",
-    "otp" : "chisfis | الرمز",
-    "changePass" : "chisfis | تغيير كلمة المرور",
-    "wishlist" : "chisfis | قائمة المفضلة",
-    "booklist" : "chisfis | قائمة الحجوزات"
+    "home" : "Riviera | الرئيسية",
+    "about" : "Riviera | من نحن",
+    "services" : "Riviera | الغرف",
+    "contact" : "Riviera | تواصل معنا",
+    "places" : "Riviera | الاماكن",
+    "profile" : "Riviera | الملف الشخصي",
+    "privacy" : "Riviera | سياسة الخصوصية",
+    "terms" : "Riviera | الشروط والأحكام",
+    "login" : "Riviera | تسجيل الدخول",
+    "register" : "Riviera | إنشاء حساب",
+    "forgetPass" : "Riviera | نسيت كلمة المرور",
+    "otp" : "Riviera | الرمز",
+    "changePass" : "Riviera | تغيير كلمة المرور",
+    "wishlist" : "Riviera | قائمة المفضلة",
+    "booklist" : "Riviera | قائمة الحجوزات"
   },
 
 
@@ -133,13 +169,21 @@
     
       "testimonials": {
         "head": "أخبار سارة من بعيد",
-        "body": "لنرى ما رأي الناس في Chisfis"
+        "body": "لنرى ما رأي الناس في Riviera"
       },
     
     
   
-  
+  "$": "ج.م",
+  "day" : "لليوم",
 
+  "selectType" : {
+    "room" : "غرفة",
+    "suite" : "جناح",
+    "pool_view" : "إطلالة على المسبح"
+  },
+
+  "bed" : "سرير",
 
   "contact": {
     "head": "اتصل بنا",

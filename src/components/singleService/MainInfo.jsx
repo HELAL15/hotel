@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { ConvertDecimel } from '../../helpers/ConvertDecimel';
 import { useNavigate } from 'react-router';
 import Skeleton from 'react-loading-skeleton';
+import { useTranslation } from 'react-i18next';
 
 const MainInfo = ({
   title,
@@ -41,21 +42,22 @@ const MainInfo = ({
       });
   };
 
+  const {t} = useTranslation()
 
 
   return (
     <>
-      <div className='my-4 mt-0 rounded-[30px] border border-neutral-200 overflow-hidden p-4'>
+      <div className='mb-4 mt-0 rounded-[30px] border border-neutral-200 overflow-hidden p-4'>
                 <div className='flex items-center justify-between gap-4'>
                   {
                     loading ? <Skeleton className=' px-6 rounded-[30px]' /> :
-                    <span className='bg-primary/20 text-primary font-semibold capitalize px-3 rounded-[30px] text-sm'>{type}</span>
+                    <span className='bg-primary/20 text-primary font-semibold capitalize px-3 rounded-[30px] text-sm'>{t(`selectType.${type}`)}</span>
                   }
                   {
                     loading ? <Skeleton className=' px-11 rounded-[30px]' /> :
                   <button className='flex items-center gap-2 px-3 rounded-md duration-300 hover:bg-slate-200' onClick={handleFav}>
                   <i className=''>{fav ? <FaHeart className='text-primary' /> : <FaRegHeart />}</i>
-                    <span>{fav ? "added to wishlist" : "wishlist"}</span>
+                    <span>{fav ? t("room.added") : t("room.wishlist")}</span>
                   </button>
                   }
                 </div>
@@ -85,19 +87,19 @@ const MainInfo = ({
                     <>
                     <p className='flex items-center gap-2 '>
                       <i className=''><CiUser /></i>
-                      <span className=''>{guests} guests</span>
+                      <span className=''>{guests} {guests === 1 ? t("room.guest") : t("room.guests") }</span>
                     </p>
                     <p className='flex items-center gap-2 '>
                       <i className=''><IoBedOutline /></i>
-                      <span className=''>{beds} beds</span>
+                      <span className=''>{beds} {beds === 1 ? t("room.bed") : t("room.beds") }</span>
                     </p>
                     <p className='flex items-center gap-2 '>
                       <i className=''><PiBathtubLight /></i>
-                      <span className=''>{bathroom} baths</span>
+                      <span className=''>{bathroom} {bathroom === 1 ? t("room.bath") : t("room.baths") }</span>
                     </p>
                     <p className='flex items-center gap-2 '>
                       <i className=''><LiaDoorOpenSolid /></i>
-                      <span className=''>{bedroom} bedrooms</span>
+                      <span className=''>{bedroom} {bedroom === 1 ? t("room.bedroom") : t("room.bedrooms") }</span>
                     </p>
                     </>
                   }

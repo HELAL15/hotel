@@ -8,5 +8,5 @@ export default function RequireBack() {
   // const user = localStorage.getItem("user-info")
   const {userDetails} = useContext(UserContext)
   const token = localStorage.getItem("hotel")
-  return userDetails && token ? <Navigate to="/" replace /> : <Outlet/>
+  return userDetails && token && Object.keys(userDetails).length > 0 ? <Navigate to="/" replace /> : <Outlet/>
 }

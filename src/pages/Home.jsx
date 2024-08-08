@@ -1,26 +1,20 @@
-import React, { memo, Suspense, lazy } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { memo } from 'react'
 import { motion } from 'framer-motion'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import WhyUs from '../components/WhyUs'
 import Newsletter from '../components/Newsletter'
-import Container from '../helpers/Container'
-import PlaceCard from '../components/PlaceCard'
 import Hero from '../components/home/Hero'
-import SecTitle from '../components/SecTitle'
 import OurFeatures from '../components/OurFeatures'
 import HowItWork from '../components/HowItWork'
 import Seo from '../helpers/Seo'
 import Suggestion from '../components/home/Suggestion'
 import FeaturedPlaces from '../components/home/FeaturedPlaces'
-import ExplorePlaces from '../components/home/ExplorePlaces'
 import TopRated from '../components/home/TopRated'
 import Testimonials from '../components/home/Testimonials'
 import Facts from '../components/home/Facts'
+
 
 
 
@@ -75,6 +69,8 @@ const Home = () => {
 
 
       <Facts/>
+
+
 
 
       <Newsletter />

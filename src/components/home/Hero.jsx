@@ -62,7 +62,7 @@ const Hero = () => {
             {
               description ? 
               <p className=' my-4  text-base md:text-lg'>{description}</p> :
-              isLoading ? <Skeleton width={400} count={3} /> : <Empty/>
+              isLoading ? <Skeleton width={300} count={3} /> : <Empty/>
             }
               
               <div className='mt-10'>

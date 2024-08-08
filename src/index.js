@@ -21,10 +21,13 @@ import Loader from './layouts/Loader';
 
 disableReactDevTools();
 
+setTimeout(() => {
+  localStorage.removeItem('reservationId')
+}, 800000);
 const MainApp = () => {
   const lang = useSelector((state) => state.lang.value);
   const direction = lang === 'ar' ? 'rtl' : 'ltr';
-
+ 
   return (
     <ConfigProvider direction={direction}>
       <ToastContainer rtl={lang === 'ar' ? true : false} />

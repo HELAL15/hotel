@@ -8,11 +8,11 @@ const AuthGuard = () => {
   const location = useLocation();
   
 
-  if (userDetails && token && (location.pathname === '/login' || location.pathname === '/register')) {
+  if (userDetails && Object.keys(userDetails).length > 0 && token && (location.pathname === '/login' || location.pathname === '/register')) {
     return <Navigate to="/" replace />;
   }
 
-  return token && userDetails ? (
+  return token && userDetails  ? (
     <Outlet />
   ) : (
     <Navigate to="/login" replace />

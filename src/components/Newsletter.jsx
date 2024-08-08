@@ -51,8 +51,8 @@ const Newsletter = () => {
         <Container sx="relative overflow-hidden">
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center bg-primary/10 py-7 px-4 md:px-20 rounded-[30px]'>
             <div className='flex flex-col gap-3'>
-              <h3 className='text-2xl font-bold'>{t("join.head")}</h3>
-              <p className=''>{t("join.subhead")}</p>
+              <h3 className='text-xl md:text-2xl font-semibold mb-1'>{t("join.head")}</h3>
+              <p className='mb-4'>{t("join.subhead")}</p>
               <div className='flex flex-col gap-4'>
                 <div className='flex items-center gap-3'>
                   <span className='w-[30px] h-[30px] text-primary bg-primary/10 grid place-items-center rounded-full '>01</span>

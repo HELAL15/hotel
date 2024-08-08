@@ -30,8 +30,8 @@ const MainSection = () => {
                   scale: [1, 1.05, 1],
                   transition: {duration: 1}
                 }}
-                className='text-2xl font-bold text-gray-800'>{about.title}</motion.h2>
-              <p className='text-gray-600 leading-8'>{about.description}</p>
+                className='text-xl md:text-2xl font-semibold mb-1 md:mb-2'>{about.title}</motion.h2>
+              <p className=' leading-8'>{about.description}</p>
             </>
           }
           </div>

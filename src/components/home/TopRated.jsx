@@ -7,6 +7,7 @@ import SecTitle from '../SecTitle'
 import Skeleton from 'react-loading-skeleton'
 import { Empty } from 'antd'
 import { useTranslation } from 'react-i18next'
+import { FaStar } from 'react-icons/fa6'
 
 const TopRated = () => {
 
@@ -39,8 +40,8 @@ const {t} = useTranslation()
                   )
                 }
                   <div className='absolute inset-x-0 bottom-0 p-4 z-10 bg-gradient-to-t from-black/60 to-transparent '>
-                    <h4 className='text-white text-2xl font-bold'>{tops[0]?.title}</h4>
-                    <p className='text-white/90 text-base font-normal'>{tops[0]?.avg_review} rate</p>
+                    <h4 className='text-white text-lg md:text-xl font-bold'>{tops[0]?.title}</h4>
+                    <p className='text-white/90 text-base font-normal flex items-center gap-1 mt-1'>{tops[0]?.avg_review} <i className='text-yellow-400'><FaStar /></i></p>
                   </div>
                 </Link>
               <div className='grid grid-rows-2 gap-6 max-h-[450px]'>
@@ -53,8 +54,8 @@ const {t} = useTranslation()
                   )
                 }
                   <div className='absolute inset-x-0 bottom-0 p-4 z-10 bg-gradient-to-t from-black/60 to-transparent '>
-                    <h4 className='text-white text-2xl font-bold'>{tops[1]?.title}</h4>
-                    <p className='text-white/90 text-base font-normal'>{tops[1]?.avg_review} rate</p>
+                    <h4 className='text-white text-lg md:text-xl font-bold'>{tops[1]?.title}</h4>
+                    <p className='text-white/90 text-base font-normal flex items-center gap-1 mt-1'>{tops[1]?.avg_review} <i className='text-yellow-400'><FaStar /></i></p>
                   </div>
                 </Link>
                 <Link to={`/rooms/${tops[2]?.id}`} className='rounded-2xl overflow-hidden relative group '>
@@ -66,8 +67,8 @@ const {t} = useTranslation()
                   )
                 }
                   <div className='absolute inset-x-0 bottom-0 p-4 z-10 bg-gradient-to-t from-black/60 to-transparent '>
-                    <h4 className='text-white text-2xl font-bold'>{tops[2]?.title}</h4>
-                    <p className='text-white/90 text-base font-normal'>{tops[2]?.avg_review} rate</p>
+                    <h4 className='text-white text-lg md:text-xl font-bold'>{tops[2]?.title}</h4>
+                    <p className='text-white/90 text-base font-normal flex items-center gap-1 mt-1'>{tops[2]?.avg_review} <i className='text-yellow-400'><FaStar /></i></p>
                   </div>
                 </Link>
               </div>
@@ -81,8 +82,8 @@ const {t} = useTranslation()
                 }
                 
                 <div className='absolute inset-x-0 bottom-0 p-4 z-10 bg-gradient-to-t from-black/60 to-transparent '>
-                  <h4 className='text-white text-2xl font-bold'>{tops[3]?.title}</h4>
-                  <p className='text-white/90 text-base font-normal'>{tops[3]?.avg_review} rate</p>
+                  <h4 className='text-white text-lg md:text-xl font-bold'>{tops[3]?.title}</h4>
+                  <p className='text-white/90 text-base font-normal flex items-center gap-1 mt-1'>{tops[3]?.avg_review} <i className='text-yellow-400'><FaStar /></i></p>
                 </div>
               </Link>
             </> :

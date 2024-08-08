@@ -24,9 +24,9 @@ const OurFeatures = () => {
               <img src={img} alt='features'/>
             </div>
             <div className="max-w-2xl flex-shrink-0 mt-10 lg:mt-0 lg:w-2/5 lg:pl-16">
-              <span className="uppercase text-sm text-neutral-500 tracking-widest">{t("benefits.head")}</span>
-              <h2 className="font-semibold text-4xl mt-5">{t("benefits.body")}</h2>
-              <ul className="space-y-10 mt-16">
+              <span className="uppercase text-sm tracking-widest mb-4">{t("benefits.head")}</span>
+              <h2 className="text-xl md:text-2xl font-semibold mb-1 md:mb-2">{t("benefits.body")}</h2>
+              <ul className="space-y-10 mt-8">
                 {
                   benefits?.length > 0 ?
                   benefits.map((benefit , index)=>(

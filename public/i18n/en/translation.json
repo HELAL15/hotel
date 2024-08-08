@@ -41,6 +41,44 @@
       }
     },
 
+    "room" : {
+      "wishlist" : "add to wishlist",
+      "added" : "remove from wishlist",
+      "description" : "description",
+      "reviews" : "Reviews" ,
+      "revCounts" : "reviews",
+      "revCount" : "review",
+      "addReview" : "add review",
+      "guests" : "guests",
+      "guest" : "guest",
+      "beds" : "beds",
+      "bed" : "bed",
+      "baths" : "baths",
+      "bath" : "bath",
+      "bedrooms" : "bedrooms",
+      "bedroom" : "bedroom",
+      "login" : "login first",
+      "valid" : "Review is required",
+      "addRev" : "add your review",
+      "total": "Total",
+      "book": "Book Now",
+      "charge": "Service Charge",
+      "days": "Days",
+      "day1": "Day",
+      "child": "Child",
+      "infant": "Infant",
+      "sDate": "Select Date",
+      "meal": "Meals for the Day",
+      "choose": "Choose Meal"
+    },
+
+    "selectMeal": {
+      "all": "All",
+      "breakfast": "Breakfast",
+      "breakfast_dinner": "Breakfast and Lunch"
+  },
+
+
     "about" : {
       "features" : "Our Features",
       "comfort" : "our comforts",
@@ -78,21 +116,21 @@
       "contact" : "contact"
     },
     "seo": {
-      "home": "chisfis | Home",
-      "about": "chisfis | About Us",
-      "services": "chisfis | Rooms",
-      "contact": "chisfis | Contact Us",
-      "places": "chisfis | Places",
-      "profile": "chisfis | Profile",
-      "privacy": "chisfis | Privacy Policy",
-      "terms": "chisfis | Terms and Conditions",
-      "login": "chisfis | Login",
-      "register": "chisfis | Register",
-      "forgetPass": "chisfis | Forgot Password",
-      "otp": "chisfis | OTP",
-      "changePass": "chisfis | Change Password",
-      "wishlist": "chisfis | Wishlist",
-      "booklist": "chisfis | Bookings"
+      "home": "Riviera | Home",
+      "about": "Riviera | About Us",
+      "services": "Riviera | Rooms",
+      "contact": "Riviera | Contact Us",
+      "places": "Riviera | Places",
+      "profile": "Riviera | Profile",
+      "privacy": "Riviera | Privacy Policy",
+      "terms": "Riviera | Terms and Conditions",
+      "login": "Riviera | Login",
+      "register": "Riviera | Register",
+      "forgetPass": "Riviera | Forgot Password",
+      "otp": "Riviera | OTP",
+      "changePass": "Riviera | Change Password",
+      "wishlist": "Riviera | Wishlist",
+      "booklist": "Riviera | Bookings"
     },
 
 
@@ -127,6 +165,17 @@
       "head" : "fast fact",
       "body" : "We’re impartial and independent, and every day we create distinctive, world-class programmes and content"
     },
+
+    "$": "$",
+
+    "day" : "day",
+    "selectType" : {
+      "room" : "room",
+      "suite" : "suite",
+      "pool_view" : "pool view"
+    },
+
+    "bed" : "bed",
 
     "contact":{
       "head": "Contact Us",

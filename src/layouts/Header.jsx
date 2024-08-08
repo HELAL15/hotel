@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeLang } from '../redux/features/langSlice';
 import { UserContext } from '../context/UserContext';
 import { twMerge } from 'tailwind-merge';
-import { FaUserPlus } from 'react-icons/fa';
 
 
 const Header = () => {
@@ -108,7 +107,7 @@ const Header = () => {
 
             </div>
             <div className={`${isOpen ? 'ltr:left-0 rtl:right-0 rtl:left-[unset]' : 'ltr:-left-full rtl:-right-full rtl:-left-[unset]'} lg:hidden fixed top-0 bottom-0 z-30 w-full h-screen transition-all duration-300`}>
-            <MenuMobile />
+            <MenuMobile logo={logo} alt={site_name} />
           </div>
 
           </div>

@@ -27,6 +27,7 @@ import CheckOut from './pages/CheckOut';
 import { useDispatch } from 'react-redux';
 import { setChildDefault, setDate, setInfantDefault, setType } from './redux/features/reservationSlice';
 import PayDone from './pages/PayDone';
+import Seo from './helpers/Seo';
 
 const App = () => {
 
@@ -60,37 +61,40 @@ const Layout =()=>{
 
 
   return (
+  <>
+    <Seo/>
     <Routes >
-    <Route  element={<Layout/>}>
-      <Route index element={<Home/>}/>
-      <Route path="/about" element={<About/>}/>
-      <Route path="/contact" element={<Contact/>}/>
-      <Route path="/rooms" element={<Services/>}/>
-      <Route path="/rooms/:id" element={<SingleService/>}/>
-      <Route path="/places" element={<Places/>}/>
-      <Route path="/privacy" element={<Privacy/>}/>
-      <Route element={<RequireBack/>}>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/register" element={<SignUp/>}/>
-        <Route path="/forgetpassword" element={<ForgetPassword/>}/>
-        <Route element={<OtpOutlet/>} >
-          <Route path="/otp-code" element={<Otp/>}/>
-          <Route path="/enter-new-password" element={<RenterPassword/>}/>
+      <Route  element={<Layout/>}>
+        <Route index element={<Home/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/rooms" element={<Services/>}/>
+        <Route path="/rooms/:id" element={<SingleService/>}/>
+        <Route path="/places" element={<Places/>}/>
+        <Route path="/privacy" element={<Privacy/>}/>
+        <Route element={<RequireBack/>}>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<SignUp/>}/>
+          <Route path="/forgetpassword" element={<ForgetPassword/>}/>
+          <Route element={<OtpOutlet/>} >
+            <Route path="/otp-code" element={<Otp/>}/>
+            <Route path="/enter-new-password" element={<RenterPassword/>}/>
+          </Route>
         </Route>
+        <Route  element={<AuthGuard/>}>
+          <Route path="/pay-done/:id" element={<PayDone/>}/>
+          <Route path="/checkout/:id" element={<CheckOut/>}/>
+          <Route element={<ProfileOutlet/>} >
+          <Route path='/profile' element={<Account/>} />
+          <Route path='/account-password' element={<AccountPassword/>} />
+          <Route path='/Wishlist' element={<Wishlist/>} />
+          <Route path='/booking-list' element={<BookList/>} />
+        </Route>
+        </Route>
+        <Route path='*' element={<NotFound/>}/>
       </Route>
-      <Route  element={<AuthGuard/>}>
-        <Route path="/checkout/:id" element={<CheckOut/>}/>
-        <Route path="/pay-done/:id" element={<PayDone/>}/>
-        <Route element={<ProfileOutlet/>} >
-        <Route path='/profile' element={<Account/>} />
-        <Route path='/account-password' element={<AccountPassword/>} />
-        <Route path='/Wishlist' element={<Wishlist/>} />
-        <Route path='/booking-list' element={<BookList/>} />
-      </Route>
-      </Route>
-      <Route path='*' element={<NotFound/>}/>
-    </Route>
     </Routes>
+  </>
   )
 }
 

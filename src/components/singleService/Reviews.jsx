@@ -9,6 +9,7 @@ import { useNavigate, useParams } from 'react-router';
 import useFetch from '../../hooks/useFetch';
 import { UserContext } from '../../context/UserContext';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Reviews = ({ load }) => {
   const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
@@ -59,10 +60,14 @@ useEffect(()=>{
       });
   };
 
+
+  const {t} = useTranslation()
+
+
   return (
     <div className='my-4 rounded-[30px] border border-neutral-200 overflow-hidden p-4'>
       <h2 className='text-2xl font-semibold pb-4 relative border-b border-b-neutral-200 w-fit'>
-        Reviews {`(${reviews?.data.meta.total} reviews)`}
+        {t("room.reviews")} {`(${reviews?.data.meta.total} ${reviews?.data.meta.total === 1 ? t("room.revCount") : t("room.revCounts") })`}
       </h2>
       <Flex direction="vertical" align="center" className='mt-5'>
         <Rate tooltips={desc} onChange={setValue} value={value} />
@@ -71,16 +76,16 @@ useEffect(()=>{
         <div className="my-4">
           <div className='package-input'>
             <span><i className="fas fa-envelope"></i></span>
-            <textarea rows={5} className={twMerge('input py-5 h-auto')} {...register('review', { required: true })} placeholder="your review" />
+            <textarea rows={5} className={twMerge('input py-5 h-auto')} {...register('review', { required: true })} placeholder={t("room.addRev")} />
           </div>
-          {errors.review && <p className='text-danger'>Review is required</p>}
+          {errors.review && <p className='text-danger'>{t("room.valid")}</p>}
         </div>
         {
           userDetails && token ?  
           <button type="submit" className="btn btn-primary w-full mt-2">
-          {loading ? <Spin /> : "Add Review"}
+          {loading ? <Spin /> : t("room.addReview")}
           </button> :
-          <Link className='btn btn-primary w-full block text-center' to='/login' >login first</Link>
+          <Link className='btn btn-primary w-full block text-center' to='/login' >{t("room.login")}</Link>
         }
       </form>
       <div className='reviews mt-8'>

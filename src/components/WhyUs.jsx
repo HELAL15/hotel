@@ -26,8 +26,8 @@ const WhyUs = () => {
             {
               data?.data  ?<>
               <div className='flex flex-col gap-3'>
-                <h3 className='text-4xl font-semibold'>{data?.data.title}</h3>
-                <p className='text-neutral-500 leading-7'>{data?.data.description}</p>
+                <h3 className=' text-xl md:text-2xl mb-1 md:mb-2 font-semibold'>{data?.data.title}</h3>
+                <p className='leading-7'>{data?.data.description}</p>
                   <Link to="/about" className='btn btn-primary w-fit group flex items-center gap-2'>
                     <span>{t("more")}</span>
                     <FaArrowRightLong className='rtl:-scale-100' />

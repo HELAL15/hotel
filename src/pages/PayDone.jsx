@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'; // useParams should be imported from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'; // useParams should be imported from 'react-router-dom'
 import useFetch from '../hooks/useFetch';
 import NotFound from './NotFound';
 import Container from '../helpers/Container';
@@ -31,9 +31,10 @@ const {
   price,
   images,
   details,
+  status
 } = checkoutData || {}
 
-
+console.log(status);
 
 const content =  useReactToPrint({
   content: () => componentRef.current,
@@ -75,6 +76,9 @@ const componentRef = useRef();
     return <NotFound />;
   }
 
+  if (status === 'pending' ) {
+    return <Navigate to={`/checkout/${id}`} replace />
+  }
 
 
   // Handle error state

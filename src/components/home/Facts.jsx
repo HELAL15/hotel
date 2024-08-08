@@ -14,13 +14,13 @@ import { useInView } from 'react-intersection-observer'
 const Fact = ({fact}) =>{
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.3, 
+    threshold: 1, 
   });
   return(
     <div className='bg-primary/10 px-6 py-8 rounded-2xl'>
       <h3 className='text-2xl font-bold' ref={ref} >
       {inView && (
-        <CountUp start={0} end={fact.title} delay={0.4} duration={2} />
+        <CountUp start={0} end={fact.title} delay={0.5} duration={2} />
       )}
       </h3>
       <p className='text-lg text-gray-600 mt-2 font-medium'>
