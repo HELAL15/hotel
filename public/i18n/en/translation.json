@@ -177,6 +177,41 @@
 
     "bed" : "bed",
 
+    "confirmPay" : {
+      "confirmP" : "confirm and payment",
+      "trip" : "your trip",
+      "checkin" : "check in",
+      "checkout" : "check out",
+      "guests" : "guests",
+      "guest" : "guest",
+      "child" : "child",
+      "infant" : "infant",
+      "room" : "room details",
+      "beds" : "beds",
+      "bed" : "bed",
+      "baths" : "baths",
+      "bath" : "bath",
+      "bedrooms" : "bedrooms",
+      "bedroom" : "bedroom",
+      "price" : "price details",
+      "roomp" : "room price",
+      "charge" : "service charge",
+      "total" : "total",
+      "confirm" : "confirm",
+      "congrats": "Congratulations! Your booking was successful. You can print the receipt.",
+      "print": "Print the receipt",
+      "id" : "room number",
+      "name" : "room name",
+      "report" : "reservation report",
+      "wish" : "The management of Riviera Resort wishes you a good time and an enjoyable trip",
+      "alert" : "please keep this report to check it when you arrive the resort",
+      "ahmed" : "ahmed helal",
+      "mai" : "mai tarek"
+
+    },
+
+
+
     "contact":{
       "head": "Contact Us",
       "address" : "address",

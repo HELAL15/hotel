@@ -24,7 +24,7 @@ import { setSettings } from '../redux/features/settingSlice';
 const Footer = () => {
   const token = localStorage.getItem("hotel");
   const { userDetails } = useContext(UserContext);
-  console.log(userDetails);
+  // console.log(userDetails);
   const { data: fetchedSetting } = useFetch("setting");
   const memoizedSetting = useMemo(() => fetchedSetting, [fetchedSetting]);
 
@@ -106,7 +106,7 @@ const Footer = () => {
                 <NavLink to="/terms" className='nav-link'>{t("nav.terms")}</NavLink>
                 <NavLink to="/privacy" className='nav-link'>{t("nav.privacy")}</NavLink>
                 {token && userDetails && <NavLink to="/profile" className='nav-link'>{t("nav.profile")}</NavLink>}
-                {!token && userDetails.length === 0 && <NavLink to="/login" className='nav-link'>{t("nav.login")}</NavLink>}
+                {!token && userDetails !== null && <NavLink to="/login" className='nav-link'>{t("nav.login")}</NavLink>}
               </div>
             </div>
             

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from '../helpers/Container'
 import { FaStar } from 'react-icons/fa6'
 import { useSelector } from 'react-redux'
@@ -11,9 +11,13 @@ import { IoBedOutline } from 'react-icons/io5'
 import { PiBathtubLight } from 'react-icons/pi'
 import { LiaDoorOpenSolid } from 'react-icons/lia'
 import { request } from '../api/request'
+import { useTranslation } from 'react-i18next'
+import { Spin } from 'antd'
+import { toast } from 'react-toastify'
 
 const CheckOut = () => {
 
+  const {t} = useTranslation()
 
   const reservation = useSelector((state)=>state.reservation.value)
 
@@ -22,7 +26,9 @@ const CheckOut = () => {
   
   const {id} = useParams()
 
-const {data , response} = useFetch(`/user/reservations/${id}`)
+  const [loading , setLoading] = useState(false)
+
+const {data , response } = useFetch(`/user/reservations/${id}`)
 const checkoutData = data?.data
 
 const {
@@ -44,16 +50,20 @@ const {
 const navigate = useNavigate()
 
 const handleConfirm = async ()=>{
+  setLoading(true)
   try{
     const res = await request.post(`/payment/${id}`)
+    setLoading(false)
     if(res){
+      setLoading(false)
       // const fullUrl = `${window.location.origin}/${res?.data?.data}`;
       const link = res?.data?.data;
       const fullUrl = link.startsWith('http://') || link.startsWith('https://') ? link : `http://${link}`;
       window.open(fullUrl, '_parent');
     }
   }catch(err){
-    console.log(err);
+    setLoading(false)
+    toast.error(err)
   }
 
 
@@ -73,20 +83,20 @@ const reserveId = localStorage.getItem("reservationId")
           <div className='grid grid-cols-1 md:grid-cols-3 gap-[30px]'>
             <div className='col-span-3 md:col-span-2 py-4 px-6 rounded-[30px] border border-gray-300'>
               <div className='border-b border-dotted border-gray-300 pb-4'>
-                <h2 className='font-semibold text-lg md:text-2xl'>Confirm and payment</h2>
+                <h2 className='font-semibold text-lg md:text-2xl'>{t("confirmPay.confirmP")}</h2>
               </div>
 
               <div className='my-4'>
-                <h3 className='text-xl font-semibold'>your trip</h3>
+                <h3 className='text-xl font-semibold'>{t("confirmPay.trip")}</h3>
                 <div className='grid grid-cols-1 md:grid-cols-2 mt-4 p-4 rounded-[30px] border border-gray-300'>
                   <div className='flex  flex-col gap-2'>
-                    <h5 className='font-medium'>check in</h5>
+                    <h5 className='font-medium'>{t("confirmPay.checkin")}</h5>
                     <div className='flex items-center gap-2'>
                       {convertISOToDate(start_date)}
                     </div>
                   </div>
                   <div className='flex  flex-col gap-2'>
-                    <h5 className='font-medium'>check out</h5>
+                    <h5 className='font-medium'>{t("confirmPay.checkout")}</h5>
                     <div className='flex items-center gap-2'>
                       {convertISOToDate(end_date)}
                     </div>
@@ -94,30 +104,57 @@ const reserveId = localStorage.getItem("reservationId")
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-1 mt-4 p-4 rounded-[30px] border border-gray-300'>
                   <div className='flex  flex-col gap-2'>
-                    <h5 className='font-medium'>guests</h5>
+                    <h5 className='font-medium'>{t("confirmPay.guests")}</h5>
                     <div className='flex items-center gap-2'>
-                      <span>{room_no_guests} guests</span>
-                      <span>{checkoutData?.details[0]?.child} child</span>
-                      <span>{checkoutData?.details[0]?.infant} infant</span>
+                      {
+                        room_no_guests !== 0 &&
+                        <span>{room_no_guests} {room_no_guests ===1 ? t("confirmPay.guest") : t("confirmPay.guests") }</span>
+                      }
+                      {
+                        checkoutData?.details[0]?.child !== 0 &&
+                        <span>{checkoutData?.details[0]?.child} { t("confirmPay.child") }</span>
+                      }
+                      {
+                        checkoutData?.details[0]?.infant !== 0 &&
+                        <span>{checkoutData?.details[0]?.infant} {t("confirmPay.infant") }</span>
+                      }
                     </div>
                   </div>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-1 mt-4 p-4 rounded-[30px] border border-gray-300'>
                   <div className='flex  flex-col gap-2'>
-                    <h5 className='font-medium'>room details</h5>
+                    <h5 className='font-medium'>{t("confirmPay.room")}</h5>
                     <div className='flex items-center gap-2'>
-                      <p className='flex items-center gap-2 '>
-                        <i className=''><IoBedOutline /></i>
-                        <span className=''>{room_no_beds} beds</span>
-                      </p>
-                      <p className='flex items-center gap-2 '>
-                        <i className=''><PiBathtubLight /></i>
-                        <span className=''>{room_no_bathrooms} baths</span>
-                      </p>
-                      <p className='flex items-center gap-2 '>
-                        <i className=''><LiaDoorOpenSolid /></i>
-                        <span className=''>{room_no_bedrooms} bedrooms</span>
-                      </p>
+                      {
+                        room_no_beds !== 0 &&
+                        <p className='flex items-center gap-2 '>
+                          <i className=''><IoBedOutline /></i>
+                          <span className=''>
+                            {room_no_beds} 
+                            { room_no_beds === 1 ? t("confirmPay.bed") : t("confirmPay.beds") }
+                          </span>
+                        </p>
+                      }
+                      {
+                        room_no_bathrooms !== 0 &&
+                        <p className='flex items-center gap-2 '>
+                          <i className=''><PiBathtubLight /></i>
+                          <span className=''>
+                            {room_no_bathrooms} 
+                            { room_no_bathrooms === 1 ? t("confirmPay.bath") : t("confirmPay.baths") }
+                          </span>
+                        </p>
+                      }
+                      {
+                        room_no_bedrooms !== 0 &&
+                        <p className='flex items-center gap-2 '>
+                          <i className=''><LiaDoorOpenSolid /></i>
+                          <span className=''>
+                            {room_no_bedrooms} 
+                            { room_no_bedrooms === 1 ? t("confirmPay.bedroom") : t("confirmPay.bedrooms") }
+                          </span>
+                        </p>
+                      }
                     </div>
                   </div>
                 </div>
@@ -184,22 +221,22 @@ const reserveId = localStorage.getItem("reservationId")
               </div>
 
               <div className='mt-4'>
-                <h4 className='text-xl font-semibold'>Price details</h4>
+                <h4 className='text-xl font-semibold'>{t("confirmPay.price")}</h4>
                 <div className='flex items-center justify-between gap-4 mt-4'>
-                  <h5 className=''>Room price</h5>
-                  <p>${price}</p>
+                  <h5 className=''>{t("confirmPay.roomp")}</h5>
+                  <p>{t("$")}{price}</p>
                 </div>
                 <div className='flex items-center justify-between gap-4 mt-4'>
-                  <h5 className=''>Service charge</h5>
+                  <h5 className=''>{t("confirmPay.charge")}</h5>
                   <p>%{setting?.data?.tax}</p>
                 </div>
                 <div className='flex items-center justify-between gap-4 mt-4'>
-                  <h5 className=''>Total</h5>
-                  <p>${total_tax_price}</p>
+                  <h5 className=''>{t("confirmPay.total")}</h5>
+                  <p>{t("$")}{total_tax_price}</p>
                 </div>
               </div>
               <div className='mt-4'>
-                <button className='btn btn-primary w-full' onClick={handleConfirm} >confirm</button>
+                <button className='btn btn-primary w-full' onClick={handleConfirm} >{ loading ? <Spin/> : t("confirmPay.confirm")}</button>
               </div>
             </div>
           </div>

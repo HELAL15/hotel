@@ -15,7 +15,7 @@ const Suggestion = () => {
   const dir = lang === 'ar' ? 'rtl' : 'ltr'
 
   const {data , isLoading} = useFetch("/rooms?in_suggest=1")
-console.log(data?.data);
+
 
 const cards = data?.data?.data || {}
 
