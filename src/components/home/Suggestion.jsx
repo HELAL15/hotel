@@ -72,7 +72,7 @@ const cards = data?.data?.data || {}
                   </SwiperSlide>
                 ))
                 : isLoading ? 
-                [...Array(8)].map((_, index) => (
+                [...Array(16)].map((_, index) => (
                   <SwiperSlide key={index}>
                     <div>
                       <Skeleton height={200} />

@@ -14,15 +14,15 @@ const Review = ({reviews , loading}) => {
                   </div> */}
                   <div className='flex-shrink w-[calc(100%-50px)]'>
                     <div className='review-head flex justify-between flex-wrap'>
-                      <p className='flex flex-col font-semibold'>
+                      <span className='flex flex-col font-semibold'>
                         <span className='text-black'>{reviews?.user_name}</span>
                         <span className=''>{convertISOToDate(reviews?.created_at)}</span>
-                      </p>
-                      <p className=''><Rate className='md:text-xl text-sm' disabled defaultValue={reviews?.rate} /></p>
+                      </span>
+                      <span className=''><Rate className='md:text-xl text-sm' disabled defaultValue={reviews?.rate} /></span>
                     </div>
                     {
                     loading ? <Skeleton className=' px-6 py-8 rounded-[30px]' /> :
-                    <p className='review-body font-semibold mt-4'>{reviews?.review}</p>
+                    <span className='review-body font-semibold mt-4'>{reviews?.review}</span>
                     }
                   </div>
                 </div>

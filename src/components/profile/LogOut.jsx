@@ -6,6 +6,8 @@ import { request } from '../../api/request'
 import { twMerge } from 'tailwind-merge'
 import { Spin } from 'antd'
 import { useTranslation } from 'react-i18next'
+import { reset } from '../../redux/features/reservationSlice'
+import { useDispatch } from 'react-redux'
 
 const LogOut = () => {
 
@@ -14,7 +16,7 @@ const LogOut = () => {
   const {setUserDetails} = useContext(UserContext)
   const [loading , setLoading] = useState(false)
   const navigate = useNavigate()
-
+const dispatch = useDispatch()
 const handleLogOut = ()=>{
   setLoading(true)
   request.post('/user/user-logout')
@@ -23,6 +25,7 @@ const handleLogOut = ()=>{
     navigate('/')
     localStorage.removeItem("hotel")
     setUserDetails([])
+    dispatch(reset());
     toast.success(res.data.message)
   })
   .catch((error)=>{

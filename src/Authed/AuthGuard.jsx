@@ -12,7 +12,7 @@ const AuthGuard = () => {
     return <Navigate to="/" replace />;
   }
 
-  return token && userDetails  ? (
+  return token && Object.keys(userDetails).length > 0  ? (
     <Outlet />
   ) : (
     <Navigate to="/login" replace />

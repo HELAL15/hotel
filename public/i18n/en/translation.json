@@ -37,11 +37,15 @@
         "type" : "type",
         "price" : "price",
         "guests" : "guests number",
+        "rate" : "rate",
         "search" : "search"
-      }
+      },
+      "quick" : "quick search"
+
     },
 
     "room" : {
+      "pricew" : "price with",
       "wishlist" : "add to wishlist",
       "added" : "remove from wishlist",
       "description" : "description",

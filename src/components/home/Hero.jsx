@@ -9,10 +9,12 @@ import { Empty, Select, Slider } from 'antd';
 import { useSelector } from 'react-redux';
 import useFetch from '../../hooks/useFetch';
 import Skeleton from 'react-loading-skeleton';
+import { useTranslation } from 'react-i18next';
 
 const { Option } = Select;
 
 const Hero = () => {
+  const {t} = useTranslation()
   const lang = useSelector((state) => state.lang.value);
   const dir = lang === 'ar' ? 'rtl' : 'ltr';
 
@@ -33,16 +35,19 @@ const Hero = () => {
 
 
   const defaultPrice = [min, max]
-  const [prices, setPrices] = useState([min, max]);
-  const [guests, setGuests] = useState(null);
-  const [type, setType] = useState('room');
+  const [prices, setPrices] = useState([]);
+  const [guests, setGuests] = useState('');
+  const [type, setType] = useState('');
 
   const onChange = (value) => {
     setPrices(value)
   }
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/rooms?no_guests=${guests}&type=${type}&from_price=${prices[0]}&to_price=${prices[1]}`);
+    // navigate(`/rooms?no_guests=${guests}&type=${type}&from_price=${prices[0]}&to_price=${prices[1]}`);
+    navigate(`/rooms?${guests !== '' ? `no_guests=${guests}` : '' }${type && `&type=${type}`}${prices[0] !== undefined ? `&from_price=${prices[0]}&to_price=${prices[1]}` : '' }`)
+    
+
   };
 
 
@@ -66,17 +71,17 @@ const Hero = () => {
             }
               
               <div className='mt-10'>
-            <h4 className='mx-4 text-lg font-semibold mb-1'>بحث سريع</h4>
+            <h4 className='mx-4 text-lg font-semibold mb-1'>{t("rooms.quick")}</h4>
             <form onSubmit={handleSearch} className='mt-4 shadow-md  p-4 bg-white rounded-2xl '>
               <div className='mb-4 grid grid-cols-2 md:grid-cols-3 gap-4 items-center justify-center md:divide md:divide-x-2 rtl:md:divide-x-reverse' >
                 <div className='flex col-span-3 md:col-span-1 flex-col'>
-                  <p className='text-start mb-2 font-medium'>السعر</p>
+                  <p className='text-start mb-2 font-medium'>{t("rooms.filter.price")}</p>
                   <div className='flex items-center gap-2'>
                     <Slider
                       range
                       className='w-full'
                       onChange={onChange}
-                      defaultValue={[1000 , 3000]}
+                      // defaultValue={[1000 , 3000]}
                       max={parseFloat(max)}
                       min={parseFloat(min)}
                       trackStyle={[{ backgroundColor: '#4F46E5' }]}
@@ -89,30 +94,30 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className='flex  flex-col ps-4'>
-                  <p className='text-start mb-2 font-medium'>الضيوف</p>
+                  <p className='text-start mb-2 font-medium'>{t("rooms.filter.guests")}</p>
                 <input 
                   type='number' 
                   className='w-full border-none outline-none py-2 px-1 ' 
-                  placeholder='no of guests' 
+                  placeholder={t("rooms.filter.guests")} 
                   min={1}
                   value={guests}
                   onChange={(e) => setGuests(+e.target.value)} />
 
                 </div>
                 <div className='flex  flex-col ps-4'>
-                  <p className='text-start mb-2 font-medium'>النوع</p>
+                  <p className='text-start mb-2 font-medium'>{t("rooms.filter.type")}</p>
                   <Select defaultValue="" onChange={(value) => setType(value)}>
-                    <Option value="" disabled>نوع الغرفة</Option>
-                    <Option value="room">غرفة</Option>
-                    <Option value="suite">جناح</Option>
-                    <Option value="poo_view">pool view</Option>
+                    <Option value="" disabled>{t("rooms.filter.type")}</Option>
+                    <Option value="room">{t("selectType.room")}</Option>
+                    <Option value="suite">{t("selectType.suite")}</Option>
+                    <Option value="poo_view">{t("selectType.pool_view")}</Option>
                   </Select>
                 </div>
               </div>
 
                 <button className='w-full btn btn-primary'>
 
-                  بحث
+                {t("rooms.filter.search")}
                 </button>
             </form>
           </div>

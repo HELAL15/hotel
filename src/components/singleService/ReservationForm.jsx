@@ -93,7 +93,7 @@ const ReservationForm = ({ room }) => {
         toast.error(err.response?.data?.message || 'An error occurred');
         setLoading(false)
         // Optionally redirect to login or handle errors
-        // navigate("/login");
+        navigate("/login");
       });
   };
 
@@ -170,6 +170,13 @@ const ReservationForm = ({ room }) => {
         </div>
       </div>
       <div className='calcs flex flex-col gap-4 pb-4 border-b border-b-neutral-200 font-semibold'>
+        {
+          type &&
+          <p className='flex items-center justify-between gap-3'>
+            <span>{t("room.pricew")} {type}</span>
+            <span>{t("$")}{pricePerDay} + {Number(mealPrice)}</span>
+          </p>
+        }
         <p className='flex items-center justify-between gap-3'>
           <span>{t("$")}{Math.floor(subTotalPrice)} x {nightsNumber} {t("room.days")}</span>
           <span>{t("$")}{Math.floor(SubTotalInNights)}</span>

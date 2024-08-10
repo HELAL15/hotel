@@ -25,7 +25,7 @@ import Otp from './pages/auth/Otp';
 import OtpOutlet from './pages/auth/OtpOutlet';
 import CheckOut from './pages/CheckOut';
 import { useDispatch } from 'react-redux';
-import { setChildDefault, setDate, setInfantDefault, setType } from './redux/features/reservationSlice';
+import { reset, setChildDefault, setDate, setInfantDefault, setType } from './redux/features/reservationSlice';
 import PayDone from './pages/PayDone';
 import Seo from './helpers/Seo';
 
@@ -40,10 +40,10 @@ const {id} = useParams()
   const dispatch = useDispatch()
   useEffect(() => {
     if(location.pathname !== '/checkout'){
-      dispatch(setType(''));
-      dispatch(setInfantDefault());
-      dispatch(setChildDefault());
-      dispatch(setDate([]));
+      dispatch(reset());
+      // dispatch(setInfantDefault());
+      // dispatch(setChildDefault());
+      // dispatch(setDate([]));
       // localStorage.removeItem('reservationId');
     }
   }, [location.pathname, dispatch]);

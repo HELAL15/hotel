@@ -14,6 +14,6 @@ export const settingSlice = createSlice({
   },
 });
 
-export const { setSettings } = settingSlice.actions;
+export const { setSettings  } = settingSlice.actions;
 
 export default settingSlice.reducer;

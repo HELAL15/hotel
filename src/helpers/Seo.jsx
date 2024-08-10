@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 
-const Seo = ({title , description , fav}) => {
+const Seo = ({title , description , single}) => {
   const {t} = useTranslation()
   const setting = useSelector((state)=>state.setting.value)
   const {favicon} = setting?.data || {}
@@ -13,7 +13,12 @@ const Seo = ({title , description , fav}) => {
       <meta charset="utf-8" />
       <link rel="icon" type="image/x-icon" href={favicon}/>
       <meta name="description" content={description || "Riviera resort is placed to host you" } />
-      <title>{title !== undefined ? t(`seo.${title}`) : 'Riviera'}</title>
+      <title>{
+        title !== undefined ?
+        single ? title :
+        t(`seo.${title}`) :
+        'Riviera'
+        }</title>
       </Helmet>
     </>
   )

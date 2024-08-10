@@ -13,6 +13,7 @@ import NotFound from './NotFound'
 import ReservationForm from '../components/singleService/ReservationForm'
 import { setChildDefault, setID, setInfantDefault, setType } from '../redux/features/reservationSlice'
 import { setDate } from 'date-fns'
+import Seo from '../helpers/Seo'
 // import Loader from '../layouts/Loader'
 
 const SingleService = () => {
@@ -53,6 +54,7 @@ if (res404 === 404 ) {
   return (
     <>
 
+    <Seo title={room?.title} single={true} />
 
 
     <ServiceImgs imgs={room?.images} loading={loading} />

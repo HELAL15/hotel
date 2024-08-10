@@ -1,14 +1,14 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { convertISOToDate } from '../helpers/ConverIsoToDate'
+import { convertISOToDate } from '../../helpers/ConverIsoToDate'
 import { CiUser } from 'react-icons/ci'
 import { IoBedOutline } from 'react-icons/io5'
 import { PiBathtubLight } from 'react-icons/pi'
 import { LiaDoorOpenSolid } from 'react-icons/lia'
 
-const Test = forwardRef(({ logo, icon, details }, ref) => {
+const Report = forwardRef(({ logo, icon, details }, ref) => {
   const {id} = useParams()
   const lang = useSelector((state)=>state.lang.value)
   const setting = useSelector((state)=>state.setting.value)
@@ -113,4 +113,4 @@ const Test = forwardRef(({ logo, icon, details }, ref) => {
   )
 })
 
-export default Test
+export default memo(Report)

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from 'react';
+import React, { memo, useRef } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom'; // useParams should be imported from 'react-router-dom'
 import useFetch from '../hooks/useFetch';
 import NotFound from './NotFound';
@@ -10,8 +10,8 @@ import { LiaDoorOpenSolid } from 'react-icons/lia';
 import { useSelector } from 'react-redux';
 import { useReactToPrint } from 'react-to-print';
 import { useTranslation } from 'react-i18next';
-import Test from './Test';
 import { CiUser } from 'react-icons/ci';
+import Report from '../components/singleService/Report';
 
 const PayDone = () => {
   const { id } = useParams();
@@ -167,7 +167,7 @@ console.log(checkoutData);
         </Container>
       </section>
       <div className='hidden'>
-        <Test logo={setting?.data?.logo} icon={setting?.data?.favicon} details={checkoutData} ref={componentRef} />
+        <Report logo={setting?.data?.logo} icon={setting?.data?.favicon} details={checkoutData} ref={componentRef} />
       </div>
     </>
   );

@@ -71,7 +71,7 @@ const MainCard = ({ sale, room , setRemoved }) => {
               {room?.images.length > 0 ?
                 room?.images.map((img, i) => (
                 <SwiperSlide key={i}>
-                  <img className='h-full w-full object-cover' loading='lazy' src={img.url} alt={`img-${i}`} />
+                  <img className='h-full w-full object-cover' loading='lazy' src={img.url !== '' ? img.url : logo} alt={`img-${i}`} />
                 </SwiperSlide>
               )):<SwiperSlide className='bg-primary/10'>
               <img className='h-full w-full object-contain mx-auto' loading='lazy' src={logo} alt={site_name} />

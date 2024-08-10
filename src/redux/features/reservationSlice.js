@@ -51,7 +51,9 @@ export const reservationSlice = createSlice({
         state.value.date = action.payload
       },
 
-
+      reset: (state)=>{
+        state.value = initialState.value
+      }
 
 
     }
@@ -68,6 +70,7 @@ export const {
   setDate,
   setInfantDefault,
   setChildDefault,
+  reset
   } = reservationSlice.actions
 
 export default reservationSlice.reducer

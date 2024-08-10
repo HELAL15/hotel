@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from 'react'
 import { IoIosCloseCircle } from 'react-icons/io'
 import { useLocation, useNavigate } from 'react-router'
-import { Select, Slider } from 'antd'
+import { Flex, Rate, Select, Slider } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFilter } from '../../redux/features/filterSlice'
@@ -32,10 +32,13 @@ const Filter = () => {
 
   const defaultPrice = [fromPrice || 800 , toPrice || 3000 ]
   const [prices, setPrices] = useState([])
-  const [guests, setGuests] = useState(null)
+  const [guests, setGuests] = useState('')
   const [type, setType] = useState('')
+  const [rate, setRate] = useState(0);
   
-  
+  const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
+
+
   const { Option } = Select
 
   const onChange = (value) => {
@@ -56,7 +59,8 @@ const Filter = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate(`/rooms?${guests !== null ? `no_guests=${guests}` : '' }${type && `&type=${type}`}${prices[0] !== undefined ? `&from_price=${prices[0]}&to_price=${prices[1]}` : '' }`)
+    navigate(`/rooms?${guests !== '' ? `no_guests=${guests}` : '' }${rate > 0 ? `&rate=${rate}` : ''}${type && `&type=${type}`}${prices[0] !== undefined ? `&from_price=${prices[0]}&to_price=${prices[1]}` : '' }`)
+    
     dispatch(setFilter(false))
   }
 
@@ -112,11 +116,17 @@ const Filter = () => {
           <div className='mt-4 pb-4 border-b border-b-slate-300 mb-8'>
             <h3 className='text-lg font-semibold'>{t('rooms.filter.type')}</h3>
             <Select className='w-full mt-2' defaultValue={""} onChange={handleTypeChange}>
-              <Select.Option value="">All</Select.Option>
-              <Select.Option value='suite'>suite</Select.Option>
-              <Select.Option value='pool_view'>pool view</Select.Option>
-              <Select.Option value='room'>room</Select.Option>
+              <Select.Option value="">{t("all")}</Select.Option>
+              <Select.Option value='suite'>{t("selectType.suite")}</Select.Option>
+              <Select.Option value='pool_view'>{t("selectType.pool_view")}</Select.Option>
+              <Select.Option value='room'>{t("selectType.room")}</Select.Option>
             </Select>
+          </div>
+          <div className='mt-4 pb-4 border-b border-b-slate-300 mb-8'>
+            <h3 className='text-lg font-semibold'>{t('rooms.filter.rate')}</h3>
+            <Flex direction="vertical" align="center" className='mt-5'>
+              <Rate tooltips={desc} onChange={setRate} value={rate} />
+            </Flex>
           </div>
         </div>
         <button type="submit" className='btn btn-primary w-full'>
