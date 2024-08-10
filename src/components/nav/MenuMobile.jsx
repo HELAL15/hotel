@@ -9,6 +9,7 @@ import { FaRegHeart } from 'react-icons/fa'
 import { UserContext } from '../../context/UserContext'
 import LogOut from '../profile/LogOut'
 import { useTranslation } from 'react-i18next'
+import Cookies from 'js-cookie'
 
 const MenuMobile = ({catNavMobile ,setCatNavMobile , logo , alt}) => {
 
@@ -16,7 +17,8 @@ const MenuMobile = ({catNavMobile ,setCatNavMobile , logo , alt}) => {
 const {t} = useTranslation()
 
 
-  const token = localStorage.getItem("hotel")
+  // const token = localStorage.getItem("hotel")
+  const token = Cookies.get("hotel")
   const {userDetails} = useContext(UserContext)
 
 

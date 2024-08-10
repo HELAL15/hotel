@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 import { Spin } from 'antd';
+import Cookies from 'js-cookie';
 
 const AccountPassword = () => {
   const [loading, setLoading] = useState(false);
@@ -24,8 +25,9 @@ const AccountPassword = () => {
         const userData = res.data.data;
         const token = res.data.data.token;
         // set token in cookies
-        localStorage.setItem('hotel', token);
-        localStorage.setItem('user-info', userData);
+        // localStorage.setItem('hotel', token);
+        Cookies.set("hotel" , token)
+
         toast.success(res.data.message);
       })
       .catch((err) => {

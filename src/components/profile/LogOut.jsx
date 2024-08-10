@@ -8,6 +8,7 @@ import { Spin } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { reset } from '../../redux/features/reservationSlice'
 import { useDispatch } from 'react-redux'
+import Cookies from 'js-cookie'
 
 const LogOut = () => {
 
@@ -23,7 +24,8 @@ const handleLogOut = ()=>{
   .then(res=>{
     setLoading(false)
     navigate('/')
-    localStorage.removeItem("hotel")
+    // localStorage.removeItem("hotel")
+    Cookies.remove("hotel")
     setUserDetails([])
     dispatch(reset());
     toast.success(res.data.message)

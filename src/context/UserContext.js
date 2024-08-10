@@ -4,12 +4,14 @@ import { useLocation, useNavigate } from 'react-router';
 import { jwtDecode } from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 import { reset } from '../redux/features/reservationSlice';
+import Cookies from 'js-cookie';
 
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [userDetails, setUserDetails] = useState([]); 
-  const token = localStorage.getItem("hotel");
+  // const token = localStorage.getItem("hotel");
+  const token = Cookies.get("hotel");
   const location = useLocation();
   
   const { data, refetch } = useFetch(token ? "user/profile" : null, [token]);
@@ -23,6 +25,7 @@ const UserProvider = ({ children }) => {
   const expiration = (exp * 1000);
   if(Date.now() > expiration) {
     localStorage.removeItem("hotel")
+    Cookies.remove("hotel")
     localStorage.removeItem("reservationId")
     // navigate("/")
     setUserDetails([])

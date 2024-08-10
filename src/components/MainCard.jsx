@@ -32,6 +32,7 @@ const MainCard = ({ sale, room , setRemoved }) => {
   const [fav, setFav] = useState(room?.is_fav === 1);
   const navigate = useNavigate()
   const { pathname } = useLocation();
+  const location = useLocation()
   const handleFav = () => {
     setFav(!fav);
     request.post(`/user/rooms/${room.id}/wishlist`)
@@ -43,7 +44,7 @@ const MainCard = ({ sale, room , setRemoved }) => {
         toast.success(res.data.message);
       })
       .catch(error => {
-        navigate("/login")
+        navigate("/login", { state: { from: location } })
         toast.error(error.response.data.message);
       });
   };

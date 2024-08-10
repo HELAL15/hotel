@@ -48,6 +48,17 @@ const {id} = useParams()
     }
   }, [location.pathname, dispatch]);
 
+
+
+  useEffect(() => {
+    
+    if (location.state === null && location.pathname !== '/login') {
+      sessionStorage.setItem('previousPage', location.pathname);
+    }
+  }, [location]);
+
+
+
   //Layout
 const Layout =()=>{
   return(

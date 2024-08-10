@@ -5,11 +5,12 @@ import { toast } from 'react-toastify';
 import { Flex, Pagination, Rate, Spin } from "antd";
 import Review from './Review';
 import { request } from '../../api/request';
-import { useNavigate, useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import useFetch from '../../hooks/useFetch';
 import { UserContext } from '../../context/UserContext';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
 
 const Reviews = ({ load }) => {
   const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
@@ -23,8 +24,10 @@ const Reviews = ({ load }) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("hotel")
+  // const token = localStorage.getItem("hotel")
+  const token = Cookies.get("hotel")
 const {userDetails} = useContext(UserContext)
+const location = useLocation()
 
 
 useEffect(()=>{
@@ -55,7 +58,7 @@ useEffect(()=>{
         toast.error(error.response.data.message);
         setLoading(false);
         if (error.response.status === 401) {
-          navigate("/login");
+          navigate("/login", { state: { from: location } })
         }
       });
   };

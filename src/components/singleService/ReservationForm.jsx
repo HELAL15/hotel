@@ -4,16 +4,18 @@ import { ConvertDecimel } from '../../helpers/ConvertDecimel';
 import { Select, DatePicker, Spin } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { decreaseChild, decreaseInfant, increaseChild, increaseInfant, setChildDefault, setDate, setID, setInfantDefault, setType } from '../../redux/features/reservationSlice';
-import { useNavigate, useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import { request } from '../../api/request';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
+import Cookies from 'js-cookie';
 
 const ReservationForm = ({ room }) => {
-  const token = localStorage.getItem("hotel");
+  // const token = localStorage.getItem("hotel");
+  const token = Cookies.get("hotel")
   const { userDetails } = useContext(UserContext);
 
   const [loading , setLoading] = useState(false)
@@ -68,6 +70,7 @@ const ReservationForm = ({ room }) => {
 
   const navigate = useNavigate();
   const { id } = useParams();
+  const location = useLocation()
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -95,7 +98,7 @@ const ReservationForm = ({ room }) => {
         // Optionally redirect to login or handle errors
         // navigate("/login");
         if(err.response === 401){
-          navigate("/login")
+          navigate("/login", { state: { from: location } })
         }
       });
   };

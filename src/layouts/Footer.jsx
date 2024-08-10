@@ -16,13 +16,15 @@ import { useTranslation } from 'react-i18next';
 import useFetch from '../hooks/useFetch';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSettings } from '../redux/features/settingSlice';
+import Cookies from 'js-cookie';
 
 
 
 
 
 const Footer = () => {
-  const token = localStorage.getItem("hotel");
+  // const token = localStorage.getItem("hotel");
+  const token = Cookies.get("hotel")
   const { userDetails } = useContext(UserContext);
   // console.log(userDetails);
   const { data: fetchedSetting } = useFetch("setting");

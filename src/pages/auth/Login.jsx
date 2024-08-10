@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import StyledAnim from '../../components/StyledAnim';
 import { request } from '../../api/request';
 import { toast } from 'react-toastify';
@@ -12,10 +12,12 @@ import { setUser } from '../../redux/features/userSlice';
 import { useTranslation } from 'react-i18next';
 import { website } from '../../api/api';
 import Seo from '../../helpers/Seo'
+import Cookies from 'js-cookie';
 
 const Login = () => {
 
   const navigate = useNavigate()
+const location = useLocation()
 
 
 
@@ -34,10 +36,23 @@ const Login = () => {
       // setUser(userData)
       const token = res.data.data.token
       // set token in cookies
-      localStorage.setItem('hotel' , token);
-      dispatch(setUser(userData))
+      // localStorage.setItem('hotel' , token);
+       Cookies.set('hotel' , token)
+      // dispatch(setUser(userData))
 
-        window.history.back();
+        // window.history.back();
+        // const from = location.state?.from?.pathname || "/";
+        // console.log(from);
+        // navigate(from);
+        const previousPage = sessionStorage.getItem('previousPage');
+        if (previousPage) {
+          
+          navigate(previousPage);
+          sessionStorage.removeItem('previousPage');
+        } else {
+          
+          navigate('/');
+        }
 
       toast.success(res.data.message);
       

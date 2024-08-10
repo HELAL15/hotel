@@ -13,12 +13,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeLang } from '../redux/features/langSlice';
 import { UserContext } from '../context/UserContext';
 import { twMerge } from 'tailwind-merge';
+import Cookies from 'js-cookie';
 
 
 const Header = () => {
 
   const {userDetails:user} = useContext(UserContext)
-  const token = localStorage.getItem("hotel")
+  // const token = localStorage.getItem("hotel")
+  const token = Cookies.get("hotel")
   const {isOpen , setIsOpen} = useContext(OpeningContext)
   const {t}= useTranslation()
 

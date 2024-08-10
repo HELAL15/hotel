@@ -11,6 +11,7 @@ import { FaEye } from 'react-icons/fa6';
 import { IoEyeOff } from "react-icons/io5";
 import { useTranslation } from 'react-i18next';
 import Seo from '../../helpers/Seo';
+import Cookies from 'js-cookie';
 
 
 const SignUp = () => {
@@ -41,10 +42,20 @@ const onSubmit = (data) => {
     const userData = res.data.data
     const token = res.data.data.token
     // set token in cookies
-    localStorage.setItem('hotel' , token);
-      localStorage.setItem('user-info' , userData)
+    // localStorage.setItem('hotel' , token);
+    Cookies.set('hotel' , token)
+
       toast.success(res.data.message);
-      window.history.back();
+      // window.history.back();
+      const previousPage = sessionStorage.getItem('previousPage');
+        if (previousPage) {
+          
+          navigate(previousPage);
+          sessionStorage.removeItem('previousPage');
+        } else {
+          
+          navigate('/');
+        }
     
   })
   .catch((err)=>{
