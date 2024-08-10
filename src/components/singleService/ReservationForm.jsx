@@ -93,7 +93,10 @@ const ReservationForm = ({ room }) => {
         toast.error(err.response?.data?.message || 'An error occurred');
         setLoading(false)
         // Optionally redirect to login or handle errors
-        navigate("/login");
+        // navigate("/login");
+        if(err.response === 401){
+          navigate("/login")
+        }
       });
   };
 
