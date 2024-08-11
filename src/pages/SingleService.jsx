@@ -27,13 +27,13 @@ const SingleService = () => {
   
   const {data , refetch , isLoading:loading  , response} = useFetch(`/rooms/${id}` , [lang])
 
-  console.log(data)
+
 
   const res404 = response?.response?.status
   
   const room = useMemo(() => data?.data?.single || {}, [data])
   const same = data?.data?.same || []
-  console.log(same);
+
   
   const [fav, setFav] = useState(room?.is_fav === 1);
   useEffect(() => {

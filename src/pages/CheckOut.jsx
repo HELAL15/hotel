@@ -82,7 +82,7 @@ const reserveId = localStorage.getItem("reservationId")
       <Seo title='checkout' />
       <section className='mt-10'>
         <Container>
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-[30px]'>
+          <div className='grid grid-cols-1 lg:grid-cols-3 gap-[30px]'>
             <div className='col-span-3 md:col-span-2 py-4 px-6 rounded-[30px] border border-gray-300'>
               <div className='border-b border-dotted border-gray-300 pb-4'>
                 <h2 className='font-semibold text-lg md:text-2xl'>{t("confirmPay.confirmP")}</h2>
