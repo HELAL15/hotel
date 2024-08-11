@@ -18,9 +18,10 @@ const Reviews = ({ load }) => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [revs, setRevs] = useState([]);
+  const [limit , setLimit] = useState(5)
   
   const { id } = useParams();
-  const { data: reviews, refetch } = useFetch(`/rooms/${id}/reviews?page=${page}`);
+  const { data: reviews, refetch } = useFetch(`/rooms/${id}/reviews?page=${page}&limit=${limit}` , [page]);
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const navigate = useNavigate();
 
@@ -30,9 +31,14 @@ const {userDetails} = useContext(UserContext)
 const location = useLocation()
 
 
-useEffect(()=>{
-  refetch()
-},[page])
+// useEffect(()=>{
+//   refetch()
+// },[page])
+
+const handlePaginationChange = (page) => {
+  setPage(page);
+  setLimit(reviews?.data.meta.per_page)
+}
 
 
   useEffect(() => {
@@ -97,13 +103,17 @@ useEffect(()=>{
         ))}
       </div>
       <div className='flex justify-center gap-4 mt-4'>
-        <Pagination
-          current={page}
-          total={reviews?.data.meta.total}
-          pageSize={reviews?.data.meta.per_page}
-          onChange={(page) => setPage(page)}
-          showSizeChanger={false}
-        />
+      {
+        reviews?.data.meta.total > limit &&
+          <Pagination
+            direction={"ltr"}
+            className='mt-10'
+            current={page}
+            total={reviews?.data.meta.total}
+            pageSize={reviews?.data.meta.per_page || limit}
+            onChange={handlePaginationChange}
+          />
+          }
       </div>
     </div>
   );

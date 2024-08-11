@@ -134,7 +134,9 @@
       "otp": "Riviera | OTP",
       "changePass": "Riviera | Change Password",
       "wishlist": "Riviera | Wishlist",
-      "booklist": "Riviera | Bookings"
+      "booklist": "Riviera | Bookings",
+      "checkout" : "Riviera | check out",
+      "paydone" : "Riviera | pay done " 
     },
 
 

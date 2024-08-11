@@ -12,6 +12,7 @@ import { useReactToPrint } from 'react-to-print';
 import { useTranslation } from 'react-i18next';
 import { CiUser } from 'react-icons/ci';
 import Report from '../components/singleService/Report';
+import Seo from '../helpers/Seo';
 
 const PayDone = () => {
   const { id } = useParams();
@@ -75,6 +76,7 @@ const componentRef = useRef();
 console.log(checkoutData);
   return (
     <>
+          <Seo title='paydone' />
       <section className='mt-5'>
         <div className='container' >
           <div className='' >

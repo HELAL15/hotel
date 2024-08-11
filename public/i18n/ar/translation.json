@@ -133,7 +133,9 @@
     "otp" : "Riviera | الرمز",
     "changePass" : "Riviera | تغيير كلمة المرور",
     "wishlist" : "Riviera | قائمة المفضلة",
-    "booklist" : "Riviera | قائمة الحجوزات"
+    "booklist" : "Riviera | قائمة الحجوزات",
+    "checkout" : "ريفيرا | تسجيل الخروج",
+    "paydone" : "ريفيرا | تم الدفع"
   },
 
 

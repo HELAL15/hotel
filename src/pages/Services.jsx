@@ -17,6 +17,7 @@ import Newsletter from '../components/Newsletter';
 const Services = () => {
   const [noGuests, setNoGuests] = useState("");
   const [current, setCurrent] = useState(1);
+  const [limit , setLimit] = useState(8)
   const location = useLocation();
 
   const searchParam = new URLSearchParams(location.search);
@@ -25,14 +26,21 @@ const Services = () => {
   const toPrice = searchParam.get('to_price');
   const type = searchParam.get('type');
   const noGuest = searchParam.get("no_guests");
+  const rate = searchParam.get("rate");
 
 
-  const { data, isLoading } = useFetch(`/rooms?${noGuest ? `no_guests=${noGuest}` : ''}&page=${current}${type ? `&type=${type}` : ''}${fromPrice ? `&from_price=${fromPrice}` : ''}${toPrice ? `&to_price=${toPrice}` : ''}`, [noGuest, current]);
+  const { data, isLoading } = useFetch(`/rooms?${noGuest ? `no_guests=${noGuest}` : ''}&page=${current}&limit=${limit}${rate ? `&rate=${rate}` : ''}${type ? `&type=${type}` : ''}${fromPrice ? `&from_price=${fromPrice}` : ''}${toPrice ? `&to_price=${toPrice}` : ''}`, [noGuest, current]);
+  const links = data?.data?.links
+  const next = links?.next
+  const prev = links?.prev
   const rooms = data?.data.data || [];
   const totalRooms = data?.data.meta.total || 0;
+  // const limit = data?.data.meta.per_page
 
   const handlePaginationChange = (page) => {
     setCurrent(page);
+    window.scrollTo({top:0, left:0 , behavior:"instant"})
+    setLimit(data?.data.meta.per_page)
   };
 
   const dispatch = useDispatch();
@@ -76,14 +84,17 @@ const Services = () => {
               )
             )}
           </Sorting>
+          {
+            totalRooms > limit &&
           <Pagination
             direction={"ltr"}
             className='mt-10'
             current={current}
             total={totalRooms}
-            pageSize={data?.data.meta.per_page}
+            pageSize={data?.data.meta.per_page || limit}
             onChange={handlePaginationChange}
           />
+          }
         </Container>
       </section>
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../helpers/Container'
 import { useSelector } from 'react-redux';
+import Seo from '../helpers/Seo';
 
 
 
@@ -13,6 +14,7 @@ const Privacy = () => {
 
   return (
     <>
+      <Seo title="privacy" />
       <section className='mt-10'>
         <Container>
           <h2 className='text-3xl pb-8 font-bold text-center lg:text-left rtl:lg:text-right'>سياسة الخصوصية</h2>

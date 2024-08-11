@@ -14,6 +14,7 @@ import { request } from '../api/request'
 import { useTranslation } from 'react-i18next'
 import { Spin } from 'antd'
 import { toast } from 'react-toastify'
+import Seo from '../helpers/Seo'
 
 const CheckOut = () => {
 
@@ -78,6 +79,7 @@ const reserveId = localStorage.getItem("reservationId")
 
   return (
     <>
+      <Seo title='checkout' />
       <section className='mt-10'>
         <Container>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-[30px]'>

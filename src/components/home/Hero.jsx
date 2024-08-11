@@ -124,7 +124,7 @@ const Hero = () => {
             </div>
             <div className=' h-full order-1 md:order-2 mb-8 md:mb-0 mt-6 md:mt-0'>
               <div className='grid grid-cols-2 gap-4 md:gap-6 h-full '>
-                  <div className='grid grid-rows-3 gap-4 md:gap-6 mb-8'>
+                  <div className='grid grid-rows-3 gap-4 md:gap-6 '>
                   {
                     title ? 
                      <>
@@ -132,8 +132,8 @@ const Hero = () => {
                      <img src={heroData?.icon[2].url} className='w-full h-full object-cover row-span-2 rounded-2xl' />
                      </>:
                     isLoading ? <>
-                    <Skeleton count={1}  className='w-full h-full object-cover row-span-1 rounded-2xl' />
-                    <Skeleton count={1}   className='w-full h-full object-cover row-span-2 rounded-2xl' />
+                    <Skeleton count={1}  className='w-full h-full object-cover row-span-1 rounded-2xl py-[5rem]' />
+                    <Skeleton count={1}   className='w-full h-full object-cover row-span-2 rounded-2xl py-[5rem]' />
                     </> : <Empty/>
                   }
                     
@@ -142,9 +142,9 @@ const Hero = () => {
                   {
                     title ? 
                      <>
-                     <img src={heroData?.icon[0].url} className='w-full h-full object-cover mt-10 rounded-2xl' />
+                     <img src={heroData?.icon[0].url} className='w-full h-full object-cover  rounded-2xl' />
                      </>:
-                    isLoading ? <Skeleton count={1} height={400} className='w-full h-full object-cover mt-10 rounded-2xl' /> : <Empty/>
+                    isLoading ? <Skeleton count={1} height={500} className='w-full h-full object-cover  rounded-2xl' /> : <Empty/>
                   }
                   
               </div>
