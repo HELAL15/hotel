@@ -139,7 +139,11 @@
       "paydone" : "Riviera | pay done " ,
       "notfound" : "Riviera | this page not available in website"
     },
-
+ 
+    "same" : {
+      "head": "similar rooms",
+      "body": "similar rooms for you has the same type"
+    },
 
     "suggestions" : {
       "head" : "Suggestions for discovery",

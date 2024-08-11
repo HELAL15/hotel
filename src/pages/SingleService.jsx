@@ -14,18 +14,26 @@ import ReservationForm from '../components/singleService/ReservationForm'
 import { setChildDefault, setID, setInfantDefault, setType } from '../redux/features/reservationSlice'
 import { setDate } from 'date-fns'
 import Seo from '../helpers/Seo'
+import SecTitle from '../components/SecTitle'
+import Sorting from '../helpers/Sorting'
+import MainCard from '../components/MainCard'
+import { Empty } from 'antd'
+import Skeleton from 'react-loading-skeleton'
 // import Loader from '../layouts/Loader'
 
 const SingleService = () => {
+  const lang = useSelector((state)=>state.lang.value);
   const {id} = useParams()
   
-  const {data , refetch , isLoading:loading  , response} = useFetch(`/rooms/${id}`)
+  const {data , refetch , isLoading:loading  , response} = useFetch(`/rooms/${id}` , [lang])
 
+  console.log(data)
 
   const res404 = response?.response?.status
-  const lang = useSelector((state)=>state.lang.value)
   
-  const room = useMemo(() => data?.data || {}, [data])
+  const room = useMemo(() => data?.data?.single || {}, [data])
+  const same = data?.data?.same || []
+  console.log(same);
   
   const [fav, setFav] = useState(room?.is_fav === 1);
   useEffect(() => {
@@ -34,9 +42,9 @@ const SingleService = () => {
     }
   }, [room]);
 
-  useEffect(()=>{
-    refetch()
-  },[lang])
+  // useEffect(()=>{
+  //   refetch()
+  // },[lang])
 
 
 
@@ -90,6 +98,35 @@ if (res404 === 404 ) {
           </div>
         </Container>
       </section>
+
+
+      <section>
+        <Container>
+          <SecTitle head="same.head" body="same.body" />
+          <Sorting sx={"lg:grid-cols-4 xl:grid-cols-5"}>
+
+            {loading ? (
+              <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 w-full col-span-5 my-1'>
+                {[...Array(5)].map((_, index) => (
+                  <div key={index}>
+                    <Skeleton height={200} />
+                    <Skeleton width={100} />
+                    <Skeleton count={2} />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              same.length > 0 ? (
+                same.map((room) => <MainCard key={room.id} room={room} />)
+              ) : (
+                <Empty className='col-span-4 my-8' />
+              )
+            )}
+          </Sorting>
+        </Container>
+      </section>
+
+
     </>
   )
 }
