@@ -12,7 +12,6 @@ const Report = forwardRef(({ logo, icon, details }, ref) => {
   const {id} = useParams()
   const lang = useSelector((state)=>state.lang.value)
   const setting = useSelector((state)=>state.setting.value)
-  console.log(details);
   const {
     start_date,
     end_date,

@@ -34,6 +34,7 @@ const ReservationForm = ({ room }) => {
   const settings = useSelector((state) => state.setting.value);
   const meals = settings?.data?.hotel_setting;
 
+
   const reservationData = useSelector((state) => state.reservation.value);
   const { type, child, infant, date, no_rooms } = reservationData || {};
 
@@ -52,8 +53,8 @@ const ReservationForm = ({ room }) => {
 
   // Meal change handler
   const handleMealChange = (value, option) => {
-    setMealPrice(value);
-    dispatch(setType(option.children));
+    setMealPrice(option.price);
+    dispatch(setType(value));
   };
 
   const tax = room?.tax;
@@ -131,9 +132,9 @@ const ReservationForm = ({ room }) => {
           <Select onChange={handleMealChange} defaultValue={''}>
             <Option value={''} disabled>{t("room.choose")}</Option>
             {meals?.map((meal) => (
-              <Option key={meal.id} value={meal.value} className="flex items-center justify-between w-full">
-                {/* {t(`selectMeal.${meal.title}`)} */}
-                {meal.title}
+              <Option key={meal.id} price={meal.value} value={meal.title} className="flex items-center justify-between w-full">
+                {t(`selectMeal.${meal.title}`)}
+                {/* {meal.title} */}
               </Option>
             ))}
           </Select>
@@ -179,7 +180,7 @@ const ReservationForm = ({ room }) => {
         {
           type &&
           <p className='flex items-center justify-between gap-3'>
-            <span>{t("room.pricew")} {type}</span>
+            <span>{t("room.pricew")} {t(`selectMeal.${type}`)}</span>
             <span>{t("$")}{pricePerDay} + {Number(mealPrice)}</span>
           </p>
         }

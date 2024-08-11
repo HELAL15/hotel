@@ -136,7 +136,8 @@
       "wishlist": "Riviera | Wishlist",
       "booklist": "Riviera | Bookings",
       "checkout" : "Riviera | check out",
-      "paydone" : "Riviera | pay done " 
+      "paydone" : "Riviera | pay done " ,
+      "notfound" : "Riviera | this page not available in website"
     },
 
 

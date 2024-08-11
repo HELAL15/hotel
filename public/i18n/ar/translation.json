@@ -134,8 +134,9 @@
     "changePass" : "Riviera | تغيير كلمة المرور",
     "wishlist" : "Riviera | قائمة المفضلة",
     "booklist" : "Riviera | قائمة الحجوزات",
-    "checkout" : "ريفيرا | تسجيل الخروج",
-    "paydone" : "ريفيرا | تم الدفع"
+    "checkout" : "Riviera | تأكيد الدفع",
+    "paydone" : "Riviera | تم الدفع",
+    "notfound" : "Riviera | هذه الصفحة غير موجودة في موقعنا"
   },
 
 

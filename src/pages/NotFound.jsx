@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { useNavigate } from 'react-router'
 import Container from '../helpers/Container'
+import Seo from '../helpers/Seo'
 
 const NotFound = () => {
 
@@ -15,6 +16,7 @@ const navigate = useNavigate()
   return (
     <>
       {/* <!-- component --> */}
+      <Seo title="notfound" />
       <Container>
         <div className="  grid grid-cols-1 md:grid-cols-2 gap-[30px] mb-6 mt-10 items-center">
                 <div className="relative ">

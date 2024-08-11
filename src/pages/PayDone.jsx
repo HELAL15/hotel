@@ -73,7 +73,6 @@ const componentRef = useRef();
   if (error) {
     return <div>Error loading reservation data.</div>;
   }
-console.log(checkoutData);
   return (
     <>
           <Seo title='paydone' />
